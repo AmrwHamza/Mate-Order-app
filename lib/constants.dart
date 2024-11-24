@@ -13,3 +13,5 @@ const Color kPrimaryColor8 = Color(0xff54F4E4);
 const Color kPrimaryColor9 = Color(0xff93FCEE);
 const Color kPrimaryColor10 = Color(0xffC9FEF6);
 const Color KBackgroundColor = Color(0xffEFFEFB);
+
+const KTransitionDuration = Duration(milliseconds: 250);
