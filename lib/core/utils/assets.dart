@@ -1,4 +1,4 @@
 class AssetsData {
 // static const ...
-  static String Logo = 'assets/images/LOGO.jpg';
+  static const String logo = 'assets/images/LOGO.jpg';
 }
