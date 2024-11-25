@@ -73,15 +73,8 @@ class FirstPage extends StatelessWidget {
                           ),
                           const SizedBox(height: 20),
                           addButton(),
-                          const SizedBox(height: 20),
-                          TextButton(
-                              onPressed: () {},
-                              child: Text(
-                                'DISMISS',
-                                style: TextStyle(
-                                    color: Colors.grey,
-                                    fontWeight: FontWeight.bold),
-                              ))
+                          
+                          
                         ],
                       ),
                     ),
