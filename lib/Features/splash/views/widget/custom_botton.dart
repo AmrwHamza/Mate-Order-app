@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:get/get.dart';
+import 'package:mate_order_app/Features/register/presentation/views/register_view.dart';
 import 'package:mate_order_app/constants.dart';
 
 class AddButton extends StatelessWidget {
@@ -11,7 +13,8 @@ class AddButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return ElevatedButton(
         onPressed: () {
-          //Navigator
+          Get.to(() => RegisterView(),
+              transition: Transition.rightToLeftWithFade);
         },
         style: ElevatedButton.styleFrom(
           backgroundColor: kPrimaryColor8,
