@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mate_order_app/Features/splash/views/first_page.dart';
+import 'package:mate_order_app/Features/first%20page/view/first_page.dart';
 import 'package:mate_order_app/Features/splash/views/widget/sliding_text.dart';
 import 'package:mate_order_app/constants.dart';
 import 'package:mate_order_app/core/utils/assets.dart';
