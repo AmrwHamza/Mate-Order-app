@@ -13,25 +13,35 @@ class SplashViewBody extends StatefulWidget {
 }
 
 class _SplashViewBodyState extends State<SplashViewBody>
-    with SingleTickerProviderStateMixin {
+    with TickerProviderStateMixin {
   late AnimationController animationController;
   late Animation<Offset> slidingAnimation;
+
+  late AnimationController imageAnimationController;
+  late Animation<double> imageAnimation;
+
+  late AnimationController textAnimationController;
+  late Animation<double> textFadeAnimation;
 
   @override
   void initState() {
     super.initState();
     initSlidingAnimation();
+    initImageAnimation();
+    initTextAnimation();
 
     Future.delayed(const Duration(seconds: 2), () {
-      Get.to(() =>const FirstPage(),
+      Get.to(() => const FirstPage(),
           transition: Transition.fade, duration: KTransitionDuration);
     });
   }
 
-@override 
+  @override
   void dispose() {
-    super.dispose();
     animationController.dispose();
+    imageAnimationController.dispose();
+    textAnimationController.dispose();
+    super.dispose();
   }
 
   @override
@@ -39,14 +49,18 @@ class _SplashViewBodyState extends State<SplashViewBody>
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Image.asset(AssetsData.logoWithoutTitle),
-        SlidingText(slidingAnimation: slidingAnimation)
+        FadeTransition(
+            opacity: imageAnimation,
+            child: Image.asset(AssetsData.logoWithoutTitle)),
+        SlidingText(
+          slidingAnimation: slidingAnimation,
+          textFadeAnimation: textFadeAnimation,
+        )
       ],
     );
   }
 
   void initSlidingAnimation() {
-    
     animationController = AnimationController(
       vsync: this,
       duration: const Duration(seconds: 1),
@@ -57,5 +71,25 @@ class _SplashViewBodyState extends State<SplashViewBody>
             .animate(animationController);
 
     animationController.forward();
+  }
+
+  void initImageAnimation() {
+    imageAnimationController = AnimationController(
+      vsync: this,
+      duration: const Duration(seconds: 1),
+    );
+    imageAnimation =
+        Tween<double>(begin: 0.0, end: 1.0).animate(imageAnimationController);
+    imageAnimationController.forward();
+  }
+
+  void initTextAnimation() {
+    textAnimationController = AnimationController(
+      vsync: this,
+      duration: const Duration(seconds: 1),
+    );
+    textFadeAnimation =
+        Tween<double>(begin: 0.0, end: 1.0).animate(textAnimationController);
+    textAnimationController.forward();
   }
 }
