@@ -3,24 +3,27 @@ import 'package:mate_order_app/constants.dart';
 
 class CustomTextFormField extends StatelessWidget {
   const CustomTextFormField(
-      {super.key, this.obscureText = false, required this.hintText, this.suffixIcon});
+      {super.key,
+      this.obscureText = false,
+      required this.hintText,
+      this.suffixIcon});
 
   final String hintText;
   final bool obscureText;
-final Widget? suffixIcon;
+  final Widget? suffixIcon;
   @override
   Widget build(BuildContext context) {
     return Container(
+      margin: EdgeInsets.only(top: 9),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(16),
       ),
       height: 66,
       width: 350,
       child: TextFormField(
-        
         obscureText: obscureText,
         decoration: InputDecoration(
-          suffixIcon:suffixIcon ,
+          suffixIcon: suffixIcon,
           enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(16),
               borderSide: BorderSide(color: kPrimaryColor6)),
