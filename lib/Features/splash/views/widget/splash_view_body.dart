@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:mate_order_app/Features/first_page.dart';
-import 'package:mate_order_app/Features/widget/sliding_text.dart';
+import 'package:mate_order_app/Features/splash/views/first_page.dart';
+import 'package:mate_order_app/Features/splash/views/widget/sliding_text.dart';
 import 'package:mate_order_app/constants.dart';
 import 'package:mate_order_app/core/utils/assets.dart';
 import 'package:get/get.dart';
