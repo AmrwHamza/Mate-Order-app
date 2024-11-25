@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:mate_order_app/Features/splash/views/widget/custom_botton.dart';
+import 'package:mate_order_app/Features/first%20page/view/widget/custom_botton.dart';
 import 'package:mate_order_app/constants.dart';
 import 'package:mate_order_app/core/utils/assets.dart';
 
