@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:mate_order_app/Features/auth/register/presentation/views/widgets/login_view_body.dart';
-import 'package:mate_order_app/Features/auth/register/presentation/views/widgets/register_view_body.dart';
 import 'package:mate_order_app/constants.dart';
 
 class LoginView extends StatelessWidget {
@@ -11,7 +10,7 @@ class LoginView extends StatelessWidget {
     return Scaffold(
       backgroundColor: kPrimaryColor9,
       body: LoginViewBody(
-        
+
 
       ),
     );
