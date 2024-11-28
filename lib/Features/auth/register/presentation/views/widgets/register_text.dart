@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:mate_order_app/constants.dart';
 
-class RegisterText extends StatelessWidget {
-  const RegisterText({
-    super.key,
+class RegisterOrLogInText extends StatelessWidget {
+  const RegisterOrLogInText({
+    super.key, required this.data,
   });
+    final String data ;
 
   @override
   Widget build(BuildContext context) {
@@ -13,7 +14,7 @@ class RegisterText extends StatelessWidget {
       child: Row(
         children: [
           Text(
-            'Register',
+            data,
             style: TextStyle(
                 fontSize: 32,
                 fontWeight: FontWeight.bold,

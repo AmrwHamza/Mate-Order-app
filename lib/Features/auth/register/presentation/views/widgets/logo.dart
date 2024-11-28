@@ -11,8 +11,8 @@ class Logo extends StatelessWidget {
     return Center(
       child: Image.asset(
         AssetsData.logo,
-        width: 150,
-        height: 150,
+        width: 120,
+        height: 120,
       ),
     );
   }

@@ -14,12 +14,12 @@ class CustomTextFormField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(top: 9),
+      margin: EdgeInsets.only(top: 5),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(16),
       ),
       height: 66,
-      width: 350,
+      width: 330,
       child: TextFormField(
         obscureText: obscureText,
         decoration: InputDecoration(
