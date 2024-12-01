@@ -17,8 +17,8 @@ class FirstPage extends StatelessWidget {
           SvgPicture.asset(
             AssetsData.background,
             fit: BoxFit.cover,
-            width: double.infinity,
-            height: 450,
+            width: 600,
+            height: 800,
           ),
           Center(
             child: Stack(
