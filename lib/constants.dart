@@ -15,3 +15,5 @@ const Color kPrimaryColor10 = Color(0xffC9FEF6);
 const Color KBackgroundColor = Color(0xffEFFEFB);
 
 const KTransitionDuration = Duration(milliseconds: 250);
+
+const String baseurl = "http://127.0.0.1:8000/api/";
