@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:get/get_navigation/get_navigation.dart';
+import 'package:get/get_navigation/src/routes/transitions_type.dart';
+import 'package:mate_order_app/Features/home/home.dart';
 import 'package:mate_order_app/constants.dart';
 
 class AddButton extends StatefulWidget {
