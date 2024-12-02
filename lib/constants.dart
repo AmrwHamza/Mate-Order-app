@@ -16,4 +16,4 @@ const Color KBackgroundColor = Color(0xffEFFEFB);
 
 const KTransitionDuration = Duration(milliseconds: 250);
 
-const String baseurl = "http://127.0.0.1:8000/api/";
+const String baseurl = "https://7f5c-94-252-222-150.ngrok-free.app/api/";

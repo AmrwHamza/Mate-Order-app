@@ -28,6 +28,7 @@ class Api {
       return response.data;
     } catch (e) {
       print('==============================');
+      print('==============================');
       print(e.toString());
       print('==============================');
       return {};

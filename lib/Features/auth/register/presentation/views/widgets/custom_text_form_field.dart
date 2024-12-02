@@ -11,6 +11,7 @@ class CustomTextFormField extends StatelessWidget {
     this.prefixText,
     required this.label,
     this.keyboardType,
+    required this.onChanged,
   });
   final Widget label;
   final String? hintText;
@@ -19,6 +20,7 @@ class CustomTextFormField extends StatelessWidget {
   final String? Function(String?)? validator;
   final String? prefixText;
   final TextInputType? keyboardType;
+  final void Function(String?) onChanged;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -29,6 +31,7 @@ class CustomTextFormField extends StatelessWidget {
       height: 66,
       width: 330,
       child: TextFormField(
+        onChanged: onChanged,
         keyboardType: keyboardType,
         style: TextStyle(fontSize: 15, color: Colors.black, height: 1),
         obscureText: obscureText,
@@ -36,7 +39,7 @@ class CustomTextFormField extends StatelessWidget {
           label: label,
           suffixIcon: suffixIcon,
           prefixText: prefixText,
-          prefixStyle: TextStyle(fontSize: 15, color: Colors.black,height: 1),
+          prefixStyle: TextStyle(fontSize: 15, color: Colors.black, height: 1),
           enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(16),
               borderSide: BorderSide(color: kPrimaryColor6)),

@@ -2,14 +2,20 @@ import 'package:mate_order_app/Features/auth/register/data/models/register_user_
 import 'package:mate_order_app/core/utils/api_services.dart';
 
 class RegisterRepository {
-  final Api api;
+  late Api api;
   RegisterRepository(this.api);
 
-  Future<RegisterUserModel> register(data) async {
-    final registerUserModel = await api.post(
-      endPoint: 'auth/register',
-      data: data,
-    );
-    return RegisterUserModel.fromJson(registerUserModel);
+  Future<RegisterUserModel> register(Map<String, dynamic> data) async {
+    try {
+      final registerUserModel = await api.post(
+        endPoint: 'auth/register',
+        data: data,
+      );
+      return RegisterUserModel.fromJson(registerUserModel);
+    } catch (e) {
+      print(e.toString());
+      print('---------------------------');
+      return RegisterUserModel();
+    }
   }
 }

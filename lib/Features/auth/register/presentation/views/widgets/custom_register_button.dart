@@ -4,7 +4,7 @@ import 'package:mate_order_app/constants.dart';
 class CustomRegisterButton extends StatelessWidget {
   const CustomRegisterButton({super.key, required this.data, this.onPressed});
     final String data ;
-final void Function()? onPressed;
+final   void Function()? onPressed;
   @override
   Widget build(BuildContext context) {
     return SizedBox(
