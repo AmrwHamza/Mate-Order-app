@@ -13,31 +13,31 @@ class LoginViewBody extends StatelessWidget {
     return  SingleChildScrollView(
       child: Column(
         children: [
-          SizedBox(
-            height: 18,
-          ),
-          Logo(),
-          RegisterOrLogInText( data: 'Login',),
-          Divider(
-            color: kPrimaryColor1,
-            indent: 27,
-            endIndent: 27,
-          ),
-          CustomTextFormField(
-            hintText: 'Phone Number',
-            suffixIcon: Icon(Icons.phone_android_outlined),
-          ),
-          CustomTextFormField(
-            hintText: 'Password',
-            suffixIcon: Icon(Icons.lock_outlined),
-            obscureText: true,
-          ),
-          SizedBox(
-            height: 8,
-          ),
-          CustomRegisterButton(
-            data: 'Logon',
-          ),
+          // SizedBox(
+          //   height: 18,
+          // ),
+          // Logo(),
+          // RegisterOrLogInText( data: 'Login',),
+          // Divider(
+          //   color: kPrimaryColor1,
+          //   indent: 27,
+          //   endIndent: 27,
+          // ),
+          // CustomTextFormField(
+          //   hintText: 'Phone Number',
+          //   suffixIcon: Icon(Icons.phone_android_outlined),
+          // ),
+          // CustomTextFormField(
+          //   hintText: 'Password',
+          //   suffixIcon: Icon(Icons.lock_outlined),
+          //   obscureText: true,
+          // ),
+          // SizedBox(
+          //   height: 8,
+          // ),
+          // CustomRegisterButton(
+          //   data: 'Logon',
+          // ),
         ],
       ),
     );

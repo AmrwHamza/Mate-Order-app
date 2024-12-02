@@ -3,6 +3,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_navigation/get_navigation.dart';
 import 'package:get/get_navigation/src/routes/transitions_type.dart';
+import 'package:mate_order_app/Features/auth/register/presentation/views/register_view.dart';
 import 'package:mate_order_app/Features/home/home.dart';
 import 'package:mate_order_app/constants.dart';
 
@@ -26,7 +27,7 @@ class _AddButtonState extends State<AddButton> {
         isLoading = false;
       });
       //change latter to login
-      Get.to(() =>  Home(),
+      Get.to(() => Home(),
           transition: Transition.fade, duration: KTransitionDuration);
     });
   }
@@ -35,7 +36,7 @@ class _AddButtonState extends State<AddButton> {
   Widget build(BuildContext context) {
     return ElevatedButton(
         onPressed: () {
-          //Navigator
+          Get.to(RegisterView());
         },
         style: ElevatedButton.styleFrom(
           backgroundColor: kPrimaryColor8,
