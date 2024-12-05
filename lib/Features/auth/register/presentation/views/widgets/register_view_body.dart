@@ -97,10 +97,9 @@ class RegisterViewBody extends StatelessWidget {
                     validator: (value) {
                       if (value!.isEmpty) {
                         return "Required field";
+                      } else if (!value.startsWith('9') || value.length != 9) {
+                        return "wrong number it must be like 9xxxxxxxx";
                       }
-                      // } else if (!value.startsWith('9') || value.length != 9) {
-                      //   return "wrong number it must be like 9xxxxxxxx";
-                      // }
                       return null;
                     },
                     prefixText: '+963',

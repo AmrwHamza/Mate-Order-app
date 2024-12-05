@@ -27,7 +27,6 @@ class Setting extends StatelessWidget {
             padding: const EdgeInsets.all(10),
             child: Column(
               children: [
-                
                 TextFrame(
                   title: 'change Language',
                   icon: Icons.language,

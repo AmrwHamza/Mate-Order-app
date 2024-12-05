@@ -6,7 +6,11 @@ class RegisterUserModel {
 
   RegisterUserModel.fromJson(Map<String, dynamic> json) {
     user = json['user'] != null ? new User.fromJson(json['user']) : null;
-    token = json['token'];
+    print('================token in model user===============');
+    print(json['token'] as String);
+    token = json['token'] as String;
+    print('================token in token===============');
+
   }
 
   Map<String, dynamic> toJson() {

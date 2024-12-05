@@ -13,18 +13,21 @@ class VerifyCubit extends Cubit<VerifyState> {
   VerifyCubit() : super(VerifyInitial());
   bool isLoading = false;
 
-  Future<void> verifyClick({required String token}) async {
+  Future<void> verifyClick({required String? token}) async {
     emit(VerifyLoading());
 
-    print(c1.text);
     String smscode = c1.text + c2.text + c3.text + c4.text + c5.text + c6.text;
+
     VerifyService service = VerifyService(Api());
-    VerifyModel verifyModel = await service.verify(data: {
+
+    var verifyModel = await service.verify(data: {
       'code': smscode,
     }, token: token);
 
-    print('================================');
-    print(smscode);
-    print('================================');
+    verifyModel.fold(
+      (l) => emit(VerifyFailure(l.message)),
+      (r) => emit(VerifySuccess()),
+    );
+    isLoading = false;
   }
 }

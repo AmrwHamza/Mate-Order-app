@@ -17,4 +17,4 @@ class VerifyFailure extends VerifyState {
   final String error;
 
   const VerifyFailure(this.error);
-  }
+}

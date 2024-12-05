@@ -38,10 +38,6 @@ class _EditPersonalInfState extends State<EditPersonalInf> {
         padding: const EdgeInsets.all(20.0),
         child: Column(
           children: [
-
-            
-
-
             AlignOfComments(comment: 'Press to edit you email.  '),
             SizedBox(height: 5),
             EditableTextField(

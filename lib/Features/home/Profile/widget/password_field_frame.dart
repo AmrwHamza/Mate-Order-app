@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 class PasswordFieldFrame extends StatefulWidget {
   final String label;
   final TextEditingController controller;
-  const PasswordFieldFrame({super.key, 
+  const PasswordFieldFrame({
+    super.key,
     required this.label,
     required this.controller,
   });

@@ -23,4 +23,9 @@ class RegisterFailure extends RegisterState {
   const RegisterFailure(this.error);
 }
 
-class RegisterObsecure extends RegisterState {}
+class RegisterObsecure extends RegisterState {
+  final bool isObsecure;
+  final IconData eyeIcon;
+
+  RegisterObsecure({required this.isObsecure, required this.eyeIcon});
+}

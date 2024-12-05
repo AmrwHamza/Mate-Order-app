@@ -6,7 +6,10 @@ class TextFieldFrame extends StatelessWidget {
   final TextEditingController controller;
 
   const TextFieldFrame(
-      {super.key, required this.label, required this.icon, required this.controller});
+      {super.key,
+      required this.label,
+      required this.icon,
+      required this.controller});
 
   @override
   Widget build(BuildContext context) {

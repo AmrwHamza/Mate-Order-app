@@ -5,7 +5,8 @@ class MenuOption extends StatelessWidget {
   final String text;
   final VoidCallback onTap;
 
-  const MenuOption({super.key, required this.icon, required this.text, required this.onTap});
+  const MenuOption(
+      {super.key, required this.icon, required this.text, required this.onTap});
 
   @override
   Widget build(BuildContext context) {

@@ -5,7 +5,6 @@ import 'package:mate_order_app/Features/auth/register/presentation/view-models/c
 import 'package:mate_order_app/Features/splash/views/splash_view.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-
 void main() {
   runApp(const MateOrderApp());
 }
@@ -17,8 +16,10 @@ class MateOrderApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        BlocProvider(create: (context) =>RegisterCubit()) ,
-        BlocProvider(create: (context) => VerifyCubit(),)
+        BlocProvider(create: (context) => RegisterCubit()),
+        BlocProvider(
+          create: (context) => VerifyCubit(),
+        )
       ],
       child: GetMaterialApp(
         debugShowCheckedModeBanner: false,

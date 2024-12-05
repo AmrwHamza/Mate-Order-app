@@ -12,7 +12,6 @@ class UpdateYourProfile extends StatefulWidget {
 }
 
 class _UpdateYourProfileState extends State<UpdateYourProfile> {
- 
   final TextEditingController currentPasswordController =
       TextEditingController();
 
@@ -20,8 +19,6 @@ class _UpdateYourProfileState extends State<UpdateYourProfile> {
 
   final TextEditingController confirmPasswordController =
       TextEditingController();
-
-
 
   String? oldPassword;
 
@@ -74,7 +71,6 @@ class _UpdateYourProfileState extends State<UpdateYourProfile> {
                   oldPassword = currentPasswordController.text;
                   newPassword = newPasswordController.text;
                   newPasswordAgain = confirmPasswordController.text;
-               
                 },
                 icon: CheckBotton(),
               ),
@@ -83,13 +79,3 @@ class _UpdateYourProfileState extends State<UpdateYourProfile> {
         ));
   }
 }
-
-
-
-
-
-
-
-
-
-

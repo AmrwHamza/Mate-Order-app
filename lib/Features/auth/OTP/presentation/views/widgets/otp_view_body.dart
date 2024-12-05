@@ -17,71 +17,88 @@ class OTPViewBody extends StatelessWidget {
   const OTPViewBody({super.key});
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<VerifyCubit, VerifyState>(
-      listener: (context, state) {
-        if (state is VerifyLoading) {
-          BlocProvider.of<VerifyCubit>(context).isLoading = true;
-        } else if (state is VerifyFailure) {
-          showSnackBar(context, state.error);
-        } else if (state is VerifySuccess) {
-          Get.to(HomePage());
-        }
-      },
-      builder: (context, state) {
-        return ModalProgressHUD(
-          inAsyncCall: context.watch<VerifyCubit>().isLoading,
-          child: Container(
-            padding: EdgeInsets.symmetric(horizontal: 10),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    CustomTextFieldOTP(
-                      first: true,
-                      last: false,
-                      controller: c1,
-                    ),
-                    CustomTextFieldOTP(
-                      first: false,
-                      last: false,
-                      controller: c2,
-                    ),
-                    CustomTextFieldOTP(
-                      first: false,
-                      last: false,
-                      controller: c3,
-                    ),
-                    CustomTextFieldOTP(
-                      first: false,
-                      last: false,
-                      controller: c4,
-                    ),
-                    CustomTextFieldOTP(
-                      first: false,
-                      last: false,
-                      controller: c5,
-                    ),
-                    CustomTextFieldOTP(
-                      first: false,
-                      last: true,
-                      controller: c6,
-                    ),
-                  ],
-                ),
-                CustomRegisterButton(
-                  data: 'Confirm',
-                  onPressed: () {
-                    BlocProvider.of<VerifyCubit>(context).verifyClick(
-                        token: context.read<RegisterCubit>().user!.token!);
-                  },
-                )
-              ],
+    final registerCubit = BlocProvider.of<RegisterCubit>(context);
+
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(create: (context) => RegisterCubit()),
+        BlocProvider(
+          create: (context) => VerifyCubit(),
+        )
+      ],
+      child: BlocConsumer<VerifyCubit, VerifyState>(
+        listener: (context, state) {
+          if (state is VerifyLoading) {
+            BlocProvider.of<VerifyCubit>(context).isLoading = true;
+          } else if (state is VerifyFailure) {
+            showSnackBar(context, state.error);
+          } else if (state is VerifySuccess) {
+            Get.to(HomePage());
+          }
+        },
+        builder: (context, state) {
+          return ModalProgressHUD(
+            inAsyncCall: context.watch<VerifyCubit>().isLoading,
+            child: Container(
+              padding: EdgeInsets.symmetric(horizontal: 10),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      CustomTextFieldOTP(
+                        first: true,
+                        last: false,
+                        controller: c1,
+                      ),
+                      CustomTextFieldOTP(
+                        first: false,
+                        last: false,
+                        controller: c2,
+                      ),
+                      CustomTextFieldOTP(
+                        first: false,
+                        last: false,
+                        controller: c3,
+                      ),
+                      CustomTextFieldOTP(
+                        first: false,
+                        last: false,
+                        controller: c4,
+                      ),
+                      CustomTextFieldOTP(
+                        first: false,
+                        last: false,
+                        controller: c5,
+                      ),
+                      CustomTextFieldOTP(
+                        first: false,
+                        last: true,
+                        controller: c6,
+                      ),
+                    ],
+                  ),
+                  CustomRegisterButton(
+                    data: 'Confirm',
+                    onPressed: () {
+                      print(
+                          '=====================token in otp view body1${registerCubit.user!.token}');
+                      print(
+                          '=====================token in otp view body2${registerCubit.user!.token}');
+                      print(
+                          '=====================token in otp view body3 ${registerCubit.user!.token}');
+
+                      BlocProvider.of<VerifyCubit>(context, listen: false)
+                          .verifyClick(token: registerCubit.user?.token);
+                    },
+                  )
+                ],
+              ),
             ),
-          ),
-        );
-      },
+          );
+        },
+      ),
     );
   }
 

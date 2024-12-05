@@ -5,7 +5,8 @@ class EditableTextField extends StatelessWidget {
   final IconData icon;
   final TextEditingController controller;
   final TextInputType keyboardType;
-  const EditableTextField({super.key, 
+  const EditableTextField({
+    super.key,
     required this.label,
     required this.icon,
     required this.controller,
