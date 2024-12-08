@@ -6,6 +6,7 @@ import 'package:mate_order_app/Features/auth/register/presentation/views/widgets
 import 'package:mate_order_app/Features/auth/register/presentation/views/widgets/custom_text_form_field.dart';
 import 'package:mate_order_app/Features/auth/register/presentation/views/widgets/logo.dart';
 import 'package:mate_order_app/Features/auth/register/presentation/views/widgets/register_text.dart';
+import 'package:mate_order_app/Features/auth/register/presentation/views/widgets/show_snack_bar.dart';
 import 'package:mate_order_app/Features/home/home_page/home_page.dart';
 import 'package:mate_order_app/constants.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
@@ -180,6 +181,7 @@ class RegisterViewBody extends StatelessWidget {
                         print('==================');
                         print('done validation');
                         print('==================');
+                        
                         BlocProvider.of<RegisterCubit>(context)
                             .onTapRegisterButton();
                       }
@@ -195,11 +197,4 @@ class RegisterViewBody extends StatelessWidget {
     );
   }
 
-  void showSnackBar(BuildContext context, String message) {
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        content: Text(message),
-      ),
-    );
-  }
 }

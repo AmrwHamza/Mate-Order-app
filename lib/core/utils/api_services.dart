@@ -62,7 +62,7 @@ class Api {
       var response = await dio.delete('$endPoint',
           data: data, options: Options(headers: headers));
       print(response.data.toString());
-      return response.data;
+      return Right(response.data);
     } on DioException catch (dioException) {
       return Left(handleDioError(dioException));
     } catch (e) {

@@ -42,25 +42,15 @@ class RegisterCubit extends Cubit<RegisterState> {
 
     result.fold(
       (l) {
-        print(
-            '===============register cubit failure ${l.message}====================');
         emit(RegisterFailure(l.message));
       },
       (r) {
-        print('===============register cubit Success ====================');
-        print(
-            '===============register cubit Success ${r.token} ====================');
-
         user = r;
-        print('==============token====================');
-        print(user?.token);
-        print('==============token====================');
         emit(RegisterSuccess(user!));
       },
     );
 
-    // emit(RegisterSuccess(user!));
-    // print(state.toString());
+  
   }
 
   void isobsecure() {

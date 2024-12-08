@@ -10,7 +10,6 @@ class RegisterUserModel {
     print(json['token'] as String);
     token = json['token'] as String;
     print('================token in token===============');
-
   }
 
   Map<String, dynamic> toJson() {

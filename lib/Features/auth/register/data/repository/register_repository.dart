@@ -14,10 +14,7 @@ class RegisterRepository {
       data: data,
     );
     return registerUserModel.fold((l) => Left(l), (r) {
-      print('=============register service =========================');
-      RegisterUserModel temp = RegisterUserModel.fromJson(r);
-      print(temp.token);
-      print('=============register service token  =========================');
+    
 
       return Right(RegisterUserModel.fromJson(r));
     });

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mate_order_app/Features/auth/register/presentation/views/widgets/login_view_body.dart';
+import 'package:mate_order_app/Features/auth/login/presentation/views/widgets/login_view_body.dart';
 import 'package:mate_order_app/constants.dart';
 
 class LoginView extends StatelessWidget {
