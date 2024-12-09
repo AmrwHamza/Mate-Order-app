@@ -24,11 +24,16 @@ class CustomTextFormField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(top: 8),
+      margin: EdgeInsets.only(bottom: 21),
       decoration: BoxDecoration(
+        boxShadow: [
+          BoxShadow(
+            color: Colors.white,
+            
+          ),
+        ],
         borderRadius: BorderRadius.circular(16),
       ),
-      height: 66,
       width: 330,
       child: TextFormField(
         onChanged: onChanged,

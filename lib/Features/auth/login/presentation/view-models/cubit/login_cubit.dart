@@ -10,10 +10,12 @@ part 'login_state.dart';
 class LoginCubit extends Cubit<LoginState> {
   LoginCubit() : super(LoginInitial());
 
-  bool? isLoading = false;
+  bool isLoading = false;
   String? phone;
   String? password;
+
   Future<void> onTapLoginButton() async {
+    isLoading = true;
     emit(LoginLoading());
 
     var result =
@@ -22,6 +24,7 @@ class LoginCubit extends Cubit<LoginState> {
     result.fold(
       (l) {
         return emit(LoginFailure(error: l.message));
+        
       },
       (r) {
         return emit(LoginSuccess(loginUserModel: r));

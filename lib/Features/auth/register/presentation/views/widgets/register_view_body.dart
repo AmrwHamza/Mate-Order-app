@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:get/get_navigation/get_navigation.dart';
 import 'package:mate_order_app/Features/auth/OTP/presentation/views/otp_view.dart';
+import 'package:mate_order_app/Features/auth/login/presentation/views/login_view.dart';
+import 'package:mate_order_app/Features/auth/login/presentation/views/widgets/login_view_body.dart';
 import 'package:mate_order_app/Features/auth/register/presentation/view-models/cubit/register_cubit.dart';
 import 'package:mate_order_app/Features/auth/register/presentation/views/widgets/custom_register_button.dart';
 import 'package:mate_order_app/Features/auth/register/presentation/views/widgets/custom_text_form_field.dart';
@@ -181,13 +185,17 @@ class RegisterViewBody extends StatelessWidget {
                         print('==================');
                         print('done validation');
                         print('==================');
-                        
+
                         BlocProvider.of<RegisterCubit>(context)
                             .onTapRegisterButton();
                       }
                     },
                     data: 'Send verification code',
                   ),
+                  GestureDetector(
+                    onTap: () => Get.off(LoginView()),
+                    child: Text('login'),
+                  )
                 ],
               ),
             ),
@@ -196,5 +204,4 @@ class RegisterViewBody extends StatelessWidget {
       },
     );
   }
-
 }
