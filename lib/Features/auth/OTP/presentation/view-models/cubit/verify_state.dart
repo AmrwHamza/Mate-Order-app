@@ -18,3 +18,15 @@ class VerifyFailure extends VerifyState {
 
   const VerifyFailure(this.error);
 }
+
+class ReSendFailure extends VerifyState {
+  final String error;
+
+  const ReSendFailure(this.error);
+}
+
+class ReSendSuccess extends VerifyState {
+  final String message;
+
+  const ReSendSuccess(this.message);
+}

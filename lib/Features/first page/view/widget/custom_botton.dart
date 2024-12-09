@@ -37,7 +37,7 @@ class _AddButtonState extends State<AddButton> {
   Widget build(BuildContext context) {
     return ElevatedButton(
         onPressed: () {
-          Get.to(RegisterView());
+          Get.to(OTPView());
         },
         style: ElevatedButton.styleFrom(
           backgroundColor: kPrimaryColor8,

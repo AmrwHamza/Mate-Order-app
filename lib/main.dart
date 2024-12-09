@@ -19,7 +19,9 @@ class MateOrderApp extends StatelessWidget {
       providers: [
         BlocProvider(create: (context) => RegisterCubit()),
         BlocProvider(create: (context) => VerifyCubit()),
-        BlocProvider(create: (context) => LoginCubit(),)
+        BlocProvider(
+          create: (context) => LoginCubit(),
+        )
       ],
       child: GetMaterialApp(
         debugShowCheckedModeBanner: false,

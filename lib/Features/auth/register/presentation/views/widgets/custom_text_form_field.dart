@@ -29,7 +29,6 @@ class CustomTextFormField extends StatelessWidget {
         boxShadow: [
           BoxShadow(
             color: Colors.white,
-            
           ),
         ],
         borderRadius: BorderRadius.circular(16),

@@ -14,8 +14,6 @@ class RegisterRepository {
       data: data,
     );
     return registerUserModel.fold((l) => Left(l), (r) {
-    
-
       return Right(RegisterUserModel.fromJson(r));
     });
   }

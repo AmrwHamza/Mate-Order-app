@@ -2,6 +2,7 @@ import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mate_order_app/Features/auth/OTP/data/models/verify_model.dart';
+import 'package:mate_order_app/Features/auth/OTP/data/repository/re_send_code_service.dart';
 import 'package:mate_order_app/Features/auth/OTP/data/repository/verify_service.dart';
 import 'package:mate_order_app/Features/auth/OTP/presentation/views/widgets/controllers_otp.dart';
 import 'package:mate_order_app/Features/auth/register/presentation/view-models/cubit/register_cubit.dart';
@@ -27,6 +28,16 @@ class VerifyCubit extends Cubit<VerifyState> {
     verifyModel.fold(
       (l) => emit(VerifyFailure(l.message)),
       (r) => emit(VerifySuccess()),
+    );
+    isLoading = false;
+  }
+
+  Future<void> reSendClick({required String? token}) async {
+    emit(VerifyLoading());
+    var result = await ReSendCodeService().reSend(token: token);
+    result.fold(
+      (l) => emit(ReSendFailure(l.message)),
+      (r) => emit(ReSendSuccess(r.message!)),
     );
     isLoading = false;
   }

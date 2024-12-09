@@ -1,17 +1,20 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_navigation/get_navigation.dart';
+import 'package:get/get_navigation/src/routes/transitions_type.dart'
+    as tansition;
+
 import 'package:mate_order_app/Features/auth/OTP/presentation/view-models/cubit/verify_cubit.dart';
 import 'package:mate_order_app/Features/auth/OTP/presentation/views/widgets/controllers_otp.dart';
 import 'package:mate_order_app/Features/auth/OTP/presentation/views/widgets/custom_text_field_o_t_p.dart';
 import 'package:mate_order_app/Features/auth/register/presentation/view-models/cubit/register_cubit.dart';
+import 'package:mate_order_app/Features/auth/register/presentation/views/register_view.dart';
 import 'package:mate_order_app/Features/auth/register/presentation/views/widgets/custom_register_button.dart';
-import 'package:mate_order_app/Features/first%20page/view/widget/custom_botton.dart';
 import 'package:mate_order_app/Features/home/home_page/home_page.dart';
-import 'package:mate_order_app/constants.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
+import 'package:flutter_timer_countdown/flutter_timer_countdown.dart';
 
 class OTPViewBody extends StatelessWidget {
   const OTPViewBody({super.key});
@@ -34,6 +37,10 @@ class OTPViewBody extends StatelessWidget {
             showSnackBar(context, state.error);
           } else if (state is VerifySuccess) {
             Get.to(HomePage());
+          } else if (state is ReSendSuccess) {
+            Get.snackbar('aa', state.message);
+          } else if (state is ReSendSuccess) {
+            Get.snackbar('bbbb', state.message);
           }
         },
         builder: (context, state) {
@@ -79,6 +86,16 @@ class OTPViewBody extends StatelessWidget {
                       ),
                     ],
                   ),
+                  TimerCountdown(
+                    format: CountDownTimerFormat.minutesSeconds,
+                    endTime: DateTime.now().add(
+                      Duration(minutes: 5),
+                    ),
+                    onEnd: () {
+                      Get.off(RegisterView(),
+                          transition: tansition.Transition.leftToRight);
+                    },
+                  ),
                   CustomRegisterButton(
                     data: 'Confirm',
                     onPressed: () {
@@ -91,6 +108,13 @@ class OTPViewBody extends StatelessWidget {
 
                       BlocProvider.of<VerifyCubit>(context, listen: false)
                           .verifyClick(token: registerCubit.user?.token);
+                    },
+                  ),
+                  CustomRegisterButton(
+                    data: 'Resend the Code',
+                    onPressed: () {
+                      BlocProvider.of<VerifyCubit>(context, listen: false)
+                          .reSendClick(token: registerCubit.user?.token);
                     },
                   )
                 ],

@@ -1,10 +1,7 @@
 import 'package:dartz/dartz.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mate_order_app/Features/auth/OTP/data/models/verify_model.dart';
-import 'package:mate_order_app/Features/auth/register/presentation/view-models/cubit/register_cubit.dart';
 import 'package:mate_order_app/core/utils/api_services.dart';
 import 'package:mate_order_app/core/utils/error/failure.dart';
-import 'package:dartz/dartz.dart';
 
 class VerifyService {
   late Api api;
@@ -16,6 +13,7 @@ class VerifyService {
         endPoint: 'verify',
         data: data,
         headers: {'Authorization': 'Bearer $token'});
+
     return verifyServiceResponse.fold(
       (failure) => Left(failure),
       (data) => Right(

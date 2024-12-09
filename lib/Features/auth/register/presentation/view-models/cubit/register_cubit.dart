@@ -49,8 +49,6 @@ class RegisterCubit extends Cubit<RegisterState> {
         emit(RegisterSuccess(user!));
       },
     );
-
-  
   }
 
   void isobsecure() {
