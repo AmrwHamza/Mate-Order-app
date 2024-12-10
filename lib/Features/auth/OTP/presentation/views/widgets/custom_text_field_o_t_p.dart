@@ -4,16 +4,16 @@ import 'package:mate_order_app/Features/auth/OTP/presentation/views/widgets/cont
 import 'package:mate_order_app/constants.dart';
 
 class CustomTextFieldOTP extends StatelessWidget {
-  CustomTextFieldOTP({
+   const CustomTextFieldOTP({
     required this.first,
     required this.last,
     required this.controller,
     super.key,
   });
 
-  bool first;
-  bool last;
-  TextEditingController controller;
+ final bool first;
+ final bool last;
+final  TextEditingController controller;
   @override
   Widget build(BuildContext context) {
     return Container(

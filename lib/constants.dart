@@ -16,4 +16,8 @@ const Color KBackgroundColor = Color(0xffEFFEFB);
 
 const KTransitionDuration = Duration(milliseconds: 250);
 
-const String baseurl = "https://5980-188-133-59-221.ngrok-free.app"+"/api/";
+const String baseurl = "https://b91c-5-155-31-244.ngrok-free.app" "/api/";
+
+class SharedPrefKeys {
+  static const String userToken = 'userToken';
+}

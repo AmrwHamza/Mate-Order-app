@@ -10,6 +10,7 @@ import 'package:mate_order_app/Features/auth/register/presentation/view-models/c
 import 'package:mate_order_app/Features/auth/register/presentation/views/widgets/custom_register_button.dart';
 import 'package:mate_order_app/Features/auth/register/presentation/views/widgets/logo.dart';
 import 'package:mate_order_app/Features/auth/register/presentation/views/widgets/register_text.dart';
+import 'package:mate_order_app/Features/home/home.dart';
 import 'package:mate_order_app/Features/home/home_page/home_page.dart';
 import 'package:mate_order_app/constants.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
@@ -34,7 +35,7 @@ class OTPViewBody extends StatelessWidget {
           } else if (state is VerifyFailure) {
             Get.snackbar('', state.error, snackPosition: SnackPosition.BOTTOM);
           } else if (state is VerifySuccess) {
-            Get.to(const HomePage());
+            Get.to( Home());
           } else if (state is ReSendSuccess) {
             Get.snackbar('', state.message,
                 snackPosition: SnackPosition.BOTTOM);

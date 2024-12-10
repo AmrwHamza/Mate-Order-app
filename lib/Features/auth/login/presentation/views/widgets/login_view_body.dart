@@ -3,8 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_navigation/get_navigation.dart' as transition;
+import 'package:get/get_navigation/src/snackbar/snackbar.dart';
 import 'package:mate_order_app/Features/auth/OTP/presentation/views/widgets/otp_view_body.dart';
 import 'package:mate_order_app/Features/auth/login/presentation/view-models/cubit/login_cubit.dart';
+import 'package:mate_order_app/Features/auth/register/presentation/views/register_view.dart';
 import 'package:mate_order_app/Features/auth/register/presentation/views/widgets/custom_register_button.dart';
 import 'package:mate_order_app/Features/auth/register/presentation/views/widgets/custom_text_form_field.dart';
 import 'package:mate_order_app/Features/auth/register/presentation/views/widgets/logo.dart';
@@ -26,7 +28,8 @@ class LoginViewBody extends StatelessWidget {
         if (state is LoginFailure) {
           BlocProvider.of<LoginCubit>(context).isLoading = false;
 
-          showSnackBar(context, state.error);
+          Get.snackbar('error', state.error,
+              snackPosition: SnackPosition.BOTTOM);
         }
         if (state is LoginLoading) {
           BlocProvider.of<LoginCubit>(context).isLoading = true;
@@ -57,6 +60,9 @@ class LoginViewBody extends StatelessWidget {
                     color: kPrimaryColor1,
                     indent: 27,
                     endIndent: 27,
+                  ),
+                  const SizedBox(
+                    height: 20,
                   ),
                   CustomTextFormField(
                     onChanged: (p0) {
@@ -119,6 +125,22 @@ class LoginViewBody extends StatelessWidget {
                     },
                     data: 'Login',
                   ),
+                  SizedBox(
+                    height: 15,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      const Text("Don't have an account? "),
+                      GestureDetector(
+                        onTap: () => Get.off(const RegisterView()),
+                        child: const Text(
+                          'Register',
+                          style: TextStyle(color: kPrimaryColor5),
+                        ),
+                      ),
+                    ],
+                  )
                 ],
               ),
             ),

@@ -3,6 +3,8 @@ import 'package:dartz/dartz.dart';
 import 'package:equatable/equatable.dart';
 import 'package:mate_order_app/Features/auth/login/data/models/login_user_model.dart';
 import 'package:mate_order_app/Features/auth/login/data/repository/login_service.dart';
+import 'package:mate_order_app/constants.dart';
+import 'package:mate_order_app/core/helpers/shared_pref.dart';
 import 'package:mate_order_app/core/utils/api_services.dart';
 
 part 'login_state.dart';
@@ -25,9 +27,15 @@ class LoginCubit extends Cubit<LoginState> {
       (l) {
         return emit(LoginFailure(error: l.message));
       },
-      (r) {
+      (r) async {
+        await saveuserToken(r.accessToken!);
+
         return emit(LoginSuccess(loginUserModel: r));
       },
     );
+  }
+
+  Future<void> saveuserToken(String token) async {
+    await SharedPrefHelper.setData(SharedPrefKeys.userToken, token);
   }
 }

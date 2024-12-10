@@ -4,7 +4,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mate_order_app/Features/auth/OTP/data/repository/re_send_code_service.dart';
 import 'package:mate_order_app/Features/auth/OTP/data/repository/verify_service.dart';
 import 'package:mate_order_app/Features/auth/OTP/presentation/views/widgets/controllers_otp.dart';
+import 'package:mate_order_app/constants.dart';
 import 'package:mate_order_app/core/utils/api_services.dart';
+import 'package:mate_order_app/core/helpers/shared_pref.dart';
 
 part 'verify_state.dart';
 
@@ -25,7 +27,11 @@ class VerifyCubit extends Cubit<VerifyState> {
 
     verifyModel.fold(
       (l) => emit(VerifyFailure(l.message)),
-      (r) => emit(VerifySuccess()),
+      (r) async {
+        await saveuserToken(token!);
+
+        return emit(VerifySuccess());
+      },
     );
     isLoading = false;
   }
@@ -38,5 +44,9 @@ class VerifyCubit extends Cubit<VerifyState> {
       (r) => emit(ReSendSuccess(r.message!)),
     );
     isLoading = false;
+  }
+
+  Future<void> saveuserToken(String token) async {
+    await SharedPrefHelper.setData(SharedPrefKeys.userToken, token);
   }
 }

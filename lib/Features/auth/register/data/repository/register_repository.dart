@@ -12,6 +12,7 @@ class RegisterRepository {
     var registerUserModel = await api.post(
       endPoint: 'auth/register',
       data: data,
+      
     );
     return registerUserModel.fold((l) => Left(l), (r) {
       return Right(RegisterUserModel.fromJson(r));

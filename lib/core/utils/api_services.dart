@@ -1,6 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:mate_order_app/constants.dart';
+import 'package:mate_order_app/core/helpers/shared_pref.dart';
 import 'package:mate_order_app/core/utils/error/failure.dart';
 
 class Api {
@@ -27,7 +28,29 @@ class Api {
         data: data,
         options: Options(headers: headers),
       );
-   
+
+      return Right(response.data);
+    } on DioException catch (dioException) {
+      return Left(handleDioError(dioException));
+    } catch (e) {
+      return const Left(UnknownFailure());
+    }
+  }
+
+  Future<Either<Failure, Map<String, dynamic>>> postWithAuth({
+    required endPoint,
+    required data,
+  }) async {
+    try {
+      var response = await dio.post(
+        '$endPoint',
+        data: data,
+        options: Options(headers: {
+          'Authorization':
+              'Bearer ${await SharedPrefHelper.getSecuredString(SharedPrefKeys.userToken)}',
+        }),
+      );
+
       return Right(response.data);
     } on DioException catch (dioException) {
       return Left(handleDioError(dioException));
@@ -55,6 +78,28 @@ class Api {
     }
   }
 
+  Future<Either<Failure, Map<String, dynamic>>> getWithAuth({
+    required endPoint,
+    Map<String, dynamic>? queryParameters,
+  }) async {
+    try {
+      var response = await dio.get(
+        '$endPoint',
+        queryParameters: queryParameters ?? {},
+        options: Options(headers: {
+          'Authorization':
+              'Bearer ${await SharedPrefHelper.getSecuredString(SharedPrefKeys.userToken)}',
+        }),
+      );
+      print(response.data.toString());
+      return Right(response.data);
+    } on DioException catch (dioException) {
+      return Left(handleDioError(dioException));
+    } catch (e) {
+      return const Left(UnknownFailure());
+    }
+  }
+
   Future<Either<Failure, Map<String, dynamic>>> delete(
       {required endPoint, required data, Map<String, String>? headers}) async {
     try {
@@ -69,11 +114,51 @@ class Api {
     }
   }
 
+  Future<Either<Failure, Map<String, dynamic>>> deleteWithAuth({
+    required endPoint,
+    required data,
+  }) async {
+    try {
+      var response = await dio.delete('$endPoint',
+          data: data,
+          options: Options(headers: {
+            'Authorization':
+                'Bearer ${await SharedPrefHelper.getSecuredString(SharedPrefKeys.userToken)}',
+          }));
+      print(response.data.toString());
+      return Right(response.data);
+    } on DioException catch (dioException) {
+      return Left(handleDioError(dioException));
+    } catch (e) {
+      return const Left(UnknownFailure());
+    }
+  }
+
   Future<Either<Failure, Map<String, dynamic>>> put(
       {required endPoint, data, Map<String, String>? headers}) async {
     try {
       var response = await dio.put('$endPoint',
           data: data, options: Options(headers: headers));
+      print(response.data.toString());
+      return Right(response.data);
+    } on DioException catch (dioException) {
+      return Left(handleDioError(dioException));
+    } catch (e) {
+      return const Left(UnknownFailure());
+    }
+  }
+
+  Future<Either<Failure, Map<String, dynamic>>> putWithAuth({
+    required endPoint,
+    data,
+  }) async {
+    try {
+      var response = await dio.put('$endPoint',
+          data: data,
+          options: Options(headers: {
+            'Authorization':
+                'Bearer ${await SharedPrefHelper.getSecuredString(SharedPrefKeys.userToken)}',
+          }));
       print(response.data.toString());
       return Right(response.data);
     } on DioException catch (dioException) {
@@ -136,4 +221,6 @@ class Api {
 
     return 'Unknown error occurred';
   }
+
+  
 }
