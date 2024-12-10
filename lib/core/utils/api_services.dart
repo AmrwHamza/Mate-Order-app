@@ -11,8 +11,8 @@ class Api {
       BaseOptions options = BaseOptions(
         baseUrl: baseurl,
         receiveDataWhenStatusError: true,
-        connectTimeout: Duration(seconds: 60),
-        receiveTimeout: Duration(seconds: 60),
+        connectTimeout: const Duration(seconds: 60),
+        receiveTimeout: const Duration(seconds: 60),
       );
 
       dio = Dio(options);
@@ -27,13 +27,12 @@ class Api {
         data: data,
         options: Options(headers: headers),
       );
-      print(
-          '====================================REsponse DAta ${response.data}');
+   
       return Right(response.data);
     } on DioException catch (dioException) {
       return Left(handleDioError(dioException));
     } catch (e) {
-      return Left(UnknownFailure());
+      return const Left(UnknownFailure());
     }
   }
 
@@ -52,7 +51,7 @@ class Api {
     } on DioException catch (dioException) {
       return Left(handleDioError(dioException));
     } catch (e) {
-      return Left(UnknownFailure());
+      return const Left(UnknownFailure());
     }
   }
 
@@ -66,7 +65,7 @@ class Api {
     } on DioException catch (dioException) {
       return Left(handleDioError(dioException));
     } catch (e) {
-      return Left(UnknownFailure());
+      return const Left(UnknownFailure());
     }
   }
 
@@ -80,31 +79,31 @@ class Api {
     } on DioException catch (dioException) {
       return Left(handleDioError(dioException));
     } catch (e) {
-      return Left(UnknownFailure());
+      return const Left(UnknownFailure());
     }
   }
 
   Failure handleDioError(DioException dioError) {
     switch (dioError.type) {
       case DioExceptionType.connectionTimeout:
-        return TimeoutFailure();
+        return const TimeoutFailure();
       case DioExceptionType.receiveTimeout:
-        return TimeoutFailure('Server response timeout');
+        return const TimeoutFailure('Server response timeout');
 
       case DioExceptionType.sendTimeout:
-        return TimeoutFailure('Request timeout');
+        return const TimeoutFailure('Request timeout');
       case DioExceptionType.badResponse:
         final statusCode = dioError.response?.statusCode;
         final errorMessage = getErrorMessage(dioError.response?.data);
         return ServerFailure('Error $statusCode,$errorMessage');
       case DioExceptionType.cancel:
-        return UnknownFailure('Request was canceled');
+        return const UnknownFailure('Request was canceled');
       case DioExceptionType.unknown:
-        return UnknownFailure('no internet connection');
+        return const UnknownFailure('no internet connection');
       case DioExceptionType.badCertificate:
-        return ValidationFailure('bad Certificate');
+        return const ValidationFailure('bad Certificate');
       case DioExceptionType.connectionError:
-        return NetworkFailure('connectio error');
+        return const NetworkFailure('connectio error');
       default:
         return UnknownFailure(dioError.message ?? 'Unexpected error');
     }

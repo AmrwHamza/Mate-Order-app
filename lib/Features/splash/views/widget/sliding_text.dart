@@ -22,7 +22,7 @@ class SlidingText extends StatelessWidget {
           position: slidingAnimation,
           child: FadeTransition(
             opacity: textFadeAnimation,
-            child: Text(
+            child: const Text(
               'MATE ORDER',
               style: TextStyle(
                   fontWeight: FontWeight.bold,

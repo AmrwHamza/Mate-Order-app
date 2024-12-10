@@ -23,7 +23,7 @@ class _AddButtonState extends State<AddButton> {
       isLoading = true;
     });
 
-    Future.delayed(Duration(seconds: 2), () {
+    Future.delayed(const Duration(seconds: 2), () {
       setState(() {
         isLoading = false;
       });
@@ -37,7 +37,7 @@ class _AddButtonState extends State<AddButton> {
   Widget build(BuildContext context) {
     return ElevatedButton(
         onPressed: () {
-          Get.to(OTPView());
+          Get.to(const OTPView());
         },
         style: ElevatedButton.styleFrom(
           backgroundColor: kPrimaryColor8,
@@ -46,7 +46,7 @@ class _AddButtonState extends State<AddButton> {
           ),
           minimumSize: const Size(double.infinity, 60),
         ),
-        child: Icon(
+        child: const Icon(
           FontAwesomeIcons.arrowRight,
           size: 30.0,
           color: kPrimaryColor2,

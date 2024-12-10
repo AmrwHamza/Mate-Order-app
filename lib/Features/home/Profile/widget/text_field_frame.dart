@@ -25,7 +25,7 @@ class TextFieldFrame extends StatelessWidget {
       },
       decoration: InputDecoration(
         labelText: label,
-        border: OutlineInputBorder(),
+        border: const OutlineInputBorder(),
         prefixIcon: Icon(
           icon,
           color: Colors.black.withOpacity(0.5),

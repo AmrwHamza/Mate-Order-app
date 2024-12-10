@@ -1,11 +1,9 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:mate_order_app/Features/auth/OTP/data/models/verify_model.dart';
 import 'package:mate_order_app/Features/auth/OTP/data/repository/re_send_code_service.dart';
 import 'package:mate_order_app/Features/auth/OTP/data/repository/verify_service.dart';
 import 'package:mate_order_app/Features/auth/OTP/presentation/views/widgets/controllers_otp.dart';
-import 'package:mate_order_app/Features/auth/register/presentation/view-models/cubit/register_cubit.dart';
 import 'package:mate_order_app/core/utils/api_services.dart';
 
 part 'verify_state.dart';

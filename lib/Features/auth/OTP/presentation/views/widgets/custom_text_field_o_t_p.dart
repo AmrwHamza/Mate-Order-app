@@ -18,7 +18,7 @@ class CustomTextFieldOTP extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-          boxShadow: [
+          boxShadow: const [
             BoxShadow(spreadRadius: 5, color: Colors.white, blurRadius: 20)
           ],
           border: Border.all(width: 1.5, color: kPrimaryColor6),
@@ -35,13 +35,13 @@ class CustomTextFieldOTP extends StatelessWidget {
         },
         keyboardType: TextInputType.number,
         inputFormatters: [LengthLimitingTextInputFormatter(1)],
-        style: TextStyle(fontSize: 30),
+        style: const TextStyle(fontSize: 25),
         textAlign: TextAlign.center,
         decoration: InputDecoration(
           border: InputBorder.none,
           constraints: BoxConstraints(
-            maxHeight: MediaQuery.sizeOf(context).width / 7,
-            maxWidth: MediaQuery.sizeOf(context).width / 7,
+            maxHeight: MediaQuery.sizeOf(context).width / 8,
+            maxWidth: MediaQuery.sizeOf(context).width / 8,
           ),
         ),
       ),

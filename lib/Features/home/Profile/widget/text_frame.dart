@@ -18,13 +18,13 @@ class TextFrame extends StatelessWidget {
       child: Container(
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(15),
-            border: Border.all(color: Color(0xFFD9D0E3), width: 1),
+            border: Border.all(color: const Color(0xFFD9D0E3), width: 1),
             color: Colors.white,
             boxShadow: [
               BoxShadow(
                 color: Colors.black.withOpacity(0.5),
                 blurRadius: 5,
-                offset: Offset(1, 1),
+                offset: const Offset(1, 1),
               ),
             ]),
         width: 400,
@@ -34,10 +34,10 @@ class TextFrame extends StatelessWidget {
           child: Row(
             children: [
               Icon(icon),
-              SizedBox(width: 10),
+              const SizedBox(width: 10),
               Text(
                 title,
-                style: TextStyle(fontSize: 16),
+                style: const TextStyle(fontSize: 16),
               ),
             ],
           ),

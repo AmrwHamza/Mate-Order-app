@@ -72,7 +72,7 @@ class FirstPage extends StatelessWidget {
                             textAlign: TextAlign.center,
                           ),
                           const SizedBox(height: 20),
-                          AddButton(),
+                          const AddButton(),
                         ],
                       ),
                     ),

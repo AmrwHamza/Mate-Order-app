@@ -13,7 +13,7 @@ class MenuOption extends StatelessWidget {
     return InkWell(
       onTap: onTap,
       child: ListTile(
-        trailing: Icon(Icons.chevron_right),
+        trailing: const Icon(Icons.chevron_right),
         leading: Icon(icon, color: Colors.black),
         title: Text(text),
       ),

@@ -9,11 +9,14 @@ class RegisterView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: kPrimaryColor9,
-      body: SafeArea(child: GestureDetector(
-         onTap: () {
+      body: SafeArea(
+        child: GestureDetector(
+          onTap: () {
             FocusScope.of(context).unfocus();
           },
-        child: RegisterViewBody())),
+          child: RegisterViewBody(),
+        ),
+      ),
     );
   }
 }

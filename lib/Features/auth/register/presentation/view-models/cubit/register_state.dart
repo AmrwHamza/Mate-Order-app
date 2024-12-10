@@ -27,5 +27,5 @@ class RegisterObsecure extends RegisterState {
   final bool isObsecure;
   final IconData eyeIcon;
 
-  RegisterObsecure({required this.isObsecure, required this.eyeIcon});
+  const RegisterObsecure({required this.isObsecure, required this.eyeIcon});
 }

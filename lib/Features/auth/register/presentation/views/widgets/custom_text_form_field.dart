@@ -24,12 +24,10 @@ class CustomTextFormField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(bottom: 21),
+      margin: const EdgeInsets.only(bottom: 21),
       decoration: BoxDecoration(
-        boxShadow: [
-          BoxShadow(
-            color: Colors.white,
-          ),
+        boxShadow: const [
+          BoxShadow(blurRadius: 3, spreadRadius: 0.5, color: kPrimaryColor4),
         ],
         borderRadius: BorderRadius.circular(16),
       ),
@@ -37,22 +35,23 @@ class CustomTextFormField extends StatelessWidget {
       child: TextFormField(
         onChanged: onChanged,
         keyboardType: keyboardType,
-        style: TextStyle(fontSize: 15, color: Colors.black, height: 1),
+        style: const TextStyle(fontSize: 15, color: Colors.black, height: 1),
         obscureText: obscureText,
         decoration: InputDecoration(
           label: label,
           suffixIcon: suffixIcon,
           prefixText: prefixText,
-          prefixStyle: TextStyle(fontSize: 15, color: Colors.black, height: 1),
+          prefixStyle:
+              const TextStyle(fontSize: 15, color: Colors.black, height: 1),
           enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(16),
-              borderSide: BorderSide(color: kPrimaryColor6)),
+              borderSide: const BorderSide(color: kPrimaryColor6)),
           border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(16),
-              borderSide: BorderSide(color: kPrimaryColor6)),
+              borderSide: const BorderSide(color: kPrimaryColor6)),
           focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(16),
-              borderSide: BorderSide(color: kPrimaryColor6)),
+              borderSide: const BorderSide(color: kPrimaryColor6)),
           fillColor: kPrimaryColor10,
           filled: true,
           hintText: hintText,

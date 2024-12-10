@@ -31,10 +31,10 @@ class _UpdateYourProfileState extends State<UpdateYourProfile> {
     return Scaffold(
         backgroundColor: KBackgroundColor,
         appBar: AppBar(
-          iconTheme: IconThemeData(
+          iconTheme: const IconThemeData(
             color: Colors.white,
           ),
-          title: Text(
+          title: const Text(
             'Edit Your Profile',
             style: TextStyle(color: Colors.white),
           ),
@@ -46,33 +46,33 @@ class _UpdateYourProfileState extends State<UpdateYourProfile> {
           child: ListView(
             children: [
               AlignOfComments(comment: 'Enter your current password.'),
-              SizedBox(height: 5),
+              const SizedBox(height: 5),
               PasswordFieldFrame(
                 label: 'Current Password',
                 controller: currentPasswordController,
               ),
-              SizedBox(height: 30),
+              const SizedBox(height: 30),
               AlignOfComments(comment: 'Enter Tour new password.'),
-              SizedBox(height: 5),
+              const SizedBox(height: 5),
               PasswordFieldFrame(
                 label: 'New Password',
                 controller: newPasswordController,
               ),
-              SizedBox(height: 30),
+              const SizedBox(height: 30),
               AlignOfComments(comment: 'Confirm your new password.'),
-              SizedBox(height: 5),
+              const SizedBox(height: 5),
               PasswordFieldFrame(
                 label: 'Confirm Your Password',
                 controller: confirmPasswordController,
               ),
-              SizedBox(height: 40),
+              const SizedBox(height: 40),
               IconButton(
                 onPressed: () {
                   oldPassword = currentPasswordController.text;
                   newPassword = newPasswordController.text;
                   newPasswordAgain = confirmPasswordController.text;
                 },
-                icon: CheckBotton(),
+                icon: const CheckBotton(),
               ),
             ],
           ),

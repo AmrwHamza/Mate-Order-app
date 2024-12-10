@@ -14,13 +14,13 @@ class CheckBotton extends StatelessWidget {
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(12),
           color: kPrimaryColor4,
-          boxShadow: [
+          boxShadow: const [
             BoxShadow(
               blurRadius: 3,
               offset: Offset(1, 1),
             )
           ]),
-      child: Icon(
+      child: const Icon(
         Icons.check,
         color: Colors.white,
       ),

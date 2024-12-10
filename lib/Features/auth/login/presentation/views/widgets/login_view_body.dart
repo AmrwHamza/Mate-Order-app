@@ -35,7 +35,7 @@ class LoginViewBody extends StatelessWidget {
           BlocProvider.of<LoginCubit>(context).isLoading = false;
           Get.offAll(Home(),
               transition: transition.Transition.zoom,
-              duration: Duration(seconds: 1));
+              duration: const Duration(seconds: 1));
         }
       },
       builder: (context, state) {
@@ -46,14 +46,14 @@ class LoginViewBody extends StatelessWidget {
               key: keyForm1,
               child: Column(
                 children: [
-                  SizedBox(
+                  const SizedBox(
                     height: 18,
                   ),
-                  Logo(),
-                  RegisterOrLogInText(
+                  const Logo(),
+                  const RegisterOrLogInText(
                     data: 'Login',
                   ),
-                  Divider(
+                  const Divider(
                     color: kPrimaryColor1,
                     indent: 27,
                     endIndent: 27,
@@ -66,7 +66,7 @@ class LoginViewBody extends StatelessWidget {
                       print(BlocProvider.of<LoginCubit>(context).phone);
                       print('================================');
                     },
-                    label: Text(
+                    label: const Text(
                       'Phone Number',
                       style: TextStyle(color: Colors.blueGrey),
                     ),
@@ -80,14 +80,14 @@ class LoginViewBody extends StatelessWidget {
                     },
                     prefixText: '+963',
                     hintText: '9xxxxxxxx',
-                    suffixIcon: Icon(Icons.phone_android_outlined),
+                    suffixIcon: const Icon(Icons.phone_android_outlined),
                     keyboardType: TextInputType.number,
                   ),
                   CustomTextFormField(
                     onChanged: (p0) {
                       BlocProvider.of<LoginCubit>(context).password = p0;
                     },
-                    label: Text('Password',
+                    label: const Text('Password',
                         style: TextStyle(color: Colors.blueGrey)),
                     validator: (value) {
                       if (value!.isEmpty) {
@@ -99,7 +99,7 @@ class LoginViewBody extends StatelessWidget {
                     },
                     suffixIcon: GestureDetector(
                       // child: Icon(context.watch<RegisterCubit>().eyeIcon),
-                      child: Icon(Icons.remove_red_eye_outlined),
+                      child: const Icon(Icons.remove_red_eye_outlined),
 
                       onTap: () {
                         // BlocProvider.of<RegisterCubit>(context).isobsecure();
@@ -107,7 +107,7 @@ class LoginViewBody extends StatelessWidget {
                     ),
                     obscureText: isObscure,
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 8,
                   ),
                   CustomRegisterButton(

@@ -30,7 +30,7 @@ class _ProfilePageState extends State<ProfilePage>
     super.initState();
     _animationController = AnimationController(
       vsync: this,
-      duration: Duration(milliseconds: 500),
+      duration: const Duration(milliseconds: 500),
     );
     WidgetsBinding.instance.addPostFrameCallback((_) {
       _overlayState = Overlay.of(context, rootOverlay: true);
@@ -48,12 +48,12 @@ class _ProfilePageState extends State<ProfilePage>
     return Scaffold(
       backgroundColor: KBackgroundColor,
       appBar: AppBar(
-        iconTheme: IconThemeData(
+        iconTheme: const IconThemeData(
           color: Colors.white,
         ),
         backgroundColor: kPrimaryColor4,
         centerTitle: true,
-        title: Text(
+        title: const Text(
           "Your Profile",
           style: TextStyle(color: Colors.white),
         ),
@@ -62,7 +62,7 @@ class _ProfilePageState extends State<ProfilePage>
         padding: const EdgeInsets.all(16.0),
         child: Column(
           children: [
-            SizedBox(height: 15),
+            const SizedBox(height: 15),
             Row(
               children: [
                 GestureDetector(
@@ -78,7 +78,7 @@ class _ProfilePageState extends State<ProfilePage>
                             ? FileImage(File(profileImage!.path))
                             : null,
                         child: profileImage == null
-                            ? Icon(
+                            ? const Icon(
                                 Icons.person,
                                 size: 70,
                                 color: kPrimaryColor4,
@@ -94,7 +94,7 @@ class _ProfilePageState extends State<ProfilePage>
                           child: CircleAvatar(
                             backgroundColor: Colors.grey.shade300,
                             radius: 12,
-                            child: Icon(
+                            child: const Icon(
                               Icons.edit,
                               color: kPrimaryColor4,
                               size: 20,
@@ -105,8 +105,8 @@ class _ProfilePageState extends State<ProfilePage>
                     ],
                   ),
                 ),
-                SizedBox(width: 30),
-                Column(
+                const SizedBox(width: 30),
+                const Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
@@ -124,17 +124,17 @@ class _ProfilePageState extends State<ProfilePage>
                     )
                   ],
                 ),
-                SizedBox(width: 10),
+                const SizedBox(width: 10),
                 IconButton(
                     onPressed: () {
-                      Get.to(() => EditPersonalInf(),
+                      Get.to(() => const EditPersonalInf(),
                           transition: Transition.fade,
                           duration: KTransitionDuration);
                     },
-                    icon: Icon(Icons.edit)),
+                    icon: const Icon(Icons.edit)),
               ],
             ),
-            SizedBox(height: 30),
+            const SizedBox(height: 30),
             Stack(
               children: [
                 Column(
@@ -144,29 +144,29 @@ class _ProfilePageState extends State<ProfilePage>
                       text: 'My Favorite',
                       onTap: () {},
                     ),
-                    SizedBox(height: 10),
+                    const SizedBox(height: 10),
                     MenuOption(
                       icon: Icons.location_on,
                       text: 'My Location',
                       onTap: () {},
                     ),
-                    SizedBox(height: 10),
+                    const SizedBox(height: 10),
                     MenuOption(
                       icon: Icons.calendar_month,
                       text: 'History',
                       onTap: () {},
                     ),
-                    SizedBox(height: 10),
+                    const SizedBox(height: 10),
                     MenuOption(
                       icon: FontAwesomeIcons.lock,
                       text: 'Change Password',
                       onTap: () {
-                        Get.to(() => UpdateYourProfile(),
+                        Get.to(() => const UpdateYourProfile(),
                             transition: Transition.fade,
                             duration: KTransitionDuration);
                       },
                     ),
-                    SizedBox(height: 10),
+                    const SizedBox(height: 10),
                     MenuOption(
                       icon: Icons.settings,
                       text: 'Setting',
@@ -176,7 +176,7 @@ class _ProfilePageState extends State<ProfilePage>
                             duration: KTransitionDuration);
                       },
                     ),
-                    SizedBox(height: 10),
+                    const SizedBox(height: 10),
                     MenuOption(
                       icon: Icons.exit_to_app,
                       text: 'Sign Out',
@@ -206,8 +206,8 @@ class _ProfilePageState extends State<ProfilePage>
             children: [
               ListTile(
                 tileColor: KBackgroundColor,
-                leading: Icon(Icons.visibility),
-                title: Text('See profile picture'),
+                leading: const Icon(Icons.visibility),
+                title: const Text('See profile picture'),
                 onTap: () {
                   //اريد اضافة شرط بحيث اذا كان هناك بروفايل يجعل قيمة hasProfilePicture , true
                   bool hasProfilePicture = profileImage != null;
@@ -222,16 +222,16 @@ class _ProfilePageState extends State<ProfilePage>
               ),
               ListTile(
                   tileColor: KBackgroundColor,
-                  leading: Icon(Icons.photo_camera),
-                  title: Text('Select the profile'),
+                  leading: const Icon(Icons.photo_camera),
+                  title: const Text('Select the profile'),
                   onTap: () {
                     Navigator.pop(context);
                     pickImage(context);
                   }),
               ListTile(
                   tileColor: KBackgroundColor,
-                  leading: Icon(Icons.delete),
-                  title: Text('Delete profile picture'),
+                  leading: const Icon(Icons.delete),
+                  title: const Text('Delete profile picture'),
                   onTap: () {
                     Navigator.pop(context);
                     deleteProfilePicture(context);
@@ -255,7 +255,7 @@ class _ProfilePageState extends State<ProfilePage>
       if (image != null) {
         final croppedImage = await ImageCropper().cropImage(
           sourcePath: image.path,
-          aspectRatio: CropAspectRatio(ratioX: 1.0, ratioY: 1.0),
+          aspectRatio: const CropAspectRatio(ratioX: 1.0, ratioY: 1.0),
           uiSettings: [
             AndroidUiSettings(
                 toolbarTitle: 'Crop Image',
@@ -272,7 +272,7 @@ class _ProfilePageState extends State<ProfilePage>
             profileImage = XFile(croppedImage.path);
 
             if (mounted) {
-              Future.delayed(Duration(milliseconds: 100));
+              Future.delayed(const Duration(milliseconds: 100));
               showFloatingNotification(
                   context, ' Profile changed successfully');
             }
@@ -289,14 +289,14 @@ class _ProfilePageState extends State<ProfilePage>
     showDialog(
         context: context,
         builder: (context) => AlertDialog(
-              title: Text('Profile Picture'),
+              title: const Text('Profile Picture'),
               content: profileImage != null
                   ? Image.file(File(profileImage!.path))
                   : Image.asset(AssetsData.logo),
               actions: [
                 TextButton(
                     onPressed: () => Navigator.pop(context),
-                    child: Text('Close'))
+                    child: const Text('Close'))
               ],
             ));
   }
@@ -315,7 +315,7 @@ class _ProfilePageState extends State<ProfilePage>
             opacity: _animationController,
             child: Container(
               width: 200,
-              padding: EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
               decoration: BoxDecoration(
                 color: Colors.grey.withOpacity(0.6),
                 borderRadius: BorderRadius.circular(8),
@@ -323,7 +323,7 @@ class _ProfilePageState extends State<ProfilePage>
               child: Center(
                 child: Text(
                   message,
-                  style: TextStyle(color: Colors.black),
+                  style: const TextStyle(color: Colors.black),
                 ),
               ),
             ),
@@ -335,7 +335,7 @@ class _ProfilePageState extends State<ProfilePage>
     _overlayState?.insert(overlayEntry);
 
     _animationController.forward().then((value) async {
-      await Future.delayed(Duration(seconds: 2));
+      await Future.delayed(const Duration(seconds: 2));
       _animationController.reverse().then((value) {
         overlayEntry.remove();
       });

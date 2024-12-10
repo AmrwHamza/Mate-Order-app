@@ -28,7 +28,7 @@ class _PasswordFieldFrameState extends State<PasswordFieldFrame> {
       },
       decoration: InputDecoration(
         labelText: widget.label,
-        border: OutlineInputBorder(),
+        border: const OutlineInputBorder(),
         prefixIcon: Icon(Icons.lock, color: Colors.black.withOpacity(0.7)),
         suffixIcon: IconButton(
           icon: Icon(

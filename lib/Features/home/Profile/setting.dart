@@ -11,11 +11,11 @@ class Setting extends StatelessWidget {
     return Scaffold(
       backgroundColor: KBackgroundColor,
       appBar: AppBar(
-        iconTheme: IconThemeData(
+        iconTheme: const IconThemeData(
           color: Colors.white,
         ),
         backgroundColor: kPrimaryColor4,
-        title: Text(
+        title: const Text(
           'Your Setting',
           style: TextStyle(color: Colors.white),
         ),
@@ -32,13 +32,13 @@ class Setting extends StatelessWidget {
                   icon: Icons.language,
                   onTap: () {},
                 ),
-                SizedBox(height: 10),
+                const SizedBox(height: 10),
                 TextFrame(
                   title: 'Change Theme',
                   icon: Icons.color_lens_sharp,
                   onTap: () {},
                 ),
-                SizedBox(height: 70),
+                const SizedBox(height: 70),
                 Opacity(
                     opacity: 0.2,
                     child: Image.asset(

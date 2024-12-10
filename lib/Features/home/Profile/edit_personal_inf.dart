@@ -25,10 +25,10 @@ class _EditPersonalInfState extends State<EditPersonalInf> {
     return Scaffold(
       backgroundColor: KBackgroundColor,
       appBar: AppBar(
-        iconTheme: IconThemeData(
+        iconTheme: const IconThemeData(
           color: Colors.white,
         ),
-        title: Text(
+        title: const Text(
           'Edit Your Profile',
           style: TextStyle(color: Colors.white),
         ),
@@ -39,27 +39,27 @@ class _EditPersonalInfState extends State<EditPersonalInf> {
         child: Column(
           children: [
             AlignOfComments(comment: 'Press to edit you email.  '),
-            SizedBox(height: 5),
+            const SizedBox(height: 5),
             EditableTextField(
                 label: 'Email',
                 icon: Icons.email,
                 controller: emailController,
                 keyboardType: TextInputType.emailAddress),
-            SizedBox(height: 40),
+            const SizedBox(height: 40),
             AlignOfComments(comment: 'Press to edit your phone number.'),
-            SizedBox(height: 5),
+            const SizedBox(height: 5),
             EditableTextField(
                 label: 'Phone Number',
                 icon: Icons.phone,
                 controller: phoneController,
                 keyboardType: TextInputType.phone),
-            SizedBox(height: 55),
+            const SizedBox(height: 55),
             IconButton(
               onPressed: () {
                 email = emailController.toString();
                 phoneNumber = phoneController.toString();
               },
-              icon: CheckBotton(),
+              icon: const CheckBotton(),
             )
           ],
         ),

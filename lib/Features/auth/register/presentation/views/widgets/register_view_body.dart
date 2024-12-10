@@ -31,7 +31,7 @@ class RegisterViewBody extends StatelessWidget {
           BlocProvider.of<RegisterCubit>(context).isLoading = false;
           Navigator.pushReplacement(context, MaterialPageRoute(
             builder: (context) {
-              return OTPView();
+              return const OTPView();
             },
           ));
         } else if (state is RegisterLoading) {
@@ -46,23 +46,26 @@ class RegisterViewBody extends StatelessWidget {
             child: SingleChildScrollView(
               child: Column(
                 children: [
-                  SizedBox(
+                  const SizedBox(
                     height: 18,
                   ),
-                  Logo(),
-                  RegisterOrLogInText(
+                  const Logo(),
+                  const RegisterOrLogInText(
                     data: 'Register',
                   ),
-                  Divider(
+                  const Divider(
                     color: kPrimaryColor1,
                     indent: 27,
                     endIndent: 27,
+                  ),
+                  const SizedBox(
+                    height: 20,
                   ),
                   CustomTextFormField(
                     onChanged: (p0) {
                       BlocProvider.of<RegisterCubit>(context).firstName = p0;
                     },
-                    label: Text('First Name',
+                    label: const Text('First Name',
                         style: TextStyle(color: Colors.blueGrey)),
                     validator: (value) {
                       if (value!.isEmpty) {
@@ -70,13 +73,13 @@ class RegisterViewBody extends StatelessWidget {
                       }
                       return null;
                     },
-                    suffixIcon: Icon(Icons.account_circle_outlined),
+                    suffixIcon: const Icon(Icons.account_circle_outlined),
                   ),
                   CustomTextFormField(
                     onChanged: (p0) {
                       BlocProvider.of<RegisterCubit>(context).lastName = p0;
                     },
-                    label: Text('Last Name',
+                    label: const Text('Last Name',
                         style: TextStyle(color: Colors.blueGrey)),
                     validator: (value) {
                       if (value!.isEmpty) {
@@ -84,7 +87,7 @@ class RegisterViewBody extends StatelessWidget {
                       }
                       return null;
                     },
-                    suffixIcon: Icon(Icons.account_circle_outlined),
+                    suffixIcon: const Icon(Icons.account_circle_outlined),
                   ),
                   CustomTextFormField(
                     onChanged: (p0) {
@@ -95,7 +98,7 @@ class RegisterViewBody extends StatelessWidget {
 
                       print('================================');
                     },
-                    label: Text(
+                    label: const Text(
                       'Phone Number',
                       style: TextStyle(color: Colors.blueGrey),
                     ),
@@ -109,7 +112,7 @@ class RegisterViewBody extends StatelessWidget {
                     },
                     prefixText: '+963',
                     hintText: '9xxxxxxxx',
-                    suffixIcon: Icon(Icons.phone_android_outlined),
+                    suffixIcon: const Icon(Icons.phone_android_outlined),
                     keyboardType: TextInputType.number,
                   ),
                   CustomTextFormField(
@@ -124,15 +127,15 @@ class RegisterViewBody extends StatelessWidget {
                       }
                       return null;
                     },
-                    suffixIcon: Icon(Icons.email_outlined),
-                    label:
-                        Text('Email', style: TextStyle(color: Colors.blueGrey)),
+                    suffixIcon: const Icon(Icons.email_outlined),
+                    label: const Text('Email',
+                        style: TextStyle(color: Colors.blueGrey)),
                   ),
                   CustomTextFormField(
                     onChanged: (p0) {
                       BlocProvider.of<RegisterCubit>(context).password = p0;
                     },
-                    label: Text('Password',
+                    label: const Text('Password',
                         style: TextStyle(color: Colors.blueGrey)),
                     validator: (value) {
                       if (value!.isEmpty) {
@@ -155,7 +158,7 @@ class RegisterViewBody extends StatelessWidget {
                       BlocProvider.of<RegisterCubit>(context).confirmPassword =
                           p0;
                     },
-                    label: Text('Confirm Password',
+                    label: const Text('Confirm Password',
                         style: TextStyle(color: Colors.blueGrey)),
                     validator: (value) {
                       if (value!.isEmpty) {
@@ -176,7 +179,7 @@ class RegisterViewBody extends StatelessWidget {
                     ),
                     obscureText: context.watch<RegisterCubit>().isObsecure,
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 8,
                   ),
                   CustomRegisterButton(
@@ -190,8 +193,8 @@ class RegisterViewBody extends StatelessWidget {
                     data: 'Send verification code',
                   ),
                   GestureDetector(
-                    onTap: () => Get.off(LoginView()),
-                    child: Text('login'),
+                    onTap: () => Get.off(const LoginView()),
+                    child: const Text('login'),
                   )
                 ],
               ),

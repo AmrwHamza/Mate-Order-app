@@ -13,7 +13,7 @@ class OTPView extends StatelessWidget {
           onTap: () {
             FocusScope.of(context).unfocus();
           },
-          child: SafeArea(child: OTPViewBody())),
+          child: const SafeArea(child: OTPViewBody())),
     );
   }
 }

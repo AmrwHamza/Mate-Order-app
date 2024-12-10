@@ -19,7 +19,7 @@ class CustomRegisterButton extends StatelessWidget {
                 borderRadius: BorderRadius.circular(16))),
         child: Text(
           data,
-          style: TextStyle(color: Colors.black, fontSize: 12),
+          style: const TextStyle(color: Colors.black, fontSize: 12),
         ),
       ),
     );

@@ -24,7 +24,7 @@ class RegisterCubit extends Cubit<RegisterState> {
 
   Future<void> onTapRegisterButton() async {
     if (password != confirmPassword) {
-      emit(RegisterFailure("Passwoerds don't match"));
+      emit(const RegisterFailure("Passwoerds don't match"));
     }
     isLoading = true;
     emit(RegisterLoading());
