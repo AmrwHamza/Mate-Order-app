@@ -9,7 +9,12 @@ class LoginView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: kPrimaryColor9,
-      body: LoginViewBody(),
+      body: SafeArea(
+          child: GestureDetector(
+              onTap: () {
+                FocusScope.of(context).unfocus();
+              },
+              child: LoginViewBody())),
     );
   }
 }

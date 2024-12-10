@@ -9,7 +9,11 @@ class OTPView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: kPrimaryColor9,
-      body: SafeArea(child: OTPViewBody()),
+      body: GestureDetector(
+          onTap: () {
+            FocusScope.of(context).unfocus();
+          },
+          child: SafeArea(child: OTPViewBody())),
     );
   }
 }

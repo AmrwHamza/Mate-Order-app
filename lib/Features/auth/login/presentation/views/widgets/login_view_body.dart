@@ -113,10 +113,7 @@ class LoginViewBody extends StatelessWidget {
                   CustomRegisterButton(
                     onPressed: () {
                       if (keyForm1.currentState!.validate()) {
-                        print('==================');
-                        print('done validation');
-                        print('==================');
-
+                        FocusScope.of(context).unfocus();
                         BlocProvider.of<LoginCubit>(context).onTapLoginButton();
                       }
                     },

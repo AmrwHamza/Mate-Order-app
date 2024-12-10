@@ -13,6 +13,7 @@ class CustomRegisterButton extends StatelessWidget {
       child: ElevatedButton(
         onPressed: onPressed,
         style: ElevatedButton.styleFrom(
+            elevation: 5,
             backgroundColor: kPrimaryColor7,
             shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(16))),

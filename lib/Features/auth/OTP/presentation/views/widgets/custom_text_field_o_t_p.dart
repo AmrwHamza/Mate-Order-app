@@ -18,9 +18,12 @@ class CustomTextFieldOTP extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
+          boxShadow: [
+            BoxShadow(spreadRadius: 5, color: Colors.white, blurRadius: 20)
+          ],
           border: Border.all(width: 1.5, color: kPrimaryColor6),
           borderRadius: BorderRadius.circular(10),
-          color: Colors.white),
+          color: kPrimaryColor10),
       child: TextField(
         controller: controller,
         onChanged: (value) {

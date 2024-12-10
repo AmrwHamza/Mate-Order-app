@@ -182,10 +182,7 @@ class RegisterViewBody extends StatelessWidget {
                   CustomRegisterButton(
                     onPressed: () {
                       if (keyForm.currentState!.validate()) {
-                        print('==================');
-                        print('done validation');
-                        print('==================');
-
+                        FocusScope.of(context).unfocus();
                         BlocProvider.of<RegisterCubit>(context)
                             .onTapRegisterButton();
                       }

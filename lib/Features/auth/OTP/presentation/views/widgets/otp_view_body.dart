@@ -8,11 +8,16 @@ import 'package:get/get_navigation/src/routes/transitions_type.dart'
 
 import 'package:mate_order_app/Features/auth/OTP/presentation/view-models/cubit/verify_cubit.dart';
 import 'package:mate_order_app/Features/auth/OTP/presentation/views/widgets/controllers_otp.dart';
+import 'package:mate_order_app/Features/auth/OTP/presentation/views/widgets/count_down_timer_o_t_p.dart';
 import 'package:mate_order_app/Features/auth/OTP/presentation/views/widgets/custom_text_field_o_t_p.dart';
+import 'package:mate_order_app/Features/auth/OTP/presentation/views/widgets/o_t_p_row_fields.dart';
 import 'package:mate_order_app/Features/auth/register/presentation/view-models/cubit/register_cubit.dart';
 import 'package:mate_order_app/Features/auth/register/presentation/views/register_view.dart';
 import 'package:mate_order_app/Features/auth/register/presentation/views/widgets/custom_register_button.dart';
+import 'package:mate_order_app/Features/auth/register/presentation/views/widgets/logo.dart';
+import 'package:mate_order_app/Features/auth/register/presentation/views/widgets/register_text.dart';
 import 'package:mate_order_app/Features/home/home_page/home_page.dart';
+import 'package:mate_order_app/constants.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 import 'package:flutter_timer_countdown/flutter_timer_countdown.dart';
 
@@ -34,13 +39,16 @@ class OTPViewBody extends StatelessWidget {
           if (state is VerifyLoading) {
             BlocProvider.of<VerifyCubit>(context).isLoading = true;
           } else if (state is VerifyFailure) {
-            showSnackBar(context, state.error);
+            Get.snackbar('', state.error,
+                snackPosition: SnackPosition.BOTTOM);
           } else if (state is VerifySuccess) {
             Get.to(HomePage());
           } else if (state is ReSendSuccess) {
-            Get.snackbar('aa', state.message);
+            Get.snackbar('', state.message,
+                snackPosition: SnackPosition.BOTTOM);
           } else if (state is ReSendSuccess) {
-            Get.snackbar('bbbb', state.message);
+            Get.snackbar('', state.message,
+                snackPosition: SnackPosition.BOTTOM);
           }
         },
         builder: (context, state) {
@@ -48,76 +56,55 @@ class OTPViewBody extends StatelessWidget {
             inAsyncCall: context.watch<VerifyCubit>().isLoading,
             child: Container(
               padding: EdgeInsets.symmetric(horizontal: 10),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      CustomTextFieldOTP(
-                        first: true,
-                        last: false,
-                        controller: c1,
-                      ),
-                      CustomTextFieldOTP(
-                        first: false,
-                        last: false,
-                        controller: c2,
-                      ),
-                      CustomTextFieldOTP(
-                        first: false,
-                        last: false,
-                        controller: c3,
-                      ),
-                      CustomTextFieldOTP(
-                        first: false,
-                        last: false,
-                        controller: c4,
-                      ),
-                      CustomTextFieldOTP(
-                        first: false,
-                        last: false,
-                        controller: c5,
-                      ),
-                      CustomTextFieldOTP(
-                        first: false,
-                        last: true,
-                        controller: c6,
-                      ),
-                    ],
-                  ),
-                  TimerCountdown(
-                    format: CountDownTimerFormat.minutesSeconds,
-                    endTime: DateTime.now().add(
-                      Duration(minutes: 5),
+              child: SingleChildScrollView(
+                child: Column(
+                  children: [
+                    SizedBox(
+                      height: 18,
                     ),
-                    onEnd: () {
-                      Get.off(RegisterView(),
-                          transition: tansition.Transition.leftToRight);
-                    },
-                  ),
-                  CustomRegisterButton(
-                    data: 'Confirm',
-                    onPressed: () {
-                      print(
-                          '=====================token in otp view body1${registerCubit.user!.token}');
-                      print(
-                          '=====================token in otp view body2${registerCubit.user!.token}');
-                      print(
-                          '=====================token in otp view body3 ${registerCubit.user!.token}');
+                    Logo(),
+                    RegisterOrLogInText(
+                      data: 'Verification code',
+                    ),
+                    Divider(
+                      color: kPrimaryColor1,
+                      indent: 27,
+                      endIndent: 27,
+                    ),
+                    SizedBox(
+                      height: 18,
+                    ),
+                    OTPRowFields(),
+                    SizedBox(
+                      height: 70,
+                    ),
+                    CountDownTimerOTP(),
+                    SizedBox(
+                      height: 70,
+                    ),
+                    CustomRegisterButton(
+                      data: 'Confirm',
+                      onPressed: () {
+                        FocusScope.of(context).unfocus();
 
-                      BlocProvider.of<VerifyCubit>(context, listen: false)
-                          .verifyClick(token: registerCubit.user?.token);
-                    },
-                  ),
-                  CustomRegisterButton(
-                    data: 'Resend the Code',
-                    onPressed: () {
-                      BlocProvider.of<VerifyCubit>(context, listen: false)
-                          .reSendClick(token: registerCubit.user?.token);
-                    },
-                  )
-                ],
+                        BlocProvider.of<VerifyCubit>(context, listen: false)
+                            .verifyClick(token: registerCubit.user?.token);
+                      },
+                    ),
+                    SizedBox(
+                      height: 25,
+                    ),
+                    CustomRegisterButton(
+                      data: 'Resend the Code',
+                      onPressed: () {
+                        FocusScope.of(context).unfocus();
+
+                        BlocProvider.of<VerifyCubit>(context, listen: false)
+                            .reSendClick(token: registerCubit.user?.token);
+                      },
+                    )
+                  ],
+                ),
               ),
             ),
           );
@@ -126,16 +113,8 @@ class OTPViewBody extends StatelessWidget {
     );
   }
 
-  void showSnackBar(BuildContext context, String message) {
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        content: Text(message),
-      ),
-    );
-  }
-
+  
   void dispose() {
-    print('dispose');
     c1.dispose();
     c2.dispose();
     c3.dispose();
