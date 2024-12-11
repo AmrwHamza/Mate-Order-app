@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
-import 'package:mate_order_app/Features/splash/views/splash_view.dart';
-
+import 'package:mate_order_app/Features/main%20home/home.dart';
 
 void main() {
   runApp(const MateOrderApp());
@@ -14,7 +13,7 @@ class MateOrderApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      home: SplashView(),
+      home: Home(),
     );
   }
 }
