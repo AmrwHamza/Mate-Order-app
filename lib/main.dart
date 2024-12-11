@@ -35,6 +35,7 @@ providers: [
 ],
       child: GetMaterialApp(
         debugShowCheckedModeBanner: false,
+        color: Colors.white,
         home: isLoggedIn?Home():const SplashView(),
       ),
     );
