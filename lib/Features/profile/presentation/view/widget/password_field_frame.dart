@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 class PasswordFieldFrame extends StatefulWidget {
   final String label;
   final TextEditingController controller;
-  final String? currentPassword;
-
-  PasswordFieldFrame({
+  
+  final dynamic currentPassword;
+  const PasswordFieldFrame({
     super.key,
     required this.label,
     required this.controller,
@@ -49,10 +49,7 @@ class _PasswordFieldFrameState extends State<PasswordFieldFrame> {
       },
       decoration: InputDecoration(
         labelText: widget.label,
-        errorText: errorText,
-        border: OutlineInputBorder(
-            borderSide: BorderSide(
-                color: errorText != null ? Colors.red : Colors.grey)),
+        border: const OutlineInputBorder(),
         prefixIcon: Icon(Icons.lock, color: Colors.black.withOpacity(0.7)),
         suffixIcon: IconButton(
           icon: Icon(

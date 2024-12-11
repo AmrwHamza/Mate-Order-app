@@ -20,19 +20,18 @@ class Setting extends StatelessWidget {
             padding: const EdgeInsets.all(10),
             child: Column(
               children: [
-                
                 TextFrame(
                   title: 'change Language',
                   icon: Icons.language,
                   onTap: () {},
                 ),
-                SizedBox(height: 10),
+                const SizedBox(height: 10),
                 TextFrame(
                   title: 'Change Theme',
                   icon: Icons.color_lens_sharp,
                   onTap: () {},
                 ),
-                SizedBox(height: 70),
+                const SizedBox(height: 70),
                 Opacity(
                     opacity: 0.2,
                     child: Image.asset(

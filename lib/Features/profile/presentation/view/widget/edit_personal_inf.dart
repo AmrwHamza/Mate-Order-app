@@ -39,14 +39,12 @@ class _EditPersonalInfState extends State<EditPersonalInf> {
               AlignOfComments(comment: 'Press to edit your name'),
               SizedBox(height: 10),
               EditableTextField(
-                  currentName: 'Tarek',
                   label: 'First Name',
                   icon: Icons.account_circle_outlined,
                   controller: firstNameController,
                   keyboardType: TextInputType.text),
               SizedBox(height: 15),
               EditableTextField(
-                  currentName: 'Alasfour',
                   label: 'Last Name',
                   icon: Icons.account_circle_outlined,
                   controller: LastNameController,
@@ -55,7 +53,6 @@ class _EditPersonalInfState extends State<EditPersonalInf> {
               AlignOfComments(comment: 'Press to edit you email.  '),
               SizedBox(height: 10),
               EditableTextField(
-                  currentName: 'tarekalasfour@gmail.com',
                   label: 'Email',
                   icon: Icons.email,
                   controller: emailController,
@@ -64,7 +61,6 @@ class _EditPersonalInfState extends State<EditPersonalInf> {
               AlignOfComments(comment: 'Press to edit your phone number.'),
               SizedBox(height: 10),
               EditableTextField(
-                  currentName: '0982387758',
                   label: 'Phone Number',
                   icon: Icons.phone,
                   controller: phoneController,

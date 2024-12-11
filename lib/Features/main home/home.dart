@@ -16,7 +16,7 @@ class _HomeState extends State<Home> {
      HomePage(),
     const NotificationPage(),
     const CartPage(),
-    ProfilePage(),
+    const ProfilePage(),
   ];
   void onItemTapped(int index) {
     setState(() {

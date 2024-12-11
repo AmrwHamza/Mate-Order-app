@@ -7,11 +7,11 @@ class SlidingText extends StatelessWidget {
   const SlidingText({
     super.key,
     required this.slidingAnimation,
-    required this.textFadeAnimation, 
+    required this.textFadeAnimation,
   });
 
   final Animation<Offset> slidingAnimation;
-  final Animation<double> textFadeAnimation; 
+  final Animation<double> textFadeAnimation;
 
   @override
   Widget build(BuildContext context) {
@@ -20,9 +20,9 @@ class SlidingText extends StatelessWidget {
       builder: (context, _) {
         return SlideTransition(
           position: slidingAnimation,
-          child: FadeTransition( 
-            opacity: textFadeAnimation, 
-            child: Text(
+          child: FadeTransition(
+            opacity: textFadeAnimation,
+            child: const Text(
               'MATE ORDER',
               style: TextStyle(
                   fontWeight: FontWeight.bold,
