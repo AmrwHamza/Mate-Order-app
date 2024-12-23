@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
 import 'package:mate_order_app/Features/Home/stores/data/models/stores_model/store.dart';
-import 'package:mate_order_app/Features/Home/stores/presentation/model_view/bloc/stores_bloc.dart';
-import 'package:mate_order_app/Features/Home/stores/presentation/view/widgets/store_card_shimmer.dart';
+import 'package:mate_order_app/Features/Home/stores/presentation/model_view/stores_bloc/stores_bloc.dart';
+import 'package:mate_order_app/Features/Home/stores/presentation/view/stores/store_card_shimmer.dart';
 
 import 'card_of_store.dart';
 
@@ -79,9 +79,8 @@ class _StoreListState extends State<StoreList> {
               ? state.allStores
               : (state as StoresLoadingMore).allStores;
 
-
           return SizedBox(
-            height: MediaQuery.of(context).size.height * 0.9,
+            height: MediaQuery.of(context).size.height * 0.8,
             child: ListView.builder(
               controller: _scrollController,
               itemCount:
@@ -100,7 +99,10 @@ class _StoreListState extends State<StoreList> {
                 } else {
                   return const Padding(
                     padding: EdgeInsets.all(5.0),
-                    child: SizedBox(width: 140, child: StoreCardShimmer()),
+                    child: SizedBox(
+                      width: 140,
+                      child: StoreCardShimmer(),
+                    ),
                   );
                 }
               },
@@ -112,7 +114,7 @@ class _StoreListState extends State<StoreList> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text('error: ${state.message}'),
+                // Text('error: ${state.message}'),
                 ElevatedButton(
                     onPressed: () {
                       _storesBloc.add(FetchStores());

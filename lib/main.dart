@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
-import 'package:mate_order_app/Features/Home/stores/presentation/model_view/bloc/stores_bloc.dart';
+import 'package:mate_order_app/Features/Home/stores/presentation/model_view/stores_bloc/stores_bloc.dart';
 import 'package:mate_order_app/Features/auth/OTP/presentation/view-models/cubit/verify_cubit.dart';
 import 'package:mate_order_app/Features/auth/login/presentation/view-models/cubit/login_cubit.dart';
 import 'package:mate_order_app/Features/auth/register/presentation/view-models/cubit/register_cubit.dart';

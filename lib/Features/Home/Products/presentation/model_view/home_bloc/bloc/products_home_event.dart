@@ -14,4 +14,3 @@ class FetchProductsHome extends ProductHomeEvent {
   FetchProductsHome({required this.category});
 }
 
-class RefreshProductsHome extends ProductHomeEvent {}
