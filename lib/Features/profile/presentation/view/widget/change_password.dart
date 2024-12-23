@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:mate_order_app/Features/Home/presentation/view/widget/cancel_button.dart';
 import 'package:mate_order_app/Features/profile/presentation/view/widget/align_of_comments.dart';
 import 'package:mate_order_app/Features/profile/presentation/view/widget/check_botton.dart';
 import 'package:mate_order_app/Features/profile/presentation/view/widget/password_field_frame.dart';
@@ -65,7 +64,7 @@ class _ChangePasswordState extends State<ChangePassword> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  CancelButton(),
+                  // CancelButton(),
                   IconButton(
                     onPressed: () {
                       validatePassword();

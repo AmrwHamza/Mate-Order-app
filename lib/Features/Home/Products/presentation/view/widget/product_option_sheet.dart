@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:mate_order_app/Features/Home/presentation/view/widget/cancel_button.dart';
-import 'package:mate_order_app/Features/profile/presentation/view/widget/check_botton.dart';
-import 'package:mate_order_app/constants.dart';
-import 'package:mate_order_app/core/utils/assets.dart';
+
+import '../../../../../../constants.dart';
+import '../../../../../../core/utils/assets.dart';
+import '../../../../../profile/presentation/view/widget/check_botton.dart';
+import 'cancel_button.dart';
 
 class ProductOptionSheet extends StatefulWidget {
   final int numberOfproducts;

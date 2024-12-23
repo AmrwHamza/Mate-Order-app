@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:mate_order_app/Features/Home/presentation/view/widget/search_bar_for_home.dart';
-import 'package:mate_order_app/Features/Home/presentation/view/widget/store_list.dart';
 
-class StoresWidget extends StatelessWidget {
-  StoresWidget({super.key});
+import '../../../../Products/presentation/view/widget/search_bar_for_home.dart';
+import 'stores_list.dart';
+
+class StoresListBody extends StatelessWidget {
+  StoresListBody({super.key});
 
   final TextEditingController storesSearchController = TextEditingController();
 
@@ -15,11 +16,11 @@ class StoresWidget extends StatelessWidget {
       },
       child: Padding(
         padding: const EdgeInsets.all(10),
-        child: ListView(
+        child: Column(
           children: [
             SearchBarForHome(SearchController: storesSearchController),
             SizedBox(height: 20),
-            StoreList()
+            Expanded(child: StoreList())
           ],
         ),
       ),

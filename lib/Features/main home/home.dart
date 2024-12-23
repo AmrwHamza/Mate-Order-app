@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:mate_order_app/Features/cart/presentation/view/cart_page.dart';
 import 'package:mate_order_app/Features/Nonification/presentation/view/notification_page.dart';
-import 'package:mate_order_app/Features/Home/presentation/view/home_page.dart';
 import 'package:mate_order_app/Features/profile/presentation/view/profile_page.dart';
 import 'package:mate_order_app/constants.dart';
+
+import '../Home/Products/presentation/view/home_page.dart';
+
 
 class Home extends StatefulWidget {
   @override

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:mate_order_app/Features/Home/presentation/view/widget/cancel_button.dart';
 import '../../../../main home/widget/app_bar_style.dart';
 import 'package:mate_order_app/Features/profile/presentation/view/widget/align_of_comments.dart';
 import 'package:mate_order_app/Features/profile/presentation/view/widget/check_botton.dart';
@@ -69,7 +68,7 @@ class _EditPersonalInfState extends State<EditPersonalInf> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  CancelButton(),
+                  // CancelButton(),
                   IconButton(
                     onPressed: () {
                       email = emailController.text;

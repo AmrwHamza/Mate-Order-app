@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:mate_order_app/Features/Home/presentation/view/widget/products_widget.dart';
-import 'package:mate_order_app/Features/Home/presentation/view/widget/stores_widget.dart';
-import 'package:mate_order_app/constants.dart';
+
+import '../../../../../../constants.dart';
+import 'products_widget.dart';
+import '../../../../stores/presentation/view/widgets/stores_list_body.dart';
 
 class HomePageBody extends StatefulWidget {
   const HomePageBody({super.key});
@@ -13,7 +14,7 @@ class HomePageBody extends StatefulWidget {
 class _HomePageBodyState extends State<HomePageBody> {
   static List<Widget> pages = <Widget>[
     ProductsWidget(),
-    StoresWidget(),
+    StoresListBody(),
   ];
   int selectedIndex = 0;
 

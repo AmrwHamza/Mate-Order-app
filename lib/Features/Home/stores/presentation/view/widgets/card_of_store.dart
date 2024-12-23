@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:mate_order_app/core/utils/assets.dart';
+import 'package:mate_order_app/Features/Home/stores/data/models/stores_model/store.dart';
+
+import '../../../../../../core/utils/assets.dart';
 
 class CardOfStore extends StatelessWidget {
-  const CardOfStore({super.key});
-
+  const CardOfStore({super.key, required this.store});
+  final Store store;
   @override
   Widget build(BuildContext context) {
+        print("Displaying store: ${store.storeName}");  // طباعة اسم المتجر عند عرضه
+
     return Padding(
       padding: const EdgeInsets.all(1),
       child: Container(
@@ -29,7 +33,7 @@ class CardOfStore extends StatelessWidget {
             ),
             SizedBox(width: 10),
             Text(
-              'Store Name',
+              store.storeName?? '',
               style: TextStyle(fontWeight: FontWeight.w600, fontSize: 18),
             ),
           ],
