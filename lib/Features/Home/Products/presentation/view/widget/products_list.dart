@@ -78,7 +78,7 @@ class _ProductsListState extends State<ProductsList>
       bloc: _productBloc,
       listener: (context, state) {
         if (state is ProductsHomeError) {
-          Get.snackbar('', state.message);
+          // Get.snackbar('', state.message);
         }
       },
       builder: (context, state) {

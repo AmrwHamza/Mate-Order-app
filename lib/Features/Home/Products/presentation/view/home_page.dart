@@ -12,7 +12,7 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       backgroundColor: KBackgroundColor,
       appBar: MainAppBar('Home'),
-      body: const SafeArea(child: HomePageBody()),
+      body: const  HomePageBody(),
     );
   }
 }

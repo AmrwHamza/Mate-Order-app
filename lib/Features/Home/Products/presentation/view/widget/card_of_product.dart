@@ -64,9 +64,9 @@ class CardOfProduct extends StatelessWidget {
                     decoration: BoxDecoration(
                       image: DecorationImage(
                         // image:AssetImage() ,
-                        // image: AssetImage(AssetsData.product),
+                        image: AssetImage(AssetsData.product),
 
-                       image: image(product),
+                        //  image: image(product),
                         fit: BoxFit.fill,
                       ),
                     ),
@@ -116,10 +116,9 @@ class CardOfProduct extends StatelessWidget {
   ImageProvider image(Product product) {
     if (product.imagePath != null) {
       try {
-        return  NetworkImage(product.imagePath!);
+        return NetworkImage(product.imagePath!);
       } catch (e) {
-              return AssetImage(AssetsData.product);
-
+        return AssetImage(AssetsData.product);
       }
     } else {
       return AssetImage(AssetsData.product);

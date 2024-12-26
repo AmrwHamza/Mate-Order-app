@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:mate_order_app/Features/Home/Products/presentation/view/search/search_products_view.dart';
+import 'package:mate_order_app/Features/Home/Products/presentation/view/widget/search_card.dart';
 import '../../../../../../constants.dart';
 import 'products_list.dart';
-import 'search_bar_for_home.dart';
+import '../search/search_bar_for_home.dart';
 import 'see_all_products_view.dart';
 
 class ProductsWidget extends StatelessWidget {
@@ -18,10 +20,12 @@ class ProductsWidget extends StatelessWidget {
         FocusScope.of(context).unfocus();
       },
       child: Padding(
-        padding: const EdgeInsets.all(10),
+        padding: const EdgeInsets.only(bottom: 5, left: 10, right: 10),
         child: Column(
+          
           children: [
-            SearchBarForHome(SearchController: productsSearchController),
+            // child: SearchBarForHome(SearchController: productsSearchController)),
+            SearchCard(),
             Expanded(
               child: ListView.builder(
                 shrinkWrap: true,
