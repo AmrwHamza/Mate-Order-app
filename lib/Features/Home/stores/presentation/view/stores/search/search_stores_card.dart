@@ -1,24 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:mate_order_app/Features/Home/Products/presentation/view/search/search_products_view.dart';
-import 'package:mate_order_app/constants.dart';
 
-class SearchCard extends StatelessWidget {
-  const SearchCard({
-    super.key,
-  });
+import '../../../../../../../constants.dart';
+import 'search_stores_view.dart';
+
+class SearchStoresCard extends StatelessWidget {
+  const SearchStoresCard({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
+     return GestureDetector(
       onTap: () {
-        Get.to(SearchProductsView(),
+        Get.to(SearchStoresView(),
             curve: Curves.easeOut, //easeOut
             duration: Duration(milliseconds: 500),
             transition: Transition.rightToLeft);
       },
       child: Hero(
-        tag: 'SearchBarForHomeProducts',
+        tag: 'SearchBarForHome',
         child: Card(
           elevation: 5,
           color: kPrimaryColor8,
@@ -31,7 +30,7 @@ class SearchCard extends StatelessWidget {
                   padding: const EdgeInsets.symmetric(horizontal: 10),
                   child: Icon(Icons.search_outlined),
                 ),
-                Text('Search for Products'),
+                Text('Search for Stores'),
               ],
             ),
           ),
