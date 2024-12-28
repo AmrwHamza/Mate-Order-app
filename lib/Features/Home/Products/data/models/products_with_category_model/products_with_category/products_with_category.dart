@@ -52,7 +52,7 @@ class Product {
   int? storeId;
   String? name;
   int? amount;
-  int? price;
+  dynamic? price;
   String? category;
   String? imagePath;
   String? createdAt;

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mate_order_app/Features/Home/Products/presentation/model_view/search_products_cubit/search_products_cubit.dart';
 import 'package:mate_order_app/Features/Home/Products/presentation/view/search/search_bar_for_home.dart';
-import 'package:mate_order_app/Features/Home/Products/presentation/view/widget/card_of_product.dart';
+import 'package:mate_order_app/Features/Home/Products/presentation/view/product_card/card_of_product.dart';
 import 'package:mate_order_app/Features/Home/stores/presentation/view/stores/store_card_shimmer.dart';
 import 'package:mate_order_app/constants.dart';
 

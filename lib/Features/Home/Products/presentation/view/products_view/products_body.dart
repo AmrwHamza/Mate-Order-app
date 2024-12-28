@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mate_order_app/Features/Home/Products/presentation/view/search/search_products_view.dart';
-import 'package:mate_order_app/Features/Home/Products/presentation/view/widget/search_card.dart';
+import 'package:mate_order_app/Features/Home/Products/presentation/view/search/search_card.dart';
 import '../../../../../../constants.dart';
 import 'products_list.dart';
 import '../search/search_bar_for_home.dart';
-import 'see_all_products_view.dart';
+import '../see_all_products/see_all_products_view.dart';
 
 class ProductsWidget extends StatelessWidget {
   ProductsWidget({super.key});

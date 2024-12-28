@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-
+import 'package:mate_order_app/Features/Home/Products/presentation/view/widget/product_option_sheet.dart';
+import 'package:mate_order_app/Features/Home/oredr/presentation/view/order_sheet_view.dart';
 
 import '../../../../../../constants.dart';
 import '../../../../../../core/utils/assets.dart';
@@ -33,34 +34,22 @@ class ProductDetails extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    IconButton(
-                      onPressed: () {},
-                      icon: const Icon(
-                        size: 30,
-                        Icons.remove_circle,
-                        color: kPrimaryColor3,
-                      ),
-                    ),
-                    const SizedBox(width: 10),
-                    Text(
-                      '$numberOfproducts',
-                      style: const TextStyle(
-                        fontSize: 40,
-                      ),
-                    ),
-                    const SizedBox(width: 10),
-                    IconButton(
-                      icon: const Icon(
-                        Icons.add_circle,
-                        size: 30,
-                        color: kPrimaryColor3,
-                        fill: 0.5,
-                        applyTextScaling: true,
-                      ),
-                      onPressed: () {},
-                    )
+                    ElevatedButton(
+                        onPressed: () {
+                          showModalBottomSheet(
+                            context: context,
+                            isScrollControlled: true,
+                            backgroundColor:
+                                Colors.transparent,
+                            barrierColor: Colors.black.withOpacity(0.5),
+                            builder: (context) {
+                              return OrderSheet(product: product,);
+                            },
+                          );
+                        },
+                        child: Text('Order Now')),
                   ],
-                ),
+                )
               ],
             ),
           ],

@@ -5,9 +5,9 @@ import 'package:get/get.dart';
 import '../../../../../../constants.dart';
 import '../../../../../../core/utils/assets.dart';
 import '../../../data/models/products_with_category_model/products_with_category/products_with_category.dart';
-import 'fav_icon.dart';
-import 'product_details.dart';
-import 'product_option_sheet.dart';
+import '../fav_icon/fav_icon.dart';
+import '../widget/product_details.dart';
+import '../widget/product_option_sheet.dart';
 
 class CardOfProduct extends StatelessWidget {
   int numberOfproducts = 1;

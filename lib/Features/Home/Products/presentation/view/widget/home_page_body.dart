@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../../../../constants.dart';
-import 'products_widget.dart';
+import '../products_view/products_body.dart';
 import '../../../../stores/presentation/view/stores/stores_list_body.dart';
 
 class HomePageBody extends StatefulWidget {

@@ -3,8 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
 import 'package:mate_order_app/Features/Home/stores/presentation/model_view/store_products_bloc/store_products_bloc.dart';
 
-import '../../../../Products/presentation/view/widget/card_of_product.dart';
-import '../../../../Products/presentation/view/widget/product_card_shimmer.dart';
+import '../../../../Products/presentation/view/product_card/card_of_product.dart';
+import '../../../../Products/presentation/view/product_card/product_card_shimmer.dart';
 
 class StoreProductsBody extends StatefulWidget {
   const StoreProductsBody({super.key, required this.id});

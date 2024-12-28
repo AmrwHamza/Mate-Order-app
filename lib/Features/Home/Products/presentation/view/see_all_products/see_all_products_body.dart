@@ -3,8 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
 
 import '../../model_view/home_bloc/bloc/products_home_bloc.dart';
-import 'card_of_product.dart';
-import 'product_card_shimmer.dart';
+import '../product_card/card_of_product.dart';
+import '../product_card/product_card_shimmer.dart';
 
 class SeeAllProductsBody extends StatefulWidget {
   const SeeAllProductsBody.SeeAllProductsBody(
