@@ -14,7 +14,7 @@ final class LocationsLoading extends LocationsState {}
 final class LocationsSuccess extends LocationsState {
   final AddressListModel addressListModel;
 
-  LocationsSuccess({required this.addressListModel});
+  const LocationsSuccess({required this.addressListModel});
 }
 
 final class LocationsError extends LocationsState {
@@ -22,3 +22,5 @@ final class LocationsError extends LocationsState {
 
   const LocationsError({required this.message});
 }
+
+

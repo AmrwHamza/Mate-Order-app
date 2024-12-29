@@ -49,7 +49,12 @@ dependencies:
   provider: ^6.1.2
   shared_preferences: ^2.3.3
   shimmer: ^3.0.0
-
+  flutter_map: ^7.0.2
+  flutter_map_cancellable_tile_provider: ^3.0.2
+  geolocator: ^13.0.2
+  latlong2: ^0.9.1
+  location: ^7.0.1
+  
 dev_dependencies:
   flutter_lints: ^5.0.0
   flutter_test:

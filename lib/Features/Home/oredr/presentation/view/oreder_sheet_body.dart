@@ -34,7 +34,7 @@ class OrederSheetBody extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                ButtonInSheet(
+                const ButtonInSheet(
                   changeAmount: -10,
                   icon: Text(
                     '-10',
@@ -42,10 +42,10 @@ class OrederSheetBody extends StatelessWidget {
                     textAlign: TextAlign.center,
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   width: 10,
                 ),
-                ButtonInSheet(
+                const ButtonInSheet(
                   changeAmount: -1,
                   icon: Text(
                     '-1',
@@ -53,17 +53,17 @@ class OrederSheetBody extends StatelessWidget {
                     textAlign: TextAlign.center,
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   width: 10,
                 ),
                 Text(
                   '$amount',
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24),
+                  style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 24),
                 ),
-                SizedBox(
+                const SizedBox(
                   width: 10,
                 ),
-                ButtonInSheet(
+                const ButtonInSheet(
                   changeAmount: 1,
                   icon: Text(
                     '+1',
@@ -71,10 +71,10 @@ class OrederSheetBody extends StatelessWidget {
                     textAlign: TextAlign.center,
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   width: 10,
                 ),
-                ButtonInSheet(
+                const ButtonInSheet(
                   changeAmount: 10,
                   icon: Text(
                     '+10',
@@ -96,9 +96,9 @@ class OrederSheetBody extends StatelessWidget {
                 ),
                 child: ElevatedButton(
                     onPressed: () {
-                      Get.to(() => LocationsView());
+                      Get.to(() => const LocationsView());
                     },
-                    child: Text('locations')),
+                    child: const Text('locations')),
               )
           ],
         ));
@@ -126,7 +126,7 @@ class ButtonInSheet extends StatelessWidget {
       icon: Container(
         width: 30.0,
         height: 30.0,
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           color: kPrimaryColor5,
           shape: BoxShape.circle,
         ),

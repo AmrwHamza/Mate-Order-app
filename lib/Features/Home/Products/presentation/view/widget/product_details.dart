@@ -87,6 +87,7 @@ class ProductDetails extends StatelessWidget {
             image: DecorationImage(
               image: NetworkImage("$baseurlImg"
                   "${product.imagePath!}"),
+              // image: AssetImage(AssetsData.product),
               fit: BoxFit.fill,
             ),
           ),

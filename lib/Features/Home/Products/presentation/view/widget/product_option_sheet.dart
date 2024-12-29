@@ -25,7 +25,7 @@ class _ProductOptionSheetState extends State<ProductOptionSheet> {
     return Container(
       height: 250,
       width: double.infinity,
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.only(
           topLeft: Radius.circular(15),
@@ -42,17 +42,17 @@ class _ProductOptionSheetState extends State<ProductOptionSheet> {
               fit: BoxFit.cover,
             ),
           ),
-          SizedBox(width: 40),
+          const SizedBox(width: 40),
           Column(
             children: [
-              SizedBox(height: 30),
-              Text(
+              const SizedBox(height: 30),
+              const Text(
                 'Product Name',
                 style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
               ),
               Text(
                 'The Price :   ${numberOfproducts * 100}',
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
+                style: const TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
               ),
               Row(
                 children: [
@@ -64,19 +64,19 @@ class _ProductOptionSheetState extends State<ProductOptionSheet> {
                         }
                       });
                     },
-                    icon: Icon(
+                    icon: const Icon(
                       Icons.remove_circle,
                       color: kPrimaryColor3,
                     ),
                   ),
-                  SizedBox(width: 10),
+                  const SizedBox(width: 10),
                   Text(
                     '$numberOfproducts',
-                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                    style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                   ),
-                  SizedBox(width: 10),
+                  const SizedBox(width: 10),
                   IconButton(
-                    icon: Icon(
+                    icon: const Icon(
                       Icons.add_circle,
                       color: kPrimaryColor3,
                       fill: 0.5,
@@ -90,8 +90,8 @@ class _ProductOptionSheetState extends State<ProductOptionSheet> {
                   )
                 ],
               ),
-              SizedBox(height: 20),
-              Row(
+              const SizedBox(height: 20),
+              const Row(
                 children: [
                   CheckBotton(),
                   SizedBox(width: 10),

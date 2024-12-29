@@ -8,10 +8,12 @@ part 'locations_state.dart';
 
 class LocationsCubit extends Cubit<LocationsState> {
   LocationsCubit() : super(LocationsInitial());
+  late AddressListModel addressListModel;
 
+  LocationsServices locationsServices = LocationsServices();
   void getLocations() async {
     emit(LocationsLoading());
-    var result = await ShowLocationsServices().showLocations();
+    var result = await locationsServices.showLocations();
 
     result.fold(
       (left) {
@@ -20,8 +22,10 @@ class LocationsCubit extends Cubit<LocationsState> {
         print('Error${left.message}');
       },
       (right) {
+        addressListModel = right;
         emit(LocationsSuccess(addressListModel: right));
       },
     );
   }
-}
+
+ }
