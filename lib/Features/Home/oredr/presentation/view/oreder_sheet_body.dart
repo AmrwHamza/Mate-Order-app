@@ -88,9 +88,37 @@ class OrederSheetBody extends StatelessWidget {
             ),
             if (amount > 0)
               Container(
-                width: 50,
-                height: 50,
-                color: Colors.green,
+                decoration: BoxDecoration(
+                  color: Colors.blue, // تغيير لون الزر قبل الضغط عليه
+                  borderRadius:
+                      BorderRadius.circular(8), // جعل الزر بزوايا دائرية
+                ),
+                child: DropdownButton(
+                  items: [
+                    DropdownMenuItem(
+                      child: Text('A'),
+                      value: 'A',
+                    ),
+                    DropdownMenuItem(
+                      child: Text('B'),
+                      value: 'A',
+                    ),
+                    DropdownMenuItem(
+                      child: Text('C'),
+                      value: 'A',
+                    ),
+                    DropdownMenuItem(
+                      child: Text('D'),
+                      value: 'A',
+                    ),
+                  ],
+                  hint: Text(
+                    'choose your location',
+                    style: TextStyle(color: Colors.black),
+                  ),
+                  borderRadius: BorderRadius.circular(15),
+                  onChanged: (value) {},
+                ),
               )
           ],
         ));

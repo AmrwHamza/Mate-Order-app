@@ -12,7 +12,7 @@ class LoginView extends StatelessWidget {
       body: SafeArea(
           child: GestureDetector(
               onTap: () {
-                FocusScope.of(context).unfocus();
+                // FocusScope.of(context).unfocus();
               },
               child: LoginViewBody())),
     );

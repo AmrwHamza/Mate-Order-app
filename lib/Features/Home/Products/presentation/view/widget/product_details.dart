@@ -39,11 +39,12 @@ class ProductDetails extends StatelessWidget {
                           showModalBottomSheet(
                             context: context,
                             isScrollControlled: true,
-                            backgroundColor:
-                                Colors.transparent,
+                            backgroundColor: Colors.transparent,
                             barrierColor: Colors.black.withOpacity(0.5),
                             builder: (context) {
-                              return OrderSheet(product: product,);
+                              return OrderSheet(
+                                product: product,
+                              );
                             },
                           );
                         },
@@ -82,9 +83,10 @@ class ProductDetails extends StatelessWidget {
       child: Hero(
         tag: '${product.id}${product.imagePath}',
         child: Container(
-          decoration: const BoxDecoration(
+          decoration: BoxDecoration(
             image: DecorationImage(
-              image: AssetImage(AssetsData.product),
+              image: NetworkImage("$baseurlImg"
+                  "${product.imagePath!}"),
               fit: BoxFit.fill,
             ),
           ),

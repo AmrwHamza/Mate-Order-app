@@ -15,15 +15,27 @@ const Color kPrimaryColor10 = Color(0xffC9FEF6);
 const Color KBackgroundColor = Color(0xffEFFEFB);
 
 const KTransitionDuration = Duration(milliseconds: 250);
+const String base = "https://a8bc-146-70-202-35.ngrok-free.app";
 
-const String baseurl = "https://c862-130-180-148-76.ngrok-free.app" "/api/";
+
+// const String baseurl = "https://a8bc-146-70-202-35.ngrok-free.app" "/api/";
+const String baseurl = "$base" "/api/";
+
+const String baseurlImg = '$base/storage/project/';
 
 class SharedPrefKeys {
   static const String userToken = 'userToken';
 }
+//Tarek
+// const kCategory = <String>[
+//   'electronec',
+//   'food',
+//   'clothes',
+// ];
 
 const kCategory = <String>[
-  'electronec',
+  //Ebaa
+  'electronic',
   'food',
-  'clothes',
+  'cloths',
 ];
