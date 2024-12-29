@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:get/get.dart';
 import 'package:mate_order_app/Features/Home/Products/data/models/products_with_category_model/products_with_category/products_with_category.dart';
+import 'package:mate_order_app/Features/Home/locations/presentaion/view/locations_view.dart';
 import 'package:mate_order_app/Features/Home/oredr/presentation/model_view/bloc/order_bloc.dart';
 import 'package:mate_order_app/constants.dart';
 
@@ -89,36 +91,14 @@ class OrederSheetBody extends StatelessWidget {
             if (amount > 0)
               Container(
                 decoration: BoxDecoration(
-                  color: Colors.blue, // تغيير لون الزر قبل الضغط عليه
-                  borderRadius:
-                      BorderRadius.circular(8), // جعل الزر بزوايا دائرية
+                  color: Colors.blue,
+                  borderRadius: BorderRadius.circular(8),
                 ),
-                child: DropdownButton(
-                  items: [
-                    DropdownMenuItem(
-                      child: Text('A'),
-                      value: 'A',
-                    ),
-                    DropdownMenuItem(
-                      child: Text('B'),
-                      value: 'A',
-                    ),
-                    DropdownMenuItem(
-                      child: Text('C'),
-                      value: 'A',
-                    ),
-                    DropdownMenuItem(
-                      child: Text('D'),
-                      value: 'A',
-                    ),
-                  ],
-                  hint: Text(
-                    'choose your location',
-                    style: TextStyle(color: Colors.black),
-                  ),
-                  borderRadius: BorderRadius.circular(15),
-                  onChanged: (value) {},
-                ),
+                child: ElevatedButton(
+                    onPressed: () {
+                      Get.to(() => LocationsView());
+                    },
+                    child: Text('locations')),
               )
           ],
         ));

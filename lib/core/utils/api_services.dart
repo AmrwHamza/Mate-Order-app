@@ -82,13 +82,15 @@ class Api {
     }
   }
 
-  Future<Either<Failure, Map<String, dynamic>>> getWithAuth({
+  Future<Either<Failure, dynamic>> getWithAuth({
     required endPoint,
     Map<String, dynamic>? queryParameters,
   }) async {
     try {
       final token = await SharedPrefHelper.getString(SharedPrefKeys.userToken);
       if (token.isEmpty) {
+        print("Token is missing or invalid");
+
         return const Left(
             ValidationFailure('====Token is missing or invalid===='));
       }
@@ -101,8 +103,11 @@ class Api {
       var response = await dio.get('$endPoint',
           queryParameters: queryParameters ?? {}, options: options);
       // print(response.data.toString());
+      print("Response: ${response.data}");
       return Right(response.data);
     } on DioException catch (dioException) {
+      print("DioException: ${dioException.message}");
+
       return Left(handleDioError(dioException));
     } catch (e) {
       return const Left(UnknownFailure());
@@ -122,7 +127,6 @@ class Api {
       return const Left(UnknownFailure());
     }
   }
-
 
   Future<Either<Failure, Map<String, dynamic>>> deleteWithAuth({
     required endPoint,
