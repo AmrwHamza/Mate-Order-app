@@ -3,10 +3,13 @@ import 'dart:math';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong2/latlong.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:http/http.dart' as http;
+import 'package:mate_order_app/Features/Home/locations/presentaion/model_view/location_cubit/locations_cubit.dart';
+import 'package:mate_order_app/Features/Home/map/presentation/model_view/cubit/map_cubit.dart';
 
 import '../../data/models/marker_data.dart';
 
@@ -29,7 +32,6 @@ class _MapViewSetLocationState extends State<MapViewSetLocation> {
   List<dynamic> _searchResults = [];
   bool _isSearching = false;
 
-//يجيب الموقع الحالي
   Future<Position> _determinePosition() async {
     bool serviceEnabled;
     LocationPermission permission;
@@ -52,8 +54,6 @@ class _MapViewSetLocationState extends State<MapViewSetLocation> {
     return await Geolocator.getCurrentPosition();
   }
 
-  //عرض الموقع الحالي
-
   void _showCurrentLocation() async {
     try {
       final Position position = await _determinePosition();
@@ -70,8 +70,6 @@ class _MapViewSetLocationState extends State<MapViewSetLocation> {
     }
   }
 
-//add marker
-
   void _addMarker(LatLng position, String title, String description) {
     setState(() {
       final markerData = MarkerData(
@@ -81,6 +79,9 @@ class _MapViewSetLocationState extends State<MapViewSetLocation> {
         _markers.clear();
       }
 
+      final mapCubit = BlocProvider.of<MapCubit>(context);
+
+      mapCubit.setCurrentLocation(currentmarker: markerData);
       _markerData.add(markerData);
       _markers.add(Marker(
         point: position,
@@ -122,53 +123,76 @@ class _MapViewSetLocationState extends State<MapViewSetLocation> {
     });
   }
 
-//show marker dialog
-
   void _showMarkerDialog(BuildContext context, LatLng position) {
     final TextEditingController titleController = TextEditingController();
     final TextEditingController descController = TextEditingController();
 
+    String? titleNull;
+    String? desNull;
     showDialog(
       context: context,
-      builder: (context) => AlertDialog(
-        title: const Text("Add Marker"),
-        content: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            TextField(
-              controller: titleController,
-              decoration: const InputDecoration(
-                labelText: "Title",
+      builder: (context) => StatefulBuilder(builder: (context, setState) {
+        return AlertDialog(
+          title: const Text("Add Marker"),
+          content: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              TextField(
+                  controller: titleController,
+                  decoration: InputDecoration(
+                    labelText: "Title",
+                    errorText: titleNull,
+                  ),
+                  onChanged: (_) {
+                    setState(() {
+                      titleNull = null;
+                    });
+                  }),
+              TextField(
+                controller: descController,
+                decoration: InputDecoration(
+                  labelText: "Descriotion",
+                  errorText: desNull,
+                ),
+                onChanged: (_) {
+                  setState(() {
+                    desNull = null;
+                  });
+                },
               ),
+            ],
+          ),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              child: const Text("Cancel"),
             ),
-            TextField(
-              controller: descController,
-              decoration: const InputDecoration(
-                labelText: "Descriotion",
-              ),
+            TextButton(
+              onPressed: () {
+                if (titleController.text.isEmpty) {
+                  setState(() {
+                    titleNull = titleController.text.isEmpty
+                        ? "Title is required"
+                        : null;
+                    desNull = descController.text.isEmpty
+                        ? "Description is required"
+                        : null;
+                  });
+                } else {
+                  _addMarker(
+                      position, titleController.text, descController.text);
+                  Navigator.pop(context);
+                }
+              },
+              child: const Text("Save"),
             ),
           ],
-        ),
-        actions: [
-          TextButton(
-            onPressed: () {
-              Navigator.pop(context);
-            },
-            child: const Text("Cancel"),
-          ),
-          TextButton(
-            onPressed: () {
-              _addMarker(position, titleController.text, descController.text);
-              Navigator.pop(context);
-            },
-            child: const Text("Save"),
-          ),
-        ],
-      ),
+        );
+      }),
     );
   }
-
-  //show marker onfo when click
 
   void _showMarkerInfo(MarkerData markerData) {
     showDialog(
@@ -188,7 +212,6 @@ class _MapViewSetLocationState extends State<MapViewSetLocation> {
     );
   }
 
-//search feature
   Future<void> _searchPlaces(String query) async {
     try {
       if (query.isEmpty) {
@@ -218,13 +241,13 @@ class _MapViewSetLocationState extends State<MapViewSetLocation> {
     }
   }
 
-  //move to specific location
   void _moveToLocation(double lat, double lon) {
     final LatLng location = LatLng(lat, lon);
 
     _mapController.move(location, 15.0);
     setState(() {
       _selectedPosition = location;
+
       _searchResults = [];
       _isSearching = false;
 
@@ -245,185 +268,195 @@ class _MapViewSetLocationState extends State<MapViewSetLocation> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Stack(
-        children: [
-          FlutterMap(
-            mapController: _mapController,
-            options: MapOptions(
-              initialZoom: 13.0,
-              initialCenter: const LatLng(51.5, -0.09),
-              onTap: (tapPosition, latLng) {
-                setState(() {
-                  _selectedPosition = latLng;
-                  _draggedPosition = _selectedPosition;
-                });
-              },
-            ),
-            children: [
-              // TileLayer(
-              //   urlTemplate: "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
-              // ),
-              TileLayer(
-                urlTemplate: "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+    return PopScope(
+      onPopInvokedWithResult: (didPop, result) async {
+        final locationsCubit = BlocProvider.of<LocationsCubit>(context);
+
+        if (didPop == true && _markerData.length != 0) {
+          final res = await BlocProvider.of<MapCubit>(context).addAddress();
+          if (res) {
+            locationsCubit.getLocations();
+          } else {}
+        }
+      },
+      child: Scaffold(
+        body: Stack(
+          children: [
+            FlutterMap(
+              mapController: _mapController,
+              options: MapOptions(
+                initialZoom: 13.0,
+                initialCenter: const LatLng(51.5, -0.09),
+                onTap: (tapPosition, latLng) {
+                  setState(() {
+                    _selectedPosition = latLng;
+                    _draggedPosition = _selectedPosition;
+                  });
+                },
               ),
-
-              MarkerLayer(markers: _markers),
-              if (_isDragging && _draggedPosition != null)
-                MarkerLayer(
-                  markers: [
-                    Marker(
-                      point: _draggedPosition!,
-                      width: 80,
-                      height: 80,
-                      child: const Icon(
-                        Icons.location_on,
-                        color: Colors.indigo,
-                        size: 40,
-                      ),
-                    ),
-                  ],
-                ),
-              if (_mylocation != null)
-                MarkerLayer(
-                  markers: [
-                    Marker(
-                      point: _mylocation!,
-                      width: 80,
-                      height: 80,
-                      child: const Icon(
-                        Icons.location_on,
-                        color: Colors.green,
-                        size: 40,
-                      ),
-                    ),
-                  ],
-                )
-            ],
-          ),
-
-          //search widget
-          Positioned(
-            top: 40,
-            left: 15,
-            right: 15,
-            child: Column(
               children: [
-                SizedBox(
-                  height: 55,
-                  child: TextField(
-                    controller: _searchController,
-                    decoration: InputDecoration(
-                        hintText: "Search Place...",
-                        filled: true,
-                        fillColor: Colors.white,
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(50),
-                          borderSide: BorderSide.none,
-                        ),
-                        prefixIcon: const Icon(Icons.search),
-                        suffixIcon: _isSearching
-                            ? IconButton(
-                                onPressed: () {
-                                  _searchController.clear();
-                                  setState(() {
-                                    _isSearching = false;
-                                    _searchResults = [];
-                                  });
-                                },
-                                icon: const Icon(Icons.clear))
-                            : null),
-                    onTap: () {
-                      setState(() {
-                        _isSearching = true;
-                      });
-                    },
-                  ),
+                
+                TileLayer(
+                  urlTemplate: "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
                 ),
-                if (_isSearching && _searchResults.isNotEmpty)
-                  Container(
-                    color: Colors.white,
-                    child: ListView.builder(
-                      shrinkWrap: true,
-                      itemCount: _searchResults.length,
-                      itemBuilder: (ctx, index) {
-                        final place = _searchResults[index];
-                        return ListTile(
-                          title: Text(place['display_name']),
-                          onTap: () {
-                            final lat = double.parse(place['lat']);
-                            final lon = double.parse(place['lon']);
-                            _moveToLocation(lat, lon);
-                          },
-                        );
-                      },
-                    ),
+
+                MarkerLayer(markers: _markers),
+                if (_isDragging && _draggedPosition != null)
+                  MarkerLayer(
+                    markers: [
+                      Marker(
+                        point: _draggedPosition!,
+                        width: 80,
+                        height: 80,
+                        child: const Icon(
+                          Icons.location_on,
+                          color: Colors.indigo,
+                          size: 40,
+                        ),
+                      ),
+                    ],
+                  ),
+                if (_mylocation != null)
+                  MarkerLayer(
+                    markers: [
+                      Marker(
+                        point: _mylocation!,
+                        width: 80,
+                        height: 80,
+                        child: const Icon(
+                          Icons.location_on,
+                          color: Colors.green,
+                          size: 40,
+                        ),
+                      ),
+                    ],
                   )
               ],
             ),
-          ),
-          //add location buttom
-          _isDragging == false
-              ? Positioned(
-                  bottom: 20,
-                  left: 20,
-                  child: FloatingActionButton(
-                    backgroundColor: Colors.indigo,
-                    foregroundColor: Colors.white,
-                    onPressed: () {
-                      setState(() {
-                        _isDragging = true;
-                      });
-                    },
-                    child: const Icon(Icons.add_location),
-                  ))
-              : Positioned(
-                  bottom: 20,
-                  left: 20,
-                  child: FloatingActionButton(
-                    backgroundColor: Colors.redAccent,
-                    foregroundColor: Colors.white,
-                    onPressed: () {
-                      setState(() {
-                        _isDragging = false;
-                      });
-                    },
-                    child: const Icon(Icons.wrong_location),
-                  ),
-                ),
-          Positioned(
-            bottom: 20,
-            right: 20,
-            child: Column(
-              children: [
-                FloatingActionButton(
-                  backgroundColor: Colors.white,
-                  foregroundColor: Colors.indigo,
-                  onPressed: _showCurrentLocation,
-                  child: const Icon(Icons.location_searching_rounded),
-                ),
-                if (_isDragging)
-                  Padding(
-                    padding: const EdgeInsets.only(top: 20),
-                    child: FloatingActionButton(
-                      backgroundColor: Colors.green,
-                      foregroundColor: Colors.white,
-                      onPressed: () {
-                        if (_draggedPosition != null) {
-                          _showMarkerDialog(context, _draggedPosition!);
-                        }
+            Positioned(
+              top: 40,
+              left: 15,
+              right: 15,
+              child: Column(
+                children: [
+                  SizedBox(
+                    height: 55,
+                    child: TextField(
+                      controller: _searchController,
+                      decoration: InputDecoration(
+                          hintText: "Search Place...",
+                          filled: true,
+                          fillColor: Colors.white,
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(50),
+                            borderSide: BorderSide.none,
+                          ),
+                          prefixIcon: const Icon(Icons.search),
+                          suffixIcon: _isSearching
+                              ? IconButton(
+                                  onPressed: () {
+                                    _searchController.clear();
+                                    setState(() {
+                                      _isSearching = false;
+                                      _searchResults = [];
+                                    });
+                                  },
+                                  icon: const Icon(Icons.clear))
+                              : null),
+                      onTap: () {
                         setState(() {
-                          _isDragging = false;
-                          _draggedPosition = null;
+                          _isSearching = true;
                         });
                       },
-                      child: const Icon(Icons.check),
                     ),
-                  )
-              ],
+                  ),
+                  if (_isSearching && _searchResults.isNotEmpty)
+                    Container(
+                      color: Colors.white,
+                      child: ListView.builder(
+                        shrinkWrap: true,
+                        itemCount: _searchResults.length,
+                        itemBuilder: (ctx, index) {
+                          final place = _searchResults[index];
+                          return ListTile(
+                            title: Text(place['display_name']),
+                            onTap: () {
+                              final lat = double.parse(place['lat']);
+                              final lon = double.parse(place['lon']);
+                              _moveToLocation(lat, lon);
+                            },
+                          );
+                        },
+                      ),
+                    )
+                ],
+              ),
             ),
-          ),
-        ],
+            _isDragging == false
+                ? Positioned(
+                    bottom: 20,
+                    left: 20,
+                    child: FloatingActionButton(
+                      backgroundColor: Colors.indigo,
+                      foregroundColor: Colors.white,
+                      onPressed: () {
+                        setState(() {
+                          _isDragging = true;
+                        });
+                      },
+                      child: const Icon(Icons.add_location),
+                    ))
+                : Positioned(
+                    bottom: 20,
+                    left: 20,
+                    child: FloatingActionButton(
+                      backgroundColor: Colors.redAccent,
+                      foregroundColor: Colors.white,
+                      onPressed: () {
+                        setState(() {
+                          _isDragging = false;
+                        });
+                      },
+                      child: const Icon(Icons.wrong_location),
+                    ),
+                  ),
+            Positioned(
+              bottom: 20,
+              right: 20,
+              child: Column(
+                children: [
+                  FloatingActionButton(
+                    heroTag:
+                        "currentLocationHero", 
+
+                    backgroundColor: Colors.white,
+                    foregroundColor: Colors.indigo,
+                    onPressed: _showCurrentLocation,
+                    child: const Icon(Icons.location_searching_rounded),
+                  ),
+                  if (_isDragging)
+                    Padding(
+                      padding: const EdgeInsets.only(top: 20),
+                      child: FloatingActionButton(
+                        backgroundColor: Colors.green,
+                        foregroundColor: Colors.white,
+                        onPressed: () {
+                          if (_draggedPosition != null) {
+                            _showMarkerDialog(context, _draggedPosition!);
+                          }
+                          setState(() {
+                            _isDragging = false;
+                            _draggedPosition = null;
+                          });
+                        },
+                        child: const Icon(Icons.check),
+                      ),
+                    )
+                ],
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

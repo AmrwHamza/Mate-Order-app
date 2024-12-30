@@ -61,9 +61,8 @@ class ProductsHomeBloc extends Bloc<ProductHomeEvent, ProductsHomeState> {
               allProducts: allProducts, hasReachedMax: !hasMore));
         },
       );
-    } catch (e, stackTrace) {
-      print('Exception: $e');
-      print('StackTrace: $stackTrace');
+    } catch (e) {
+      
       emit(ProductsHomeError("Failed to fetch products: $e"));
     }
   }

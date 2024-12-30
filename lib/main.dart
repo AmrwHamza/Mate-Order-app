@@ -11,6 +11,7 @@ import 'package:mate_order_app/Features/splash/views/splash_view.dart';
 import 'package:mate_order_app/constants.dart';
 import 'package:mate_order_app/core/helpers/shared_pref.dart';
 import 'Features/Home/Products/presentation/model_view/home_bloc/bloc/products_home_bloc.dart';
+import 'Features/Home/map/presentation/model_view/cubit/map_cubit.dart';
 import 'core/bloc_helper/observer.dart';
 
 void main() async {
@@ -36,7 +37,9 @@ class MateOrderApp extends StatelessWidget {
         BlocProvider(create: (context) => LoginCubit()),
         BlocProvider(create: (context) => ProductsHomeBloc()),
         BlocProvider(create: (context) => StoresBloc()),
-        BlocProvider(create: (context) => LocationsCubit())
+        BlocProvider(create: (context) => LocationsCubit()),
+        BlocProvider(create: (context) => MapCubit(),)
+
       ],
       child: GetMaterialApp(
         debugShowCheckedModeBanner: false,

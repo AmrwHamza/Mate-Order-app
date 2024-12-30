@@ -31,13 +31,13 @@ class LocationCard extends StatelessWidget {
                 ],
               ),
             ),
-            Spacer(
+            const Spacer(
               flex: 3,
             ),
             DeleteLocationButton(
               id: address.id,
             ),
-            Spacer(
+            const Spacer(
               flex: 1,
             ),
           ],

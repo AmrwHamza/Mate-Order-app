@@ -26,8 +26,21 @@ class AddLocationButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return FloatingActionButton(onPressed: () {
-      Get.to(()=>const MapViewSetLocation());
-    });
+    return FloatingActionButton(
+        heroTag: "addLocationHero", // تخصيص علامة فريدة لهذا الزر
+
+        onPressed: () {
+          try {
+            Get.to(() => const MapViewSetLocation());
+          } catch (e) {
+            debugPrint('Error navigating to MapViewSetLocation: $e');
+            Get.snackbar(
+              'Navigation Error',
+              'An error occurred while opening the map view.',
+              backgroundColor: Colors.red,
+              colorText: Colors.white,
+            );
+          }
+        });
   }
 }

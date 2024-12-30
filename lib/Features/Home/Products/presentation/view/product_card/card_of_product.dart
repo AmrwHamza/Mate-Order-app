@@ -121,10 +121,10 @@ class CardOfProduct extends StatelessWidget {
         return NetworkImage("$baseurlImg"
             "${product.imagePath!}");
       } catch (e) {
-        return AssetImage(AssetsData.product);
+        return const AssetImage(AssetsData.product);
       }
     } else {
-      return AssetImage(AssetsData.product);
+      return const AssetImage(AssetsData.product);
     }
   }
 }
