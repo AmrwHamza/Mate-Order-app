@@ -7,3 +7,11 @@ class ChangeAmountEvent extends OrderEvent {
 
   ChangeAmountEvent({required this.changeAmount});
 }
+
+class ChooseLocationEvent extends OrderEvent {
+  final Address address;
+
+  ChooseLocationEvent(this.address);
+}
+
+class AddOrderEvent extends OrderEvent {}

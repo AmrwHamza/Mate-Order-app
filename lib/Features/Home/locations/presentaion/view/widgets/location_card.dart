@@ -1,12 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:mate_order_app/Features/Home/locations/presentaion/view/widgets/choose_location_button.dart';
 import 'package:mate_order_app/Features/Home/locations/presentaion/view/widgets/delete_location_button.dart';
 import 'package:mate_order_app/constants.dart';
 
+import '../../../../oredr/presentation/model_view/bloc/order_bloc.dart';
 import '../../../data/models/address_list_model.dart';
 
 class LocationCard extends StatelessWidget {
-  const LocationCard({super.key, required this.address});
+  const LocationCard(
+      {super.key, required this.address, required this.orderBloc});
   final Address address;
+  final OrderBloc orderBloc;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -37,8 +42,12 @@ class LocationCard extends StatelessWidget {
             DeleteLocationButton(
               id: address.id,
             ),
-            const Spacer(
-              flex: 1,
+            const SizedBox(
+              width: 15,
+            ),
+            ChooseLocationButton(address: address, orderBloc: orderBloc),
+            const SizedBox(
+              width: 15,
             ),
           ],
         ),

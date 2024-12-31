@@ -25,7 +25,7 @@ class DeleteLocationButton extends StatelessWidget {
         },
         builder: (context, state) {
           if (state is DeleteLocationLoading) {
-            return CircularProgressIndicator(
+            return const CircularProgressIndicator(
               color: kPrimaryColor10,
             );
           } else {
@@ -36,12 +36,12 @@ class DeleteLocationButton extends StatelessWidget {
               child: Container(
                 height: 30,
                 width: 30,
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                     shape: BoxShape.circle, color: Colors.redAccent),
-                child: Icon(
-                  Icons.delete,
+                child: const Icon(
+                  Icons.delete_outline_outlined,
                   size: 20,
-                  color: const Color.fromARGB(255, 91, 91, 91),
+                  color: Color.fromARGB(255, 91, 91, 91),
                 ),
               ),
             );

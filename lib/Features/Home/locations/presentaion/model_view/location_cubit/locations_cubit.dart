@@ -9,7 +9,6 @@ part 'locations_state.dart';
 class LocationsCubit extends Cubit<LocationsState> {
   LocationsCubit() : super(LocationsInitial());
   late AddressListModel addressListModel;
-
   LocationsServices locationsServices = LocationsServices();
   void getLocations() async {
     emit(LocationsLoading());
@@ -28,4 +27,7 @@ class LocationsCubit extends Cubit<LocationsState> {
     );
   }
 
- }
+
+
+
+}

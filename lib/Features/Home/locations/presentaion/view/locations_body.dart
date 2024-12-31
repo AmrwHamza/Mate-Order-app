@@ -5,26 +5,20 @@ import 'package:mate_order_app/Features/Home/locations/presentaion/model_view/lo
 import 'package:mate_order_app/Features/Home/locations/presentaion/view/widgets/location_card.dart';
 import 'package:mate_order_app/constants.dart';
 
-class LocationsBody extends StatelessWidget {
-  const LocationsBody({super.key});
+import '../../../oredr/presentation/model_view/bloc/order_bloc.dart';
 
+class LocationsBody extends StatelessWidget {
+  const LocationsBody({super.key, required this.orderBloc});
+final OrderBloc orderBloc;
   @override
   Widget build(BuildContext context) {
-
-
     context.read<LocationsCubit>().getLocations();
     return BlocConsumer<LocationsCubit, LocationsState>(
-
-
-
       listener: (context, state) {
-        if (state is LocationsError ) {
+        if (state is LocationsError) {
           Get.snackbar('Error', (state as dynamic).message);
         }
-      
       },
-
-
       builder: (context, state) {
         if (state is LocationsLoading || state is LocationsInitial) {
           return const Center(
@@ -52,10 +46,12 @@ class LocationsBody extends StatelessWidget {
                     0,
                 itemBuilder: (context, index) {
                   return LocationCard(
-                      address: context
-                          .read<LocationsCubit>()
-                          .addressListModel
-                          .addresses![index]);
+                    address: context
+                        .read<LocationsCubit>()
+                        .addressListModel
+                        .addresses![index],
+                    orderBloc: orderBloc,
+                  );
                 },
               ));
         }

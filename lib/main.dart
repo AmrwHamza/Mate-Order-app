@@ -38,8 +38,8 @@ class MateOrderApp extends StatelessWidget {
         BlocProvider(create: (context) => ProductsHomeBloc()),
         BlocProvider(create: (context) => StoresBloc()),
         BlocProvider(create: (context) => LocationsCubit()),
-        BlocProvider(create: (context) => MapCubit(),)
-
+        BlocProvider(create: (context) => MapCubit()),
+        
       ],
       child: GetMaterialApp(
         debugShowCheckedModeBanner: false,

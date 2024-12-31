@@ -55,7 +55,7 @@ class _OrderSheetState extends State<OrderSheet> {
           snapSizes: [60 / constraints.maxHeight, 0.5],
           builder: (context, scrollController) {
             return DecoratedBox(
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 color: Colors.white,
                 boxShadow: [
                   BoxShadow(
