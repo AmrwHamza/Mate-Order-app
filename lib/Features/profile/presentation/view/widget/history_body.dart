@@ -1,14 +1,12 @@
- 
-
 import 'package:flutter/material.dart';
 import '../../../../main home/widget/app_bar_style.dart';
 
-class History extends StatelessWidget {
-  const History({super.key});
+class HistoryBody extends StatelessWidget {
+  const HistoryBody({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return  Scaffold(
+    return Scaffold(
       appBar: AppBarStyle('History'),
     );
   }

@@ -1,5 +1,3 @@
-
-
 import 'package:flutter/material.dart';
 import 'package:mate_order_app/constants.dart';
 import 'package:mate_order_app/core/utils/assets.dart';

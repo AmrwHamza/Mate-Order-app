@@ -1,68 +1,49 @@
 import 'package:flutter/material.dart';
 
-class PasswordFieldFrame extends StatefulWidget {
+class PasswordFieldFrame extends StatelessWidget {
   final String label;
   final TextEditingController controller;
-  
-  final dynamic currentPassword;
-  const PasswordFieldFrame({
-    super.key,
-    required this.label,
-    required this.controller,
-    this.currentPassword,
-  });
-  @override
-  _PasswordFieldFrameState createState() => _PasswordFieldFrameState();
-}
+  final Function(String)? onChanged;
 
-class _PasswordFieldFrameState extends State<PasswordFieldFrame> {
-  bool obscureText = true;
-  String? errorText;
+  final ValueNotifier<bool> obscureTextNotifier = ValueNotifier<bool>(true);
+
+  PasswordFieldFrame(
+      {super.key,
+      required this.label,
+      required this.controller,
+      this.onChanged});
 
   @override
   Widget build(BuildContext context) {
-    return TextFormField(
-      controller: widget.controller,
-      obscureText: obscureText,
-      cursorColor: Colors.black,
-      onTap: () {
-        widget.controller.selection = TextSelection(
-          baseOffset: 0,
-          extentOffset: widget.controller.value.text.length,
-        );
-      },
-      onChanged: (value) {
-        setState(() {
-          //شرط من اجل معالجة حقول كلمة السر الجديدة فقط
-          if (widget.label != 'Current Password') {
-            if (value.length < 8) {
-              errorText = 'Password must be at least 8 characters long';
-            } else if (widget.label == 'Current Password' &&
-                widget.currentPassword != null &&
-                value != widget.currentPassword) {
-              errorText = 'Current Password is incorrect';
-            } else {
-              errorText = null;
-            }
-          }
+    return ValueListenableBuilder<bool>(
+        valueListenable: obscureTextNotifier,
+        builder: (context, obscureText, child) {
+          return TextFormField(
+            controller: controller,
+            obscureText: obscureText,
+            cursorColor: Colors.black,
+            onTap: () {
+              controller.selection = TextSelection(
+                baseOffset: 0,
+                extentOffset: controller.value.text.length,
+              );
+            },
+            decoration: InputDecoration(
+              labelText: label,
+              border: const OutlineInputBorder(),
+              prefixIcon:
+                  Icon(Icons.lock, color: Colors.black.withOpacity(0.7)),
+              suffixIcon: IconButton(
+                icon: Icon(
+                  obscureText ? Icons.visibility_off : Icons.visibility,
+                  color: Colors.black.withOpacity(0.5),
+                ),
+                onPressed: () {
+                  obscureTextNotifier.value = !obscureText;
+                },
+              ),
+            ),
+          );
         });
-      },
-      decoration: InputDecoration(
-        labelText: widget.label,
-        border: const OutlineInputBorder(),
-        prefixIcon: Icon(Icons.lock, color: Colors.black.withOpacity(0.7)),
-        suffixIcon: IconButton(
-          icon: Icon(
-            obscureText ? Icons.visibility_off : Icons.visibility,
-            color: Colors.black.withOpacity(0.5),
-          ),
-          onPressed: () {
-            setState(() {
-              obscureText = !obscureText;
-            });
-          },
-        ),
-      ),
-    );
   }
 }

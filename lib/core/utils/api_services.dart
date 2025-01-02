@@ -85,6 +85,7 @@ class Api {
   Future<Either<Failure, dynamic>> getWithAuth({
     required endPoint,
     Map<String, dynamic>? queryParameters,
+    ResponseType? responseType,
   }) async {
     try {
       final token = await SharedPrefHelper.getString(SharedPrefKeys.userToken);
@@ -97,7 +98,7 @@ class Api {
       final options = Options(
         headers: {
           'Authorization': 'Bearer $token',
-        },
+        },responseType: responseType,
       );
 
       var response = await dio.get('$endPoint',
@@ -148,6 +149,21 @@ class Api {
         data: data,
         options: options,
       );
+      final token = await SharedPrefHelper.getString(SharedPrefKeys.userToken);
+      if (token.isEmpty) {
+        return const Left(
+            ValidationFailure('====Token is missing or invalid===='));
+      }
+      final options = Options(
+        headers: {
+          'Authorization': 'Bearer $token',
+        },
+      );
+      var response = await dio.delete(
+        '$endPoint',
+        data: data,
+        options: options,
+      );
       print(response.data.toString());
       return Right(response.data);
     } on DioException catch (dioException) {
@@ -173,6 +189,7 @@ class Api {
 
   Future<Either<Failure, Map<String, dynamic>>> putWithAuth({
     required endPoint,
+    Map<String, dynamic>? queryParameters,
     data,
   }) async {
     try {
@@ -186,7 +203,7 @@ class Api {
           'Authorization': 'Bearer $token',
         },
       );
-      var response = await dio.put('$endPoint', data: data, options: options);
+      var response = await dio.put('$endPoint', data: data, options: options,queryParameters:queryParameters );
       return Right(response.data);
     } on DioException catch (dioException) {
       return Left(handleDioError(dioException));

@@ -5,7 +5,8 @@ class EditableTextField extends StatelessWidget {
   final IconData icon;
   final TextEditingController controller;
   final TextInputType keyboardType;
-  const EditableTextField({super.key, 
+  const EditableTextField({
+    super.key,
     required this.label,
     required this.icon,
     required this.controller,
@@ -27,15 +28,7 @@ class EditableTextField extends StatelessWidget {
         labelText: label,
         border: OutlineInputBorder(),
         prefixIcon: Icon(icon, color: Colors.black.withOpacity(0.5)),
-        suffixIcon: IconButton(
-          icon: Icon(Icons.edit, color: Colors.black.withOpacity(0.5)),
-          onPressed: () {
-            controller.selection = TextSelection(
-              baseOffset: 0,
-              extentOffset: controller.value.text.length,
-            );
-          },
-        ),
+        suffixIcon: Icon(Icons.edit, color: Colors.black.withOpacity(0.5)),
       ),
     );
   }

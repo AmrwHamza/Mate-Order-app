@@ -1,12 +1,11 @@
-
 import 'package:flutter/material.dart';
 import '../../../../main home/widget/app_bar_style.dart';
 import 'package:mate_order_app/Features/profile/presentation/view/widget/text_frame.dart';
 import 'package:mate_order_app/constants.dart';
 import 'package:mate_order_app/core/utils/assets.dart';
 
-class Setting extends StatelessWidget {
-  const Setting({super.key});
+class SettingBody extends StatelessWidget {
+  const SettingBody({super.key});
 
   @override
   Widget build(BuildContext context) {

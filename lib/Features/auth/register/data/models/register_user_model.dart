@@ -6,7 +6,7 @@ class RegisterUserModel {
 
   RegisterUserModel.fromJson(Map<String, dynamic> json) {
     user = json['user'] != null ? new User.fromJson(json['user']) : null;
-   
+
     token = json['token'] as String;
   }
 

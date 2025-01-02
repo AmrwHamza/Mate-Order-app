@@ -5,7 +5,7 @@ import 'package:mate_order_app/core/utils/error/failure.dart';
 
 class ReSendCodeService {
   Future<Either<Failure, ReSendCodeModel>> reSend(
-      {required String?token}) async {
+      {required String? token}) async {
     var result = await Api().get(
         endPoint: 'resendCode', headers: {'Authorization': 'Bearer $token'});
 
