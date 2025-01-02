@@ -5,7 +5,7 @@ class AppRouter {
   Route? generateRoute(RouteSettings settings) {
     switch (settings.name) {
       case '/':
-        return MaterialPageRoute(builder:(_) => SplashView() );
+        return MaterialPageRoute(builder: (_) => SplashView());
     }
   }
 }

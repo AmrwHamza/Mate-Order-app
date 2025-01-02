@@ -13,7 +13,7 @@ class ProductsList extends StatelessWidget {
           itemBuilder: (context, index) {
             return Padding(
               padding: const EdgeInsets.all(5),
-              child:  CardOfProduct(),
+              child: CardOfProduct(),
             );
           }),
     );

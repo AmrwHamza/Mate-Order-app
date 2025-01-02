@@ -1,9 +1,7 @@
-
-
 import 'package:flutter/material.dart';
 
-class MyLocation extends StatelessWidget {
-  const MyLocation({super.key});
+class MyLocationBody extends StatelessWidget {
+  const MyLocationBody({super.key});
 
   @override
   Widget build(BuildContext context) {

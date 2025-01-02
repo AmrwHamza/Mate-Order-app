@@ -42,14 +42,18 @@ class Api {
     required data,
   }) async {
     try {
-      var response = await dio.post(
-        '$endPoint',
-        data: data,
-        options: Options(headers: {
-          'Authorization':
-              'Bearer ${await SharedPrefHelper.getSecuredString(SharedPrefKeys.userToken)}',
-        }),
+      final token = await SharedPrefHelper.getString(SharedPrefKeys.userToken);
+      if (token.isEmpty) {
+        return const Left(
+            ValidationFailure('====Token is missing or invalid===='));
+      }
+      final options = Options(
+        headers: {
+          'Authorization': 'Bearer $token',
+        },
       );
+
+      var response = await dio.post('$endPoint', data: data, options: options);
 
       return Right(response.data);
     } on DioException catch (dioException) {
@@ -78,22 +82,33 @@ class Api {
     }
   }
 
-  Future<Either<Failure, Map<String, dynamic>>> getWithAuth({
+  Future<Either<Failure, dynamic>> getWithAuth({
     required endPoint,
     Map<String, dynamic>? queryParameters,
+    ResponseType? responseType,
   }) async {
     try {
-      var response = await dio.get(
-        '$endPoint',
-        queryParameters: queryParameters ?? {},
-        options: Options(headers: {
-          'Authorization':
-              'Bearer ${await SharedPrefHelper.getSecuredString(SharedPrefKeys.userToken)}',
-        }),
+      final token = await SharedPrefHelper.getString(SharedPrefKeys.userToken);
+      if (token.isEmpty) {
+        print("Token is missing or invalid");
+
+        return const Left(
+            ValidationFailure('====Token is missing or invalid===='));
+      }
+      final options = Options(
+        headers: {
+          'Authorization': 'Bearer $token',
+        },responseType: responseType,
       );
-      print(response.data.toString());
+
+      var response = await dio.get('$endPoint',
+          queryParameters: queryParameters ?? {}, options: options);
+      // print(response.data.toString());
+      print("Response: ${response.data}");
       return Right(response.data);
     } on DioException catch (dioException) {
+      print("DioException: ${dioException.message}");
+
       return Left(handleDioError(dioException));
     } catch (e) {
       return const Left(UnknownFailure());
@@ -119,12 +134,21 @@ class Api {
     required data,
   }) async {
     try {
-      var response = await dio.delete('$endPoint',
-          data: data,
-          options: Options(headers: {
-            'Authorization':
-                'Bearer ${await SharedPrefHelper.getSecuredString(SharedPrefKeys.userToken)}',
-          }));
+      final token = await SharedPrefHelper.getString(SharedPrefKeys.userToken);
+      if (token.isEmpty) {
+        return const Left(
+            ValidationFailure('====Token is missing or invalid===='));
+      }
+      final options = Options(
+        headers: {
+          'Authorization': 'Bearer $token',
+        },
+      );
+      var response = await dio.delete(
+        '$endPoint',
+        data: data,
+        options: options,
+      );
       print(response.data.toString());
       return Right(response.data);
     } on DioException catch (dioException) {
@@ -150,16 +174,21 @@ class Api {
 
   Future<Either<Failure, Map<String, dynamic>>> putWithAuth({
     required endPoint,
+    Map<String, dynamic>? queryParameters,
     data,
   }) async {
     try {
-      var response = await dio.put('$endPoint',
-          data: data,
-          options: Options(headers: {
-            'Authorization':
-                'Bearer ${await SharedPrefHelper.getSecuredString(SharedPrefKeys.userToken)}',
-          }));
-      print(response.data.toString());
+      final token = await SharedPrefHelper.getString(SharedPrefKeys.userToken);
+      if (token.isEmpty) {
+        return const Left(
+            ValidationFailure('====Token is missing or invalid===='));
+      }
+      final options = Options(
+        headers: {
+          'Authorization': 'Bearer $token',
+        },
+      );
+      var response = await dio.put('$endPoint', data: data, options: options,queryParameters:queryParameters );
       return Right(response.data);
     } on DioException catch (dioException) {
       return Left(handleDioError(dioException));
@@ -221,6 +250,4 @@ class Api {
 
     return 'Unknown error occurred';
   }
-
-  
 }

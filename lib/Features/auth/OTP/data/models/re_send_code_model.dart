@@ -5,7 +5,8 @@ class ReSendCodeModel extends Equatable {
 
   const ReSendCodeModel({this.message});
 
-  factory ReSendCodeModel.fromJson(Map<String, dynamic> json) => ReSendCodeModel(
+  factory ReSendCodeModel.fromJson(Map<String, dynamic> json) =>
+      ReSendCodeModel(
         message: json['message'] as String?,
       );
 

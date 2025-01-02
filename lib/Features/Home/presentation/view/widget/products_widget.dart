@@ -18,8 +18,7 @@ class ProductsWidget extends StatelessWidget {
         padding: const EdgeInsets.all(10),
         child: ListView(
           children: [
-            SearchBarForHome(
-                SearchController: productsSearchController),
+            SearchBarForHome(SearchController: productsSearchController),
             SizedBox(height: 20),
             Text(
               'Category Name',

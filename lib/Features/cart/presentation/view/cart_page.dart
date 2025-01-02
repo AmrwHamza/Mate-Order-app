@@ -4,8 +4,6 @@ import 'package:mate_order_app/constants.dart';
 
 import '../../../main home/widget/app_bar_style.dart';
 
-
-
 class CartPage extends StatelessWidget {
   const CartPage({super.key});
 

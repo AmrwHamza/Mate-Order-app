@@ -109,5 +109,3 @@ class _CardOfProductState extends State<CardOfProduct> {
     );
   }
 }
-
-

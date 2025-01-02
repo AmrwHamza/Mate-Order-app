@@ -1,5 +1,3 @@
-
-
 import 'package:flutter/material.dart';
 import 'package:mate_order_app/Features/Home/presentation/view/widget/home_page_body.dart';
 import 'package:mate_order_app/Features/main%20home/widget/app_bar_style.dart';
@@ -17,27 +15,3 @@ class HomePage extends StatelessWidget {
     );
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
