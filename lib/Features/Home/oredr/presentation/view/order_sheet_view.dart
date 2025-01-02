@@ -70,7 +70,7 @@ class _OrderSheetState extends State<OrderSheet> {
                 ),
               ),
               child: BlocProvider(
-                create: (context) => OrderBloc(product: widget.product),
+                create: (context) => OrderBloc(widget.product),
                 child: CustomScrollView(
                   controller: scrollController,
                   slivers: [

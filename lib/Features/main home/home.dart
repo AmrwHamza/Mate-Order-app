@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:mate_order_app/Features/cart/presentation/view/cart_page.dart';
 import 'package:mate_order_app/Features/Nonification/presentation/view/notification_page.dart';
+import 'package:mate_order_app/Features/cart/presentation/view/cart_view.dart';
+import 'package:mate_order_app/Features/orders/orders_view.dart';
 import 'package:mate_order_app/Features/profile/presentation/view/profile_page.dart';
 import 'package:mate_order_app/constants.dart';
 
 import '../Home/Products/presentation/view/home_page.dart';
-
 
 class Home extends StatefulWidget {
   @override
@@ -15,9 +15,10 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   int selectedIndex = 0;
   static List<Widget> pages = <Widget>[
-     HomePage(),
+    const HomePage(),
+    const CartView(),
+    const OrdersView(),
     const NotificationPage(),
-    const CartPage(),
     const ProfilePage(),
   ];
   void onItemTapped(int index) {
@@ -40,8 +41,11 @@ class _HomeState extends State<Home> {
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
           BottomNavigationBarItem(
-              icon: Icon(Icons.notification_add), label: 'Notification'),
-          BottomNavigationBarItem(icon: Icon(Icons.card_travel), label: 'Cart'),
+              icon: Icon(Icons.shopping_cart_outlined), label: 'Cart'),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.checklist_rtl), label: 'Orders'),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.notifications), label: 'Notification'),
           BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Profile'),
         ],
         currentIndex: selectedIndex,

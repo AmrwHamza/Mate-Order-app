@@ -9,7 +9,8 @@ class AddOrderServices {
       required int locationId,
       required int amount}) async {
     var result = await Api().postWithAuth(
-        endPoint: 'addOrder/1/1', data: {"total_amount": amount});
+        endPoint: 'addOrder/${productId}/${locationId}',
+        data: {"total_amount": amount});
 
     return result.fold(
       (l) {

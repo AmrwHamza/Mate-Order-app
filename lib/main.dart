@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:mate_order_app/Features/Home/locations/presentaion/model_view/location_cubit/locations_cubit.dart';
+import 'package:mate_order_app/Features/Home/oredr/presentation/model_view/bloc/order_bloc.dart';
 import 'package:mate_order_app/Features/Home/stores/presentation/model_view/stores_bloc/stores_bloc.dart';
 import 'package:mate_order_app/Features/auth/OTP/presentation/view-models/cubit/verify_cubit.dart';
 import 'package:mate_order_app/Features/auth/login/presentation/view-models/cubit/login_cubit.dart';
@@ -10,6 +11,7 @@ import 'package:mate_order_app/Features/main%20home/home.dart';
 import 'package:mate_order_app/Features/splash/views/splash_view.dart';
 import 'package:mate_order_app/constants.dart';
 import 'package:mate_order_app/core/helpers/shared_pref.dart';
+import 'Features/Home/Products/presentation/model_view/add_to_cart/add_to_cart_cubit.dart';
 import 'Features/Home/Products/presentation/model_view/home_bloc/bloc/products_home_bloc.dart';
 import 'Features/Home/map/presentation/model_view/cubit/map_cubit.dart';
 import 'core/bloc_helper/observer.dart';
@@ -39,7 +41,8 @@ class MateOrderApp extends StatelessWidget {
         BlocProvider(create: (context) => StoresBloc()),
         BlocProvider(create: (context) => LocationsCubit()),
         BlocProvider(create: (context) => MapCubit()),
-        
+        BlocProvider(create:(context) => AddToCartCubit())
+
       ],
       child: GetMaterialApp(
         debugShowCheckedModeBanner: false,

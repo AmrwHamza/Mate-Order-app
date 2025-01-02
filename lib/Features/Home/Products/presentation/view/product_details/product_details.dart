@@ -37,7 +37,10 @@ class ProductDetails extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    OrderButton(product: product),
+                    OrderButton(
+                      product: product,
+                      buttonColor: kPrimaryColor8,
+                    ),
                     AddToCartButton(product: product),
                   ],
                 )
@@ -95,37 +98,34 @@ class AddToCartButton extends StatelessWidget {
   final Product product;
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => AddToCartCubit(),
-      child: BlocConsumer<AddToCartCubit, AddToCartState>(
-        listener: (context, state) {
-          if (state is AddToCartError) {
-            Get.snackbar('Error', state.message);
-          }
-
-          if (state is AddToCartSuccess) {
-            Get.snackbar('Success', state.message);
-          }
-        },
-        builder: (context, state) {
-          if (state is AddToCartLoading) {
-            return const CircularProgressIndicator(
-              color: Colors.black,
-            );
-          } else {
-            return ElevatedButton(
-                style: const ButtonStyle(
-                    backgroundColor: WidgetStatePropertyAll(kPrimaryColor10)),
-                onPressed: () {
-                  context.read<AddToCartCubit>().addToCard(id: product.id!);
-                },
-                child: const Text(
-                  'Add to cart',
-                  style: TextStyle(color: Colors.black),
-                ));
-          }
-        },
-      ),
+    return BlocConsumer<AddToCartCubit, AddToCartState>(
+      listener: (context, state) {
+        if (state is AddToCartError) {
+          Get.snackbar('Error', state.message);
+        }
+    
+        if (state is AddToCartSuccess) {
+          Get.snackbar('Success', state.message);
+        }
+      },
+      builder: (context, state) {
+        if (state is AddToCartLoading) {
+          return const CircularProgressIndicator(
+            color: Colors.black,
+          );
+        } else {
+          return ElevatedButton(
+              style: const ButtonStyle(
+                  backgroundColor: WidgetStatePropertyAll(kPrimaryColor10)),
+              onPressed: () {
+                context.read<AddToCartCubit>().addToCard(id: product.id!);
+              },
+              child: const Text(
+                'Add to cart',
+                style: TextStyle(color: Colors.black),
+              ));
+        }
+      },
     );
   }
 }
@@ -134,15 +134,15 @@ class OrderButton extends StatelessWidget {
   const OrderButton({
     super.key,
     required this.product,
+    required this.buttonColor,
   });
 
   final Product product;
-
+  final Color buttonColor;
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
-      style: const ButtonStyle(
-          backgroundColor: WidgetStatePropertyAll(kPrimaryColor8)),
+      style: ButtonStyle(backgroundColor: WidgetStatePropertyAll(buttonColor)),
       onPressed: () {
         showModalBottomSheet(
           context: context,
