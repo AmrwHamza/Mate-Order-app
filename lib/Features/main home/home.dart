@@ -1,11 +1,11 @@
 import 'package:convex_bottom_bar/convex_bottom_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:mate_order_app/Features/Nonification/presentation/view/notification_page.dart';
-import 'package:mate_order_app/Features/Home/presentation/view/home_page.dart';
 import 'package:mate_order_app/Features/profile/presentation/view/profile_page.dart';
 import 'package:mate_order_app/constants.dart';
-
 import '../Home/Products/presentation/view/home_page.dart';
+
+
 import '../cart/presentation/view/cart_view.dart';
 import '../orders/orders_view.dart';
 
@@ -18,7 +18,7 @@ class _HomeState extends State<Home> {
   int selectedIndex = 0;
 
   final List<Widget> pages = <Widget>[
-    const HomePage(),
+     HomePage(),
     const CartView(),
     const OrdersView(),
     const NotificationPage(),

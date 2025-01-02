@@ -15,7 +15,7 @@ const Color kPrimaryColor10 = Color(0xffC9FEF6);
 const Color KBackgroundColor = Color(0xffEFFEFB);
 
 const KTransitionDuration = Duration(milliseconds: 250);
-const String base = "https://22a6-94-47-156-10.ngrok-free.app";
+const String base = "https://2c87-46-58-210-56.ngrok-free.app";
 
 // const String baseurl = "https://a8bc-146-70-202-35.ngrok-free.app" "/api/";
 const String baseurl = "$base" "/api/";
@@ -32,21 +32,21 @@ class SharedPrefKeys {
 //   'clothes',
 // ];
 
-// const kCategory = <String>[
-//   //Ebaa
-//   'electronic',
-//   'food',
-//   'cloths',
-// ];
-
 const kCategory = <String>[
-  'Food',
-  'Drinks',
-  'Clothes',
-  'Toys',
-  'Books',
-  'Tools',
-  'Electronics',
-  'Furniture',
-  'Kitchen',
+  //Ebaa
+  'electronic',
+  'food',
+  'cloths',
 ];
+
+// const kCategory = <String>[
+//   'Food',
+//   'Drinks',
+//   'Clothes',
+//   'Toys',
+//   'Books',
+//   'Tools',
+//   'Electronics',
+//   'Furniture',
+//   'Kitchen',
+// ];

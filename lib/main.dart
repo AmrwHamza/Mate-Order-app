@@ -4,7 +4,7 @@ import 'package:get/get_navigation/src/root/get_material_app.dart';
 
 
 
-mport 'package:mate_order_app/Features/Home/locations/presentaion/model_view/location_cubit/locations_cubit.dart';
+import 'package:mate_order_app/Features/Home/locations/presentaion/model_view/location_cubit/locations_cubit.dart';
 import 'package:mate_order_app/Features/Home/oredr/presentation/model_view/bloc/order_bloc.dart';
 import 'package:mate_order_app/Features/Home/stores/presentation/model_view/stores_bloc/stores_bloc.dart';
 import 'package:mate_order_app/Features/auth/OTP/presentation/view-models/cubit/verify_cubit.dart';

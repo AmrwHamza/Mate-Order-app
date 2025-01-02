@@ -32,16 +32,13 @@ class CartProductCard extends StatelessWidget {
           children: [
             AspectRatio(
               aspectRatio: 2.9 / 2,
-              child: Hero(
-                tag: '${product.id}${product.imagePath}',
-                child: Container(
-                  margin: const EdgeInsets.symmetric(vertical: 4),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(20),
-                    image: DecorationImage(
-                      image: image(product),
-                      fit: BoxFit.fill,
-                    ),
+              child: Container(
+                margin: const EdgeInsets.symmetric(vertical: 4),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(20),
+                  image: DecorationImage(
+                    image: image(product),
+                    fit: BoxFit.fill,
                   ),
                 ),
               ),

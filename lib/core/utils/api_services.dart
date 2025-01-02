@@ -149,21 +149,7 @@ class Api {
         data: data,
         options: options,
       );
-      final token = await SharedPrefHelper.getString(SharedPrefKeys.userToken);
-      if (token.isEmpty) {
-        return const Left(
-            ValidationFailure('====Token is missing or invalid===='));
-      }
-      final options = Options(
-        headers: {
-          'Authorization': 'Bearer $token',
-        },
-      );
-      var response = await dio.delete(
-        '$endPoint',
-        data: data,
-        options: options,
-      );
+   
       print(response.data.toString());
       return Right(response.data);
     } on DioException catch (dioException) {

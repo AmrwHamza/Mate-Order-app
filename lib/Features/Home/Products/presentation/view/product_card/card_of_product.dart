@@ -59,9 +59,10 @@ class CardOfProduct extends StatelessWidget {
               AspectRatio(
                 aspectRatio: 3.4 / 2,
                 child: Hero(
-                  tag: '${product.id}${product.imagePath}',
+                  tag: '${product.id}${product.imagePath}${product.createdAt}',
                   child: Container(
                     decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10),
                       image: DecorationImage(
                         // image:AssetImage() ,
                         // image: AssetImage(AssetsData.product),

@@ -27,7 +27,7 @@ class ProfileImageService {
         print('=====right data==== ${data.runtimeType}');
         try {
           if (data is Uint8List) {
-            if (data.length < 20) {
+            if (data.length < 80) {
               return Left(UnknownFailure('Yor don\'t have profile image'));
             } else {
               print('Data is a Uint8List (Byte Array)');

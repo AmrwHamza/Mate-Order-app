@@ -74,7 +74,7 @@ class ProductDetails extends StatelessWidget {
     return AspectRatio(
       aspectRatio: 1.3,
       child: Hero(
-        tag: '${product.id}${product.imagePath}',
+        tag: '${product.id}${product.imagePath}${product.createdAt}',
         child: Container(
           decoration: BoxDecoration(
             image: DecorationImage(
