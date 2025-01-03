@@ -1,11 +1,9 @@
-import 'package:dartz/dartz.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mate_order_app/Features/auth/register/data/models/register_user_model.dart';
 import 'package:mate_order_app/Features/auth/register/data/repository/register_repository.dart';
 import 'package:mate_order_app/core/utils/api_services.dart';
-import 'package:mate_order_app/core/utils/error/failure.dart';
 
 part 'register_state.dart';
 
@@ -28,7 +26,7 @@ class RegisterCubit extends Cubit<RegisterState> {
     }
     isLoading = true;
     emit(RegisterLoading());
-    Map<String, dynamic> data = {
+    final Map<String, dynamic> data = {
       'firstName': firstName,
       'lastName': lastName,
       'phone': phoneNumber,
@@ -37,8 +35,8 @@ class RegisterCubit extends Cubit<RegisterState> {
       'email': email
     };
 
-    RegisterRepository service = RegisterRepository(Api());
-    var result = await service.register(data);
+    final RegisterRepository service = RegisterRepository(Api());
+    final result = await service.register(data);
 
     result.fold(
       (l) {

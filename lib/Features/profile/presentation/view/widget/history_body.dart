@@ -7,7 +7,7 @@ class HistoryBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBarStyle('History'),
+      appBar: appBarStyle('History'),
     );
   }
 }

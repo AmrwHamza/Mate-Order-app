@@ -18,7 +18,7 @@ class _OrderSheetState extends State<OrderSheet> {
 
   @override
   void initState() {
-    // TODO: implement initState
+
     super.initState();
     controller.addListener(onChanged);
   }
@@ -90,23 +90,25 @@ class _OrderSheetState extends State<OrderSheet> {
 
   SliverToBoxAdapter topButtonIndicator() {
     return SliverToBoxAdapter(
+      // ignore: avoid_unnecessary_containers
       child: Container(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
+            // ignore: avoid_unnecessary_containers
             Container(
               child: Center(
                 child: Wrap(
                   children: [
                     Container(
                       width: 100,
-                      margin: EdgeInsets.only(
+                      margin: const EdgeInsets.only(
                         top: 10,
                         bottom: 10,
                       ),
                       height: 5,
-                      decoration: BoxDecoration(
+                      decoration: const BoxDecoration(
                           color: Colors.black54,
                           shape: BoxShape.rectangle,
                           borderRadius: BorderRadius.all(Radius.circular(8.0))),

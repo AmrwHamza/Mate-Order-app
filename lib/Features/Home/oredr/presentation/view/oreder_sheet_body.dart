@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
 import 'package:mate_order_app/Features/Home/Products/data/models/products_with_category_model/products_with_category/products_with_category.dart';
-import 'package:mate_order_app/Features/Home/locations/presentaion/model_view/location_cubit/locations_cubit.dart';
 import 'package:mate_order_app/Features/Home/locations/presentaion/view/locations_view.dart';
 import 'package:mate_order_app/Features/Home/oredr/presentation/model_view/bloc/order_bloc.dart';
 import 'package:mate_order_app/constants.dart';
@@ -29,7 +28,6 @@ class OrederSheetBody extends StatelessWidget {
         }
       },
       builder: (context, state) {
-        print("Current State: $state");
 
         // if (state is AddOrderLoading) {
         //   return const Column(
@@ -181,7 +179,7 @@ class OrederSheetBody extends StatelessWidget {
                         onPressed: () {
                           context.read<OrderBloc>().add(AddOrderEvent());
                         },
-                        child: Text('Confirm')),
+                        child: const Text('Confirm')),
                   ],
                 )
             ],

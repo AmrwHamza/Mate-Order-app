@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
-import 'package:mate_order_app/Features/Home/stores/data/models/stores_model/store.dart';
 import 'package:mate_order_app/Features/Home/stores/presentation/model_view/stores_bloc/stores_bloc.dart';
 import 'package:mate_order_app/Features/Home/stores/presentation/view/stores/store_card_shimmer.dart';
 
@@ -68,9 +67,8 @@ class _StoreListState extends State<StoreList> {
               controller: _scrollController,
               itemCount: 5,
               itemBuilder: (context, index) {
-                print('Building shimmer item $index');
 
-                return StoreCardShimmer();
+                return const StoreCardShimmer();
               },
             ),
           );

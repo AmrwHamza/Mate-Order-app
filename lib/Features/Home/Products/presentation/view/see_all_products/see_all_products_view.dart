@@ -6,14 +6,16 @@ import 'see_all_products_body.dart';
 
 class SeeAllProductsView extends StatelessWidget {
   const SeeAllProductsView({super.key, required this.categoryName});
-    final String categoryName;
+  final String categoryName;
 
   @override
   Widget build(BuildContext context) {
-    return  Scaffold(
-  backgroundColor: KBackgroundColor,
-      appBar: MainAppBar('Home'),
-      body: SafeArea(child: SeeAllProductsBody.SeeAllProductsBody(categoryName: categoryName)),
+    return Scaffold(
+      backgroundColor: KBackgroundColor,
+      appBar: mainAppBar('Home'),
+      body: SafeArea(
+          child: SeeAllProductsBody.SeeAllProductsBody(
+              categoryName: categoryName)),
     );
   }
 }

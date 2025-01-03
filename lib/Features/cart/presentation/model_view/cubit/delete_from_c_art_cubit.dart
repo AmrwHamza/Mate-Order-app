@@ -1,7 +1,8 @@
+// ignore: depend_on_referenced_packages
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 
-import '../../../data/repository/DeleteProductOfCArtService.dart';
+import '../../../data/repository/delete_product_of_cart_service.dart';
 
 part 'delete_from_c_art_state.dart';
 
@@ -17,7 +18,7 @@ class DeleteFromCArtCubit extends Cubit<DeleteFromCArtState> {
     }
     emit(DeleteFromCartLoading());
 
-    var result = await Deleteproductofcartservice().deleteFromCart(id: id);
+    final result = await Deleteproductofcartservice().deleteFromCart(id: id);
  if (isClosed) {
       return;
     }

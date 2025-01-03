@@ -17,20 +17,17 @@ class ProfileImageService {
   Future<Either<Failure, File>> showImage() async {
     final result = await api.getWithAuth(
         endPoint: 'showImage', responseType: ResponseType.bytes);
-    print('======= ${result.runtimeType} ========');
 
     return result.fold(
       (failure) {
         return Left(failure);
       },
       (data) {
-        print('=====right data==== ${data.runtimeType}');
         try {
           if (data is Uint8List) {
             if (data.length < 80) {
-              return Left(UnknownFailure('Yor don\'t have profile image'));
+              return const Left(UnknownFailure('Yor don\'t have profile image'));
             } else {
-              print('Data is a Uint8List (Byte Array)');
 
               final tempDir = Directory.systemTemp;
               final tempFile = File(
@@ -40,10 +37,10 @@ class ProfileImageService {
               return Right(tempFile);
             }
           } else {
-            return Left(UnknownFailure());
+            return const Left(UnknownFailure());
           }
         } catch (e) {
-          return Left(UnknownFailure());
+          return const Left(UnknownFailure());
         }
       },
     );
@@ -58,7 +55,7 @@ class ProfileImageService {
         filename: imageFile.path.split('/').last,
         contentType: mimeType != null ? dio.DioMediaType.parse(mimeType) : null,
       );
-      FormData data = FormData.fromMap({
+      final FormData data = FormData.fromMap({
         "image": multipartFile,
       });
 
@@ -68,7 +65,7 @@ class ProfileImageService {
       );
 
       if (result.isLeft()) {
-        final failure = result.swap().getOrElse(() => UnknownFailure());
+        final failure = result.swap().getOrElse(() => const UnknownFailure());
         return Left(failure);
       }
 
@@ -78,7 +75,7 @@ class ProfileImageService {
           return Right(ProfileImageModel.fromJson(data));
         },
       );
-    } on Exception catch (e) {
+    } on Exception {
       // print("error to upload image: $e");
       return null;
     }

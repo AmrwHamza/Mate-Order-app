@@ -7,8 +7,8 @@ class MyLocationButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {},
-      child: ListTile(
-        trailing: const Icon(Icons.chevron_right),
+      child: const ListTile(
+        trailing: Icon(Icons.chevron_right),
         leading: Icon(Icons.location_on, color: Colors.black),
         title: Text('My Locatin'),
       ),

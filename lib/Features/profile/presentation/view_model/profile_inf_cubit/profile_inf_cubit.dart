@@ -1,3 +1,4 @@
+// ignore: depend_on_referenced_packages
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:mate_order_app/Features/profile/data/models/profile_inf/profile_inf_model.dart';

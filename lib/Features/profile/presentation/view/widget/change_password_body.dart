@@ -35,44 +35,44 @@ class ChangePasswordBody extends StatelessWidget {
             inAsyncCall:
                 BlocProvider.of<ChangePasswordCubit>(context).isLoading,
             blur: .5,
-            progressIndicator: CircularProgressIndicator(
+            progressIndicator: const CircularProgressIndicator(
               color: kPrimaryColor2,
             ),
             child: Scaffold(
               backgroundColor: KBackgroundColor,
-              appBar: AppBarStyle('Edit Your Profile'),
+              appBar: appBarStyle('Edit Your Profile'),
               body: Padding(
                 padding: const EdgeInsets.only(
                     right: 16, left: 16, top: 25, bottom: 14),
                 child: ListView(
                   children: [
-                    SizedBox(height: 5),
+                    const SizedBox(height: 5),
                     PasswordFieldFrame(
                       label: 'Current Password',
                       controller: cureentController,
                     ),
-                    SizedBox(height: 30),
-                    SizedBox(height: 5),
+                    const SizedBox(height: 30),
+                    const SizedBox(height: 5),
                     PasswordFieldFrame(
                       label: 'New Password',
                       controller: newController,
                     ),
-                    SizedBox(height: 30),
-                    SizedBox(height: 5),
+                    const SizedBox(height: 30),
+                    const SizedBox(height: 5),
                     PasswordFieldFrame(
                       label: 'Confirm Your Password',
                       controller: confirmController,
                     ),
-                    SizedBox(height: 40),
+                    const SizedBox(height: 40),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        CancelButton(),
+                        const CancelButton(),
                         IconButton(
                           onPressed: () {
                             validatePassword(context);
                           },
-                          icon: CheckBotton(),
+                          icon: const CheckBotton(),
                         ),
                       ],
                     ),

@@ -9,7 +9,7 @@ class RegisterRepository {
 
   Future<Either<Failure, RegisterUserModel>> register(
       Map<String, dynamic> data) async {
-    var registerUserModel = await api.post(
+    final registerUserModel = await api.post(
       endPoint: 'auth/register',
       data: data,
     );

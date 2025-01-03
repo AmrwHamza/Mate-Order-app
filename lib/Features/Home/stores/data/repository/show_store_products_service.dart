@@ -7,13 +7,11 @@ import '../../../../../core/utils/api_services.dart';
 class ShowStoreProductsService {
   Future<Either<Failure, StoreProductsModel>> getStoreProducts(
       {required int id, required int pageNumber}) async {
-    var result = await Api()
+    final result = await Api()
         .getWithAuth(endPoint: 'storeProducts/$id', queryParameters: {
       'page': pageNumber,
     });
 
-    print(
-        'Final URL: ${Api().dio.options.baseUrl}storeProducts/$id?page=$pageNumber');
     return result.fold(
       (l) => Left(l),
       (r) {

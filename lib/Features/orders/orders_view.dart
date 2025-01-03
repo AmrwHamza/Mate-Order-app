@@ -7,7 +7,7 @@ class OrdersView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: MainAppBar('Orders'),
+      appBar: mainAppBar('Orders'),
       body: Container(),
     );
   }

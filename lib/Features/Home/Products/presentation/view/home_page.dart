@@ -11,8 +11,8 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: KBackgroundColor,
-      appBar: MainAppBar('Home'),
-      body: const  HomePageBody(),
+      appBar: mainAppBar('Home'),
+      body: const HomePageBody(),
     );
   }
 }

@@ -2,13 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
 import 'package:mate_order_app/Features/Home/Products/presentation/view/product_details/product_details.dart';
-import 'package:mate_order_app/Features/Home/oredr/presentation/model_view/bloc/order_bloc.dart';
 import 'package:mate_order_app/Features/cart/presentation/model_view/cubit/cart_cubit.dart';
 import 'package:mate_order_app/constants.dart';
 
 import '../../../../../core/utils/assets.dart';
 import '../../../../Home/Products/data/models/products_with_category_model/products_with_category/products_with_category.dart';
-import '../../../../Home/Products/presentation/view/fav_icon/fav_icon.dart';
 import '../../model_view/cubit/delete_from_c_art_cubit.dart';
 
 class CartProductCard extends StatelessWidget {
@@ -53,7 +51,7 @@ class CartProductCard extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  'Product name: ${product.name}' ?? 'No NAMe',
+                  'Product name: ${product.name}',
                   style: const TextStyle(fontWeight: FontWeight.bold),
                 ),
                 Text(

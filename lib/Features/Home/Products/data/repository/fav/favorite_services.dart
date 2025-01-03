@@ -10,7 +10,7 @@ class FavoriteService {
   FavoriteService({required this.api});
 
   Future<Either<Failure, AddToFavModel>> addToFav({required String id}) async {
-    var result = await api.postWithAuth(endPoint: 'addFav/$id', data: {});
+    final result = await api.postWithAuth(endPoint: 'addFav/$id', data: {});
     return result.fold(
       (left) => Left(left),
       (right) {
@@ -20,7 +20,7 @@ class FavoriteService {
   }
 
   Future<Either<Failure, DisFavModel>> disFav({required String id}) async {
-    var result = await api.postWithAuth(endPoint: 'disFav/$id', data: {});
+    final result = await api.postWithAuth(endPoint: 'disFav/$id', data: {});
 
     return result.fold(
       (left) => Left(left),

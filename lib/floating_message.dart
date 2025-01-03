@@ -1,6 +1,5 @@
 import 'package:another_flushbar/flushbar.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:mate_order_app/constants.dart';
 
 class FloatingMessage {
@@ -19,7 +18,7 @@ class FloatingMessage {
             maxWidth: 380,
             message: message,
             messageColor: KBackgroundColor,
-            margin: EdgeInsets.all(8),
+            margin: const EdgeInsets.all(8),
             borderRadius: BorderRadius.circular(8),
             flushbarStyle: FlushbarStyle.values[0],
             icon: Icon(
@@ -27,7 +26,7 @@ class FloatingMessage {
               size: 28,
               color: Colors.green[300],
             ),
-            duration: Duration(seconds: 2),
+            duration: const Duration(seconds: 2),
             leftBarIndicatorColor: Colors.green[300],
             backgroundColor: kPrimaryColor1,
           ).show(context);
@@ -38,14 +37,14 @@ class FloatingMessage {
             backgroundColor: kPrimaryColor1,
             maxWidth: 380,
             message: message,
-            margin: EdgeInsets.all(8),
+            margin: const EdgeInsets.all(8),
             borderRadius: BorderRadius.circular(8),
-            icon: Icon(
+            icon: const Icon(
               Icons.hourglass_top_rounded,
               size: 28,
               color: Colors.grey,
             ),
-            duration: Duration(seconds: 3),
+            duration: const Duration(seconds: 3),
             leftBarIndicatorColor: Colors.grey,
           ).show(context);
 
@@ -56,14 +55,14 @@ class FloatingMessage {
             backgroundColor: const Color.fromARGB(255, 0, 38, 40),
             maxWidth: 380,
             message: message,
-            margin: EdgeInsets.all(8),
+            margin: const EdgeInsets.all(8),
             borderRadius: BorderRadius.circular(8),
-            icon: Icon(
+            icon: const Icon(
               Icons.report_gmailerrorred,
               size: 28,
               color: Colors.red,
             ),
-            duration: Duration(seconds: 3),
+            duration: const Duration(seconds: 3),
             leftBarIndicatorColor: Colors.red,
           ).show(context);
 
@@ -73,14 +72,14 @@ class FloatingMessage {
             backgroundColor: const Color.fromARGB(255, 0, 38, 40),
             maxWidth: 380,
             message: message,
-            margin: EdgeInsets.all(8),
+            margin: const EdgeInsets.all(8),
             borderRadius: BorderRadius.circular(8),
             icon: Icon(
               Icons.error_outline,
               size: 28,
               color: Colors.blue[900],
             ),
-            duration: Duration(seconds: 2),
+            duration: const Duration(seconds: 2),
             leftBarIndicatorColor: Colors.blue[900],
           ).show(context);
       }

@@ -5,14 +5,12 @@ import 'package:get/get_navigation/src/root/get_material_app.dart';
 
 
 import 'package:mate_order_app/Features/Home/locations/presentaion/model_view/location_cubit/locations_cubit.dart';
-import 'package:mate_order_app/Features/Home/oredr/presentation/model_view/bloc/order_bloc.dart';
 import 'package:mate_order_app/Features/Home/stores/presentation/model_view/stores_bloc/stores_bloc.dart';
 import 'package:mate_order_app/Features/auth/OTP/presentation/view-models/cubit/verify_cubit.dart';
 import 'package:mate_order_app/Features/auth/login/presentation/view-models/cubit/login_cubit.dart';
 import 'package:mate_order_app/Features/auth/logout/presentation/view_model/cubit/logout_cubit.dart';
 import 'package:mate_order_app/Features/auth/register/presentation/view-models/cubit/register_cubit.dart';
 import 'package:mate_order_app/Features/main%20home/home.dart';
-import 'package:mate_order_app/Features/profile/presentation/view/profile_page.dart';
 import 'package:mate_order_app/Features/profile/presentation/view_model/change_password_cubit/change_password_cubit.dart';
 import 'package:mate_order_app/Features/profile/presentation/view_model/profile_image_cubit/profile_image_cubit.dart';
 import 'package:mate_order_app/Features/splash/views/splash_view.dart';
@@ -21,15 +19,13 @@ import 'package:mate_order_app/core/bloc_helper/observer.dart';
 import 'package:mate_order_app/core/helpers/shared_pref.dart';
 import 'Features/Home/Products/presentation/model_view/add_to_cart/add_to_cart_cubit.dart';
 import 'Features/Home/Products/presentation/model_view/home_bloc/bloc/products_home_bloc.dart';
-import 'Features/Home/locations/presentaion/model_view/location_cubit/locations_cubit.dart';
 import 'Features/Home/map/presentation/model_view/cubit/map_cubit.dart';
-import 'core/bloc_helper/observer.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   Bloc.observer = const CounterObserver();
 
-  bool isLoggedIn = await checkIfLoggedInUser();
+  final bool isLoggedIn = await checkIfLoggedInUser();
   Bloc.observer = const CounterObserver();
   // BlocProvider.of<Prof>(context).showImage;
 
@@ -60,20 +56,18 @@ class MateOrderApp extends StatelessWidget {
       child: GetMaterialApp(
         debugShowCheckedModeBanner: false,
         color: Colors.white,
-        home: isLoggedIn ? Home() : const SplashView(),
+        home: isLoggedIn ? const Home() : const SplashView(),
       ),
     );
   }
 }
 
 Future<bool> checkIfLoggedInUser() async {
-  String? userToken =
+  final String? userToken =
       await SharedPrefHelper.getString(SharedPrefKeys.userToken);
 
   if (userToken != null && userToken.isNotEmpty) {
-    print("=======Token saved successfully:======== $userToken");
   } else {
-    print("=========Token is not saved!=======");
   }
 
   return userToken != null && userToken.isNotEmpty;

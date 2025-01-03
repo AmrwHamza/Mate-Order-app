@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:mate_order_app/Features/auth/OTP/presentation/views/widgets/controllers_otp.dart';
 import 'package:mate_order_app/constants.dart';
 
 class CustomTextFieldOTP extends StatelessWidget {

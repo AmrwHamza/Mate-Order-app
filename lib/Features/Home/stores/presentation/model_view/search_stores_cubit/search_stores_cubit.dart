@@ -1,3 +1,4 @@
+// ignore: depend_on_referenced_packages
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:mate_order_app/Features/Home/stores/data/models/stores_model/store.dart';
@@ -11,7 +12,7 @@ class SearchStoresCubit extends Cubit<SearchStoresState> {
   Future<void> search(String q) async {
     emit(SearchStoresLoading());
 
-    var result = await SearchStoresService().searchStores(q: q);
+    final result = await SearchStoresService().searchStores(q: q);
 
     result.fold(
       (left) {

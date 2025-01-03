@@ -2,7 +2,6 @@ import 'dart:io';
 import 'dart:typed_data';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:mate_order_app/Features/profile/data/models/profile_image/profile_image_model.dart';
 import 'package:mate_order_app/Features/profile/data/repos/profile_image_repo/profile_image_service.dart';
 import 'package:mate_order_app/core/utils/api_services.dart';
 part 'profile_image_state.dart';
@@ -18,9 +17,7 @@ class ProfileImageCubit extends Cubit<ProfileImageState> {
       isLoading = true;
       emit(ProfileImageLoading());
       final result = await ProfileImageService(Api()).showImage();
-      print('=========show image result======$result');
       result.fold((failure) {
-        print('=========show image result======${failure.message}');
 
         isLoading = false;
         emit(ProfileImageShowFailure(failure.message));
@@ -38,7 +35,6 @@ class ProfileImageCubit extends Cubit<ProfileImageState> {
       isLoading = true;
       emit(ProfileImageLoading());
       final result = await ProfileImageService(Api()).updateImage(imageFile);
-      print('======update photo result=======$result');
       result?.fold((failure) {
         isLoading = false;
 
@@ -58,13 +54,10 @@ class ProfileImageCubit extends Cubit<ProfileImageState> {
       isLoading = true;
       emit(ProfileImageLoading());
       final result = await ProfileImageService(Api()).deleteImage();
-      print('=====delete result====$result');
       result.fold((failure) {
         emit(ProfileImageDelFailure(failure.message));
         isLoading = false;
       }, (data) {
-        print('=====Data after deletion: $data');
-        print('=====: ${data.message}');
 
         emit(ProfileImageDelSuccess(message: data.message!));
         isLoading = false;

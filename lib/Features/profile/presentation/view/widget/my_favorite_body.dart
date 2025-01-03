@@ -7,7 +7,7 @@ class MyFavoriteBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBarStyle('My Favorite'),
+      appBar: appBarStyle('My Favorite'),
     );
   }
 }

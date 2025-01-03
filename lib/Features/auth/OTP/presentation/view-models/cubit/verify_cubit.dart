@@ -1,3 +1,4 @@
+// ignore: depend_on_referenced_packages
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -17,11 +18,11 @@ class VerifyCubit extends Cubit<VerifyState> {
   Future<void> verifyClick({required String? token}) async {
     emit(VerifyLoading());
 
-    String smscode = c1.text + c2.text + c3.text + c4.text + c5.text + c6.text;
+    final String smscode = c1.text + c2.text + c3.text + c4.text + c5.text + c6.text;
 
-    VerifyService service = VerifyService(Api());
+    final VerifyService service = VerifyService(Api());
 
-    var verifyModel = await service.verify(data: {
+    final verifyModel = await service.verify(data: {
       'code': smscode,
     }, token: token);
 
@@ -38,7 +39,7 @@ class VerifyCubit extends Cubit<VerifyState> {
 
   Future<void> reSendClick({required String? token}) async {
     emit(VerifyLoading());
-    var result = await ReSendCodeService().reSend(token: token);
+    final result = await ReSendCodeService().reSend(token: token);
     result.fold(
       (l) => emit(ReSendFailure(l.message)),
       (r) => emit(ReSendSuccess(r.message!)),

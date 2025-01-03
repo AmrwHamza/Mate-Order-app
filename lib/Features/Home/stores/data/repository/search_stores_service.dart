@@ -6,7 +6,7 @@ import 'package:mate_order_app/core/utils/error/failure.dart';
 class SearchStoresService {
   Future<Either<Failure, SearchStoresModel>> searchStores(
       {required String q}) async {
-    var result = await Api()
+    final result = await Api()
         .getWithAuth(endPoint: 'searchStore', queryParameters: {'name': q});
 
     return result.fold(

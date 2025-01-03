@@ -1,5 +1,5 @@
+// ignore: depend_on_referenced_packages
 import 'package:bloc/bloc.dart';
-import 'package:dartz/dartz.dart';
 import 'package:equatable/equatable.dart';
 import 'package:mate_order_app/Features/Home/Products/data/models/products_with_category_model/products_with_category/products_with_category.dart';
 import 'package:mate_order_app/Features/Home/Products/data/repository/search_products_services/search_products_service.dart';
@@ -11,7 +11,7 @@ class SearchProductsCubit extends Cubit<SearchProductsState> {
   Future<void> search(String q) async {
     // emit(SearchProductsInitial());
     emit(SearchProductsLoading());
-    var result = await SearchProductsService().searchProducts(q);
+    final result = await SearchProductsService().searchProducts(q);
     result.fold(
       (l) {
         emit(SearchProductsError(message: l.message));

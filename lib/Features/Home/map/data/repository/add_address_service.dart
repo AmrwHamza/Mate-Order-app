@@ -10,7 +10,7 @@ class AddAddressService {
       required String description,
       required double longitude,
       required double latitude}) async {
-    var result = await Api().postWithAuth(endPoint: 'addAddress', data: {
+    final result = await Api().postWithAuth(endPoint: 'addAddress', data: {
       "title": title,
       "description": description,
       "longitude": longitude,

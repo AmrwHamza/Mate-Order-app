@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'dart:math';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -272,6 +271,7 @@ class _MapViewSetLocationState extends State<MapViewSetLocation> {
       onPopInvokedWithResult: (didPop, result) async {
         final locationsCubit = BlocProvider.of<LocationsCubit>(context);
 
+        // ignore: prefer_is_empty
         if (didPop == true && _markerData.length != 0) {
           final res = await BlocProvider.of<MapCubit>(context).addAddress();
           if (res) {

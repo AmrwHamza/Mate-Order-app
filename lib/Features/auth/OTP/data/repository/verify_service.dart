@@ -9,7 +9,7 @@ class VerifyService {
 
   Future<Either<Failure, VerifyModel>> verify(
       {required Map<String, dynamic> data, required String? token}) async {
-    var verifyServiceResponse = await api.post(
+    final verifyServiceResponse = await api.post(
         endPoint: 'verify',
         data: data,
         headers: {'Authorization': 'Bearer $token'});

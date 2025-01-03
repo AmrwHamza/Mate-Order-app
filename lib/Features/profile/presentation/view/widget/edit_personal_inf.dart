@@ -16,7 +16,7 @@ class _EditPersonalInfState extends State<EditPersonalInf> {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController phoneController = TextEditingController();
   final TextEditingController firstNameController = TextEditingController();
-  final TextEditingController LastNameController = TextEditingController();
+  final TextEditingController lastNameController = TextEditingController();
 
   String? email;
 
@@ -30,41 +30,41 @@ class _EditPersonalInfState extends State<EditPersonalInf> {
       },
       child: Scaffold(
         backgroundColor: KBackgroundColor,
-        appBar: AppBarStyle('Edit Your Profile'),
+        appBar: appBarStyle('Edit Your Profile'),
         body: Padding(
           padding: const EdgeInsets.all(20.0),
           child: ListView(
             children: [
               AlignOfComments(comment: 'Press to edit your name'),
-              SizedBox(height: 10),
+              const SizedBox(height: 10),
               EditableTextField(
                   label: 'First Name',
                   icon: Icons.account_circle_outlined,
                   controller: firstNameController,
                   keyboardType: TextInputType.text),
-              SizedBox(height: 15),
+              const SizedBox(height: 15),
               EditableTextField(
                   label: 'Last Name',
                   icon: Icons.account_circle_outlined,
-                  controller: LastNameController,
+                  controller: lastNameController,
                   keyboardType: TextInputType.text),
-              SizedBox(height: 30),
+              const SizedBox(height: 30),
               AlignOfComments(comment: 'Press to edit you email.  '),
-              SizedBox(height: 10),
+              const SizedBox(height: 10),
               EditableTextField(
                   label: 'Email',
                   icon: Icons.email,
                   controller: emailController,
                   keyboardType: TextInputType.emailAddress),
-              SizedBox(height: 30),
+              const SizedBox(height: 30),
               AlignOfComments(comment: 'Press to edit your phone number.'),
-              SizedBox(height: 10),
+              const SizedBox(height: 10),
               EditableTextField(
                   label: 'Phone Number',
                   icon: Icons.phone,
                   controller: phoneController,
                   keyboardType: TextInputType.phone),
-              SizedBox(height: 55),
+              const SizedBox(height: 55),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -74,7 +74,7 @@ class _EditPersonalInfState extends State<EditPersonalInf> {
                       email = emailController.text;
                       phoneNumber = phoneController.text;
                     },
-                    icon: CheckBotton(),
+                    icon: const CheckBotton(),
                   ),
                 ],
               )

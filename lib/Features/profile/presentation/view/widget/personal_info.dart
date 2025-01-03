@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mate_order_app/Features/profile/presentation/view_model/profile_inf_cubit/profile_inf_cubit.dart';
 import 'package:mate_order_app/floating_message.dart';
 
+// ignore: must_be_immutable
 class PersonalInfo extends StatelessWidget {
   PersonalInfo({super.key});
 
@@ -30,12 +31,12 @@ class PersonalInfo extends StatelessWidget {
             Text(
               '$firstName $lastName',
               textAlign: TextAlign.center,
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+              style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
             ),
             Text(
               '$email',
               textAlign: TextAlign.start,
-              style: TextStyle(
+              style: const TextStyle(
                 color: Color(0xFF8D8D8D),
                 overflow: TextOverflow.ellipsis,
               ),

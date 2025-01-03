@@ -1,3 +1,4 @@
+// ignore: depend_on_referenced_packages
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:mate_order_app/Features/Home/stores/data/models/stores_model/store.dart';
@@ -34,9 +35,8 @@ class StoresBloc extends Bloc<StoresEvent, StoresState> {
       }
 
 
-      var result =
+      final result =
           await ShowStoresService(api: Api()).getStores(page: currentPage);
-      print('=========currentPage===========$currentPage}');
       emit(StoresLoadingMore(allStores: currentStores));
 
       result.fold(
@@ -61,9 +61,7 @@ class StoresBloc extends Bloc<StoresEvent, StoresState> {
           emit(StoresLoaded(allStores: allStores, hasReachedMax: !hasMore));
         },
       );
-    } catch (e, stackTrace) {
-      print('Exception: $e');
-      print('StackTrace: $stackTrace');
+    } catch (e) {
       emit(StoresError("Failed to fetch stores: $e"));
     }
   }

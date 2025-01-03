@@ -6,20 +6,16 @@ import 'package:mate_order_app/core/utils/error/failure.dart';
 
 class LocationsServices {
   Future<Either<Failure, AddressListModel>> showLocations() async {
-    var result = await Api().getWithAuth(endPoint: 'showAddresses');
-    print('Raw API Response: $result');
+    final result = await Api().getWithAuth(endPoint: 'showAddresses');
 
     return result.fold(
       (l) {
-        print('lllllllllllllllllllllllll');
         return Left(l);
       },
       (r) {
         try {
-          print("Success: Parsing addresses");
           return Right(AddressListModel.fromJson(r as List));
         } catch (e) {
-          print("Parsing error: $e");
           return const Left(UnknownFailure('Error parsing response'));
         }
       },
@@ -28,7 +24,7 @@ class LocationsServices {
 
   Future<Either<Failure, DeleteAddressModel>> deleteAddress(
       {required int id}) async {
-    var result =
+    final result =
         await Api().deleteWithAuth(endPoint: 'deleteAddress/$id', data: {});
 
     return result.fold(

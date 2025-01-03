@@ -12,9 +12,9 @@ class SearchCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Get.to(SearchProductsView(),
+        Get.to(const SearchProductsView(),
             curve: Curves.easeOut, //easeOut
-            duration: Duration(milliseconds: 500),
+            duration: const Duration(milliseconds: 500),
             transition: Transition.rightToLeft);
       },
       child: Hero(
@@ -25,10 +25,10 @@ class SearchCard extends StatelessWidget {
           child: SizedBox(
             width: MediaQuery.of(context).size.width * 0.5,
             height: 50,
-            child: Row(
+            child: const Row(
               children: [
                 Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 10),
+                  padding: EdgeInsets.symmetric(horizontal: 10),
                   child: Icon(Icons.search_outlined),
                 ),
                 Text('Search for Products'),

@@ -12,10 +12,12 @@ const Color kPrimaryColor7 = Color(0xff21E0D3);
 const Color kPrimaryColor8 = Color(0xff54F4E4);
 const Color kPrimaryColor9 = Color(0xff93FCEE);
 const Color kPrimaryColor10 = Color(0xffC9FEF6);
+// ignore: constant_identifier_names
 const Color KBackgroundColor = Color(0xffEFFEFB);
 
+// ignore: constant_identifier_names
 const KTransitionDuration = Duration(milliseconds: 250);
-const String base = "https://2c87-46-58-210-56.ngrok-free.app";
+const String base = "https://c988-46-58-210-56.ngrok-free.app";
 
 // const String baseurl = "https://a8bc-146-70-202-35.ngrok-free.app" "/api/";
 const String baseurl = "$base" "/api/";

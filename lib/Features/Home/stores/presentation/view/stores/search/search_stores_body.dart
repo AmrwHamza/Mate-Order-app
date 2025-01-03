@@ -5,6 +5,7 @@ import 'package:mate_order_app/Features/Home/stores/presentation/model_view/sear
 import 'package:mate_order_app/Features/Home/stores/presentation/view/stores/card_of_store.dart';
 import 'package:mate_order_app/constants.dart';
 
+// ignore: must_be_immutable
 class SearchStoresBody extends StatelessWidget {
   SearchStoresBody({super.key});
   SearchStoresCubit searchStoresCubit = SearchStoresCubit();
@@ -13,7 +14,7 @@ class SearchStoresBody extends StatelessWidget {
     return BlocProvider(
       create: (context) => SearchStoresCubit(),
       child: Padding(
-        padding: EdgeInsets.all(5),
+        padding: const EdgeInsets.all(5),
         child: SingleChildScrollView(
           child: Column(
             children: [
@@ -32,9 +33,9 @@ class SearchStoresBody extends StatelessWidget {
                 bloc: searchStoresCubit,
                 builder: (context, state) {
                   if (state is SearchStoresInitial) {
-                    return Column();
+                    return const Column();
                   } else if (state is SearchStoresLoading) {
-                    return Center(
+                    return const Center(
                       child: CircularProgressIndicator(
                         color: kPrimaryColor1,
                       ),

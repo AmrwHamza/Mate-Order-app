@@ -11,7 +11,7 @@ class SettingBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: KBackgroundColor,
-      appBar: AppBarStyle('Your Setting'),
+      appBar: appBarStyle('Your Setting'),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [

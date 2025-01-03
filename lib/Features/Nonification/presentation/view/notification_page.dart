@@ -11,7 +11,7 @@ class NotificationPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: KBackgroundColor,
-      appBar: MainAppBar('Notification'),
+      appBar: mainAppBar('Notification'),
       //اذا كان ليس هناك اي اشعار سوف يعرض هذا العامود
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,

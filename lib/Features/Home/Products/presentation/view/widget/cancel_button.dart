@@ -13,7 +13,7 @@ class CancelButton extends StatelessWidget {
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(12),
           color: Colors.red,
-          boxShadow: [
+          boxShadow: const [
             BoxShadow(
               blurRadius: 3,
               offset: Offset(1, 1),
@@ -23,7 +23,7 @@ class CancelButton extends StatelessWidget {
         onPressed: () {
           Navigator.pop(context);
         },
-        icon: Icon(Icons.cancel_outlined),
+        icon: const Icon(Icons.cancel_outlined),
         color: Colors.white,
       ),
     );

@@ -11,6 +11,7 @@ class StoreProductsBody extends StatefulWidget {
   final int id;
 
   @override
+  // ignore: no_logic_in_create_state
   State<StoreProductsBody> createState() => _StoreProductsBodyState(id: id);
 }
 
@@ -72,9 +73,8 @@ class _StoreProductsBodyState extends State<StoreProductsBody> {
                 controller: _scrollController,
                 itemCount: 2,
                 itemBuilder: (context, index) {
-                  print('Building shimmer item $index');
 
-                  return ProductCardShimmer();
+                  return const ProductCardShimmer();
                 },
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 2,

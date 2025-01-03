@@ -34,7 +34,7 @@ class OTPViewBody extends StatelessWidget {
           } else if (state is VerifyFailure) {
             Get.snackbar('', state.error, snackPosition: SnackPosition.BOTTOM);
           } else if (state is VerifySuccess) {
-            Get.to(Home());
+            Get.to(const Home());
           } else if (state is ReSendSuccess) {
             Get.snackbar('', state.message,
                 snackPosition: SnackPosition.BOTTOM);

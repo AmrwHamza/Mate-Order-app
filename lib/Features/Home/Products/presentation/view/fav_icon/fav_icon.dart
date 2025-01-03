@@ -10,6 +10,7 @@ class FavIcon extends StatelessWidget {
 
   const FavIcon({super.key, required this.product});
 
+  @override
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (_) => FavCubit(
@@ -17,28 +18,20 @@ class FavIcon extends StatelessWidget {
       child: BlocConsumer<FavCubit, FavState>(
         key: key,
         listener: (BuildContext context, FavState state) {
-          if (state is FavError) {
-            Get.snackbar('Error', state.error);
-          }
+        
         },
         builder: (context, state) {
-          final favCubit = context.read<FavCubit>();
+          final favCubit = context.watch<FavCubit>();
 
-          IconData icon;
-
-          if (state is FavInitial) {
-            icon = state.isFavorite ? Icons.favorite : Icons.favorite_border;
-          } else if (state is UpdateFav) {
-            icon = favCubit.iconData;
-          } else {
-            icon = favCubit.iconData;
-          }
+        
 
           return IconButton(
             onPressed: () {
               favCubit.onPressFavIcon();
             },
-            icon: Icon(icon),
+            icon: Icon(state is FavLoading
+                ? Icons.hourglass_empty
+                : favCubit.iconData),
             color: Colors.red,
           );
         },

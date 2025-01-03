@@ -10,22 +10,19 @@ class GetProductsWithCategoryRepository {
 
   Future<Either<Failure, ProductsWithCategoryModel>> getProuducts(
       {required int pageNumber, required String category}) async {
-    var result = await Api().getWithAuth(
+    final result = await Api().getWithAuth(
         endPoint: 'showProducts/$category',
         queryParameters: {
 
   'page':pageNumber ,
 });
-   print('Final URL: ${api.dio.options.baseUrl}showProducts/$category?page=$pageNumber');
 
     return result.fold(
       (l) {
-        print('API Error: ${l.message}');
 
         return Left(l);
       },
       (r) {
-        print('API Response: $r');
 
         return Right(ProductsWithCategoryModel.fromJson(r));
       },

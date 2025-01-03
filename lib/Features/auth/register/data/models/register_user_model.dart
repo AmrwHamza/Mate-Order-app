@@ -5,17 +5,18 @@ class RegisterUserModel {
   RegisterUserModel({this.user, this.token});
 
   RegisterUserModel.fromJson(Map<String, dynamic> json) {
-    user = json['user'] != null ? new User.fromJson(json['user']) : null;
+    user = json['user'] != null ? User.fromJson(json['user']) : null;
 
     token = json['token'] as String;
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    if (this.user != null) {
-      data['user'] = this.user!.toJson();
+    // ignore: prefer_collection_literals
+    final Map<String, dynamic> data = Map<String, dynamic>();
+    if (user != null) {
+      data['user'] = user!.toJson();
     }
-    data['token'] = this.token;
+    data['token'] = token;
     return data;
   }
 }
@@ -46,13 +47,14 @@ class User {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['firstName'] = this.firstName;
-    data['lastName'] = this.lastName;
-    data['phone'] = this.phone;
-    data['password'] = this.password;
-    data['email'] = this.email;
-    data['id'] = this.id;
+    // ignore: prefer_collection_literals
+    final Map<String, dynamic> data = Map<String, dynamic>();
+    data['firstName'] = firstName;
+    data['lastName'] = lastName;
+    data['phone'] = phone;
+    data['password'] = password;
+    data['email'] = email;
+    data['id'] = id;
     return data;
   }
 }

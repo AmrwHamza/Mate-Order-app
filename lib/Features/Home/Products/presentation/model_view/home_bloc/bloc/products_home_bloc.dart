@@ -1,5 +1,6 @@
 import 'dart:async';
 
+// ignore: depend_on_referenced_packages
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 
@@ -28,8 +29,9 @@ class ProductsHomeBloc extends Bloc<ProductHomeEvent, ProductsHomeState> {
       emit(ProductsHomeInitial());
     }
 
-    if (state is ProductsHomeLoading || state is ProductsHomeLoadingMore)
+    if (state is ProductsHomeLoading || state is ProductsHomeLoadingMore) {
       return;
+    }
     try {
       List<Data>? currentProducts = [];
       if (state is ProductsHomeLoaded || state is ProductsHomeLoadingMore) {
@@ -40,7 +42,7 @@ class ProductsHomeBloc extends Bloc<ProductHomeEvent, ProductsHomeState> {
 
 
 
-      var result = await GetProductsWithCategoryRepository(Api())
+      final result = await GetProductsWithCategoryRepository(Api())
           .getProuducts(pageNumber: currentPage, category: category);
       result.fold(
         (left) {

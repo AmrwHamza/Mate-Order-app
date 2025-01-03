@@ -11,7 +11,7 @@ class StoreProductsView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: KBackgroundColor,
-      appBar: MainAppBar('Products'),
+      appBar: mainAppBar('Products'),
       body: SafeArea(
         child: StoreProductsBody(id: id),
       ),

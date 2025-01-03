@@ -9,7 +9,7 @@ class Api {
 
   Api() {
     {
-      BaseOptions options = BaseOptions(
+      final BaseOptions options = BaseOptions(
         baseUrl: baseurl,
         receiveDataWhenStatusError: true,
         connectTimeout: const Duration(seconds: 60),
@@ -23,7 +23,7 @@ class Api {
   Future<Either<Failure, Map<String, dynamic>>> post(
       {required endPoint, required data, Map<String, String>? headers}) async {
     try {
-      var response = await dio.post(
+      final response = await dio.post(
         '$endPoint',
         data: data,
         options: Options(headers: headers),
@@ -53,7 +53,7 @@ class Api {
         },
       );
 
-      var response = await dio.post('$endPoint', data: data, options: options);
+      final response = await dio.post('$endPoint', data: data, options: options);
 
       return Right(response.data);
     } on DioException catch (dioException) {
@@ -68,12 +68,11 @@ class Api {
       Map<String, dynamic>? queryParameters,
       Map<String, String>? headers}) async {
     try {
-      var response = await dio.get(
+      final response = await dio.get(
         '$endPoint',
         queryParameters: queryParameters ?? {},
         options: Options(headers: headers),
       );
-      print(response.data.toString());
       return Right(response.data);
     } on DioException catch (dioException) {
       return Left(handleDioError(dioException));
@@ -90,7 +89,6 @@ class Api {
     try {
       final token = await SharedPrefHelper.getString(SharedPrefKeys.userToken);
       if (token.isEmpty) {
-        print("Token is missing or invalid");
 
         return const Left(
             ValidationFailure('====Token is missing or invalid===='));
@@ -101,13 +99,11 @@ class Api {
         },responseType: responseType,
       );
 
-      var response = await dio.get('$endPoint',
+      final response = await dio.get('$endPoint',
           queryParameters: queryParameters ?? {}, options: options);
       // print(response.data.toString());
-      print("Response: ${response.data}");
       return Right(response.data);
     } on DioException catch (dioException) {
-      print("DioException: ${dioException.message}");
 
       return Left(handleDioError(dioException));
     } catch (e) {
@@ -118,9 +114,8 @@ class Api {
   Future<Either<Failure, Map<String, dynamic>>> delete(
       {required endPoint, required data, Map<String, String>? headers}) async {
     try {
-      var response = await dio.delete('$endPoint',
+      final response = await dio.delete('$endPoint',
           data: data, options: Options(headers: headers));
-      print(response.data.toString());
       return Right(response.data);
     } on DioException catch (dioException) {
       return Left(handleDioError(dioException));
@@ -144,13 +139,12 @@ class Api {
           'Authorization': 'Bearer $token',
         },
       );
-      var response = await dio.delete(
+      final response = await dio.delete(
         '$endPoint',
         data: data,
         options: options,
       );
    
-      print(response.data.toString());
       return Right(response.data);
     } on DioException catch (dioException) {
       return Left(handleDioError(dioException));
@@ -162,9 +156,8 @@ class Api {
   Future<Either<Failure, Map<String, dynamic>>> put(
       {required endPoint, data, Map<String, String>? headers}) async {
     try {
-      var response = await dio.put('$endPoint',
+      final response = await dio.put('$endPoint',
           data: data, options: Options(headers: headers));
-      print(response.data.toString());
       return Right(response.data);
     } on DioException catch (dioException) {
       return Left(handleDioError(dioException));
@@ -189,7 +182,7 @@ class Api {
           'Authorization': 'Bearer $token',
         },
       );
-      var response = await dio.put('$endPoint', data: data, options: options,queryParameters:queryParameters );
+      final response = await dio.put('$endPoint', data: data, options: options,queryParameters:queryParameters );
       return Right(response.data);
     } on DioException catch (dioException) {
       return Left(handleDioError(dioException));
@@ -234,7 +227,7 @@ class Api {
         return message;
       }
       if (message is Map) {
-        List<String> errors = [];
+        final List<String> errors = [];
         for (var entry in message.entries) {
           final key = entry.key;
           final value = entry.value;

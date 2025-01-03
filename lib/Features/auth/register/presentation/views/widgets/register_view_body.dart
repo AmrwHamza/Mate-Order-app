@@ -91,10 +91,7 @@ class RegisterViewBody extends StatelessWidget {
                     onChanged: (p0) {
                       BlocProvider.of<RegisterCubit>(context).phoneNumber =
                           '+963$p0';
-                      print('=================================');
-                      print('+963$p0');
 
-                      print('================================');
                     },
                     label: const Text(
                       'Phone Number',
@@ -190,13 +187,13 @@ class RegisterViewBody extends StatelessWidget {
                     },
                     data: 'Send verification code',
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 15,
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text('Already have an account? '),
+                      const Text('Already have an account? '),
                       GestureDetector(
                         onTap: () => Get.off(const LoginView()),
                         child: const Text(

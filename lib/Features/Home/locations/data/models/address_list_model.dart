@@ -7,7 +7,7 @@ class AddressListModel {
     try {
       return AddressListModel(
         addresses: jsonList.map((json) {
-          var addressData = json['address'];
+          final addressData = json['address'];
           if (addressData == null) {
             throw Exception('Missing address data');
           }

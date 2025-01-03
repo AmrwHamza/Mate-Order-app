@@ -1,3 +1,4 @@
+// ignore: depend_on_referenced_packages
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:mate_order_app/Features/Home/stores/data/repository/show_store_products_service.dart';
@@ -24,8 +25,9 @@ class StoreProductsBloc extends Bloc<StoreProductsEvent, StoreProductsState> {
     ///
     ///
     ///
-    if (state is StoreProductslLoading || state is StoreProductsLoadingMore)
+    if (state is StoreProductslLoading || state is StoreProductsLoadingMore) {
       return;
+    }
 
     try {
       List<Data> currentProducts = [];
@@ -34,7 +36,7 @@ class StoreProductsBloc extends Bloc<StoreProductsEvent, StoreProductsState> {
       }
       emit(StoreProductsLoadingMore(allProducts: currentProducts));
 
-      var result = await ShowStoreProductsService()
+      final result = await ShowStoreProductsService()
           .getStoreProducts(id: event.id, pageNumber: currentPage);
 
       result.fold(
@@ -54,9 +56,7 @@ class StoreProductsBloc extends Bloc<StoreProductsEvent, StoreProductsState> {
               allProducts: allProducts, hasReachedMax: !hasMore));
         },
       );
-    } catch (e, stackTrace) {
-      print('Exception: $e');
-      print('StackTrace: $stackTrace');
+    } catch (e) {
       emit(StoreProductsError(message: "Failed to fetch products: $e"));
     }
   }

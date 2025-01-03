@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mate_order_app/Features/Home/locations/presentaion/view/widgets/choose_location_button.dart';
 import 'package:mate_order_app/Features/Home/locations/presentaion/view/widgets/delete_location_button.dart';
 import 'package:mate_order_app/constants.dart';

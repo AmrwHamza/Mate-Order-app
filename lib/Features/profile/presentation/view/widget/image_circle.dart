@@ -9,6 +9,7 @@ import 'package:mate_order_app/constants.dart';
 import 'package:mate_order_app/floating_message.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 
+// ignore: must_be_immutable
 class ImageCircle extends StatelessWidget {
   File? serverImage;
 
@@ -69,7 +70,7 @@ class ImageCircle extends StatelessWidget {
             height: 100,
             width: 100,
             child: ModalProgressHUD(
-              progressIndicator: CircularProgressIndicator(
+              progressIndicator: const CircularProgressIndicator(
                 color: kPrimaryColor4,
                 backgroundColor: KBackgroundColor,
               ),
@@ -133,15 +134,15 @@ class ImageCircle extends StatelessWidget {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text('Delete Profile Picture'),
+          title: const Text('Delete Profile Picture'),
           content:
-              Text('Are you sure you want to delete your profile picture?'),
+              const Text('Are you sure you want to delete your profile picture?'),
           actions: [
             TextButton(
               onPressed: () {
                 Navigator.of(context).pop();
               },
-              child: Text('No', style: TextStyle(color: kPrimaryColor4)),
+              child: const Text('No', style: TextStyle(color: kPrimaryColor4)),
             ),
             ElevatedButton(
               onPressed: () {
@@ -156,7 +157,7 @@ class ImageCircle extends StatelessWidget {
               style: ElevatedButton.styleFrom(
                 backgroundColor: kPrimaryColor2,
               ),
-              child: Text(
+              child: const Text(
                 'Yes',
                 style: TextStyle(color: Colors.white),
               ),
@@ -196,6 +197,7 @@ class ImageCircle extends StatelessWidget {
         }
       }
     } catch (e) {
+      // ignore: use_build_context_synchronously
       FloatingMessage('$e', 3, context);
     }
   }

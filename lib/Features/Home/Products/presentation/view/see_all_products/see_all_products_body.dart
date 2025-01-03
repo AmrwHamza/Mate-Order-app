@@ -7,12 +7,14 @@ import '../product_card/card_of_product.dart';
 import '../product_card/product_card_shimmer.dart';
 
 class SeeAllProductsBody extends StatefulWidget {
+  // ignore: non_constant_identifier_names
   const SeeAllProductsBody.SeeAllProductsBody(
       {super.key, required this.categoryName});
   final String categoryName;
 
   @override
   State<SeeAllProductsBody> createState() =>
+      // ignore: no_logic_in_create_state
       _SeeAllProductsBodyState(categoryName: categoryName);
 }
 
@@ -77,9 +79,8 @@ class _SeeAllProductsBodyState extends State<SeeAllProductsBody> {
               
                 itemCount: 2,
                 itemBuilder: (context, index) {
-                  print('Building shimmer item $index');
 
-                  return ProductCardShimmer();
+                  return const ProductCardShimmer();
                 },
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 2,

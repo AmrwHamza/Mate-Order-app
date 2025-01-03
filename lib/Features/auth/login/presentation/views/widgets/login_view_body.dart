@@ -1,21 +1,19 @@
-import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_navigation/get_navigation.dart' as transition;
 import 'package:get/get_navigation/src/snackbar/snackbar.dart';
-import 'package:mate_order_app/Features/auth/OTP/presentation/views/widgets/otp_view_body.dart';
 import 'package:mate_order_app/Features/auth/login/presentation/view-models/cubit/login_cubit.dart';
 import 'package:mate_order_app/Features/auth/register/presentation/views/register_view.dart';
 import 'package:mate_order_app/Features/auth/register/presentation/views/widgets/custom_register_button.dart';
 import 'package:mate_order_app/Features/auth/register/presentation/views/widgets/custom_text_form_field.dart';
 import 'package:mate_order_app/Features/auth/register/presentation/views/widgets/logo.dart';
 import 'package:mate_order_app/Features/auth/register/presentation/views/widgets/register_text.dart';
-import 'package:mate_order_app/Features/auth/register/presentation/views/widgets/show_snack_bar.dart';
 import 'package:mate_order_app/Features/main%20home/home.dart';
 import 'package:mate_order_app/constants.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 
+// ignore: must_be_immutable
 class LoginViewBody extends StatelessWidget {
   LoginViewBody({super.key});
   final keyForm1 = GlobalKey<FormState>();
@@ -36,7 +34,7 @@ class LoginViewBody extends StatelessWidget {
         }
         if (state is LoginSuccess) {
           BlocProvider.of<LoginCubit>(context).isLoading = false;
-          Get.offAll(Home(),
+          Get.offAll(const Home(),
               transition: transition.Transition.zoom,
               duration: const Duration(seconds: 1));
         }
@@ -67,10 +65,6 @@ class LoginViewBody extends StatelessWidget {
                   CustomTextFormField(
                     onChanged: (p0) {
                       BlocProvider.of<LoginCubit>(context).phone = '+963$p0';
-                      print('=================================');
-                      print('+963$p0');
-                      print(BlocProvider.of<LoginCubit>(context).phone);
-                      print('================================');
                     },
                     label: const Text(
                       'Phone Number',
@@ -125,7 +119,7 @@ class LoginViewBody extends StatelessWidget {
                     },
                     data: 'Login',
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 15,
                   ),
                   Row(

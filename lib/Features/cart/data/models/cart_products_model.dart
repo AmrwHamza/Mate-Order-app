@@ -9,13 +9,14 @@ class CartProductsModel {
     if (json['data'] != null) {
       data = <Product>[];
       json['data'].forEach((v) {
-        data!.add(new Product.fromJson(v));
+        data!.add(Product.fromJson(v));
       });
     }
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
+    // ignore: prefer_collection_literals
+    final Map<String, dynamic> data = Map<String, dynamic>();
     if (this.data != null) {
       data['data'] = this.data!.map((v) => v.toJson()).toList();
     }

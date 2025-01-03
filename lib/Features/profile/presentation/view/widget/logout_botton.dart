@@ -27,9 +27,9 @@ class LogoutButton extends StatelessWidget {
           },
         );
       },
-      child: ListTile(
+      child: const ListTile(
         title: Text('Log Out'),
-        trailing: const Icon(Icons.chevron_right),
+        trailing: Icon(Icons.chevron_right),
         leading: Icon(Icons.exit_to_app, color: Colors.black),
       ),
     );

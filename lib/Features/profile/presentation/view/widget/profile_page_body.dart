@@ -29,7 +29,7 @@ class ProfilePageBody extends StatelessWidget {
     context.read<ProfileInfCubit>().showPersonalInf();
     context.read<ProfileImageCubit>().showImage();
 
-    await Future.delayed(Duration(seconds: 3));
+    await Future.delayed(const Duration(seconds: 3));
   }
 
   @override
@@ -43,7 +43,7 @@ class ProfilePageBody extends StatelessWidget {
             } else if (state is LogoutSuccess) {
               BlocProvider.of<LogoutCubit>(context).isLoading = false;
               await SharedPrefHelper.removeData(SharedPrefKeys.userToken);
-              Get.offAll(() => LoginView());
+              Get.offAll(() => const LoginView());
             } else if (state is LogoutFailure) {
               BlocProvider.of<LogoutCubit>(context).isLoading = false;
               FloatingMessage('Error: ${state.error}', 3, context);
@@ -56,7 +56,7 @@ class ProfilePageBody extends StatelessWidget {
               child: ModalProgressHUD(
                 inAsyncCall: BlocProvider.of<LogoutCubit>(context).isLoading,
                 blur: .5,
-                progressIndicator: CircularProgressIndicator(
+                progressIndicator: const CircularProgressIndicator(
                   color: kPrimaryColor2,
                 ),
                 child: ListView(
@@ -77,7 +77,7 @@ class ProfilePageBody extends StatelessWidget {
                               IconButton(
                                   onPressed: () {
                                     Get.to(
-                                      () => EditPersonalInf(),
+                                      () => const EditPersonalInf(),
                                       duration: KTransitionDuration,
                                     );
                                   },
@@ -89,15 +89,15 @@ class ProfilePageBody extends StatelessWidget {
                             children: [
                               Column(
                                 children: [
-                                  MyFavoriteButton(),
+                                  const MyFavoriteButton(),
                                   const SizedBox(height: 10),
-                                  MyLocationButton(),
+                                  const MyLocationButton(),
                                   const SizedBox(height: 10),
-                                  HistoryButton(),
+                                  const HistoryButton(),
                                   const SizedBox(height: 10),
-                                  ChangePasswordBotton(),
+                                  const ChangePasswordBotton(),
                                   const SizedBox(height: 10),
-                                  SettingBotton(),
+                                  const SettingBotton(),
                                   const SizedBox(height: 10),
                                   InkWell(
                                     onTap: () {
@@ -119,9 +119,9 @@ class ProfilePageBody extends StatelessWidget {
                                         },
                                       );
                                     },
-                                    child: ListTile(
+                                    child: const ListTile(
                                       title: Text('Log Out'),
-                                      trailing: const Icon(Icons.chevron_right),
+                                      trailing: Icon(Icons.chevron_right),
                                       leading: Icon(Icons.exit_to_app,
                                           color: Colors.black),
                                     ),

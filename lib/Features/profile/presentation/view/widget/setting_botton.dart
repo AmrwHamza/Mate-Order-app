@@ -16,8 +16,8 @@ class SettingBotton extends StatelessWidget {
           duration: KTransitionDuration,
         );
       },
-      child: ListTile(
-        trailing: const Icon(Icons.chevron_right),
+      child: const ListTile(
+        trailing: Icon(Icons.chevron_right),
         leading: Icon(Icons.settings, color: Colors.black),
         title: Text('Setting'),
       ),

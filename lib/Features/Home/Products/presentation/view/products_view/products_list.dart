@@ -1,6 +1,7 @@
+// ignore_for_file: no_logic_in_create_state
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:get/get.dart';
 import '../../model_view/home_bloc/bloc/products_home_bloc.dart';
 import '../product_card/card_of_product.dart';
 import '../product_card/product_card_shimmer.dart';
@@ -20,6 +21,7 @@ class ProductsList extends StatefulWidget {
 class _ProductsListState extends State<ProductsList>
     with AutomaticKeepAliveClientMixin {
   final String categoryName;
+  @override
   bool get wantKeepAlive => true;
   final ScrollController _scrollController =
       ScrollController(); // تعريف الـ ScrollController
@@ -92,7 +94,6 @@ class _ProductsListState extends State<ProductsList>
                 physics: const BouncingScrollPhysics(),
                 itemCount: 2,
                 itemBuilder: (context, index) {
-                  print('Building shimmer item $index');
 
                   return const Padding(
                     padding: EdgeInsets.symmetric(horizontal: .0),
@@ -137,7 +138,6 @@ class _ProductsListState extends State<ProductsList>
                         physics: const BouncingScrollPhysics(),
                         itemCount: 1,
                         itemBuilder: (context, index) {
-                          print('Building shimmer item $index');
 
                           return const Padding(
                             padding: EdgeInsets.symmetric(horizontal: .0),

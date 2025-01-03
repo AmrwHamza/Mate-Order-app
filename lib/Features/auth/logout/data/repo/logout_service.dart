@@ -1,8 +1,5 @@
 import 'package:dartz/dartz.dart';
-import 'package:dio/dio.dart';
 import 'package:mate_order_app/Features/auth/logout/data/model/logout_model.dart';
-import 'package:mate_order_app/constants.dart';
-import 'package:mate_order_app/core/helpers/shared_pref.dart';
 import 'package:mate_order_app/core/utils/api_services.dart';
 import 'package:mate_order_app/core/utils/error/failure.dart';
 

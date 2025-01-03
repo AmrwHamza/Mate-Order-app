@@ -2,11 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
 import 'package:mate_order_app/Features/Home/Products/presentation/model_view/add_to_cart/add_to_cart_cubit.dart';
-import 'package:mate_order_app/Features/Home/Products/presentation/view/widget/product_option_sheet.dart';
 import 'package:mate_order_app/Features/Home/oredr/presentation/view/order_sheet_view.dart';
 
 import '../../../../../../constants.dart';
-import '../../../../../../core/utils/assets.dart';
 import '../../../../../main home/widget/app_bar_style.dart';
 import '../../../data/models/products_with_category_model/products_with_category/products_with_category.dart';
 
@@ -19,7 +17,7 @@ class ProductDetails extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: KBackgroundColor,
-      appBar: AppBarStyle('Product Details'),
+      appBar: appBarStyle('Product Details'),
       body: Padding(
         padding: const EdgeInsets.all(15),
         child: Stack(
@@ -103,7 +101,7 @@ class AddToCartButton extends StatelessWidget {
         if (state is AddToCartError) {
           Get.snackbar('Error', state.message);
         }
-    
+
         if (state is AddToCartSuccess) {
           Get.snackbar('Success', state.message);
         }

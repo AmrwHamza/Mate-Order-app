@@ -1,4 +1,6 @@
 
+// ignore_for_file: type_literal_in_constant_pattern
+
 import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -21,7 +23,7 @@ class SharedPrefHelper {
   static removeData(String key) async {
     try {
       debugPrint('========SharedPrefHelper : data with key : $key has been removed=========');
-      SharedPreferences sharedPreferences =
+      final SharedPreferences sharedPreferences =
           await SharedPreferences.getInstance();
       await sharedPreferences.remove(key);
     } on Exception catch (e) {
@@ -33,7 +35,7 @@ class SharedPrefHelper {
   static clearAllData() async {
     try {
       debugPrint('SharedPrefHelper : all data has been cleared');
-      SharedPreferences sharedPreferences =
+      final SharedPreferences sharedPreferences =
           await SharedPreferences.getInstance();
       await sharedPreferences.clear();
     } on Exception catch (e) {
@@ -45,7 +47,7 @@ class SharedPrefHelper {
   /// Saves a [value] with a [key] in the SharedPreferences.
   static setData(String key, value) async {
     try {
-      SharedPreferences sharedPreferences =
+      final SharedPreferences sharedPreferences =
           await SharedPreferences.getInstance();
       debugPrint(
           "SharedPrefHelper : setData with key : $key and value : $value");
@@ -74,21 +76,21 @@ class SharedPrefHelper {
   /// Gets a bool value from SharedPreferences with given [key].
   static getBool(String key) async {
     debugPrint('SharedPrefHelper : getBool with key : $key');
-    SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+    final SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
     return sharedPreferences.getBool(key) ?? false;
   }
 
   /// Gets a double value from SharedPreferences with given [key].
   static getDouble(String key) async {
     debugPrint('SharedPrefHelper : getDouble with key : $key');
-    SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+    final SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
     return sharedPreferences.getDouble(key) ?? 0.0;
   }
 
   /// Gets an int value from SharedPreferences with given [key].
   static getInt(String key) async {
     debugPrint('SharedPrefHelper : getInt with key : $key');
-    SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+    final SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
     return sharedPreferences.getInt(key) ?? 0;
   }
 
@@ -96,7 +98,7 @@ class SharedPrefHelper {
   static getString(String key) async {
     try {
       debugPrint('SharedPrefHelper : getString with key : $key');
-      SharedPreferences sharedPreferences =
+      final SharedPreferences sharedPreferences =
           await SharedPreferences.getInstance();
       return sharedPreferences.getString(key) ?? '';
     } on Exception catch (e) {
@@ -114,10 +116,10 @@ class SharedPrefHelper {
 
   /// Gets an String value from FlutterSecureStorage with given [key].
   static getSecuredString(String key) async {
-    final flutterSecureStorage = FlutterSecureStorage();
+    final flutterSecureStorage = const FlutterSecureStorage();
     debugPrint(
         '=========FlutterSecureStorage: getSecuredString with key:============ $key');
-    String? value = await flutterSecureStorage.read(key: key);
+    final String? value = await flutterSecureStorage.read(key: key);
     debugPrint(
         '===============Stored ||value|| for key =============="$key": ||$value||');
 

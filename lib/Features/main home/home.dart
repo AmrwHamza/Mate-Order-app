@@ -10,7 +10,10 @@ import '../cart/presentation/view/cart_view.dart';
 import '../orders/orders_view.dart';
 
 class Home extends StatefulWidget {
+  const Home({super.key});
+
   @override
+  // ignore: library_private_types_in_public_api
   _HomeState createState() => _HomeState();
 }
 
@@ -18,7 +21,7 @@ class _HomeState extends State<Home> {
   int selectedIndex = 0;
 
   final List<Widget> pages = <Widget>[
-     HomePage(),
+     const HomePage(),
     const CartView(),
     const OrdersView(),
     const NotificationPage(),
@@ -44,7 +47,7 @@ class _HomeState extends State<Home> {
             selectedIndex = index;
           });
         },
-        items: [
+        items: const [
           TabItem(icon: Icons.home, title: 'Home'),
           TabItem(icon: Icons.shopping_cart, title: 'Cart'),
           TabItem(icon: Icons.checklist_rtl, title: 'Orders'),

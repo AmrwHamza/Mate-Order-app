@@ -10,7 +10,7 @@ class ShowStoresService {
   ShowStoresService({required this.api});
 
   Future<Either<Failure, StoresModel>> getStores({required int page}) async {
-    var result = await api.getWithAuth(endPoint: 'showStores?page=$page');
+    final result = await api.getWithAuth(endPoint: 'showStores?page=$page');
     return result.fold(
       (l) => Left(l),
       (r) {

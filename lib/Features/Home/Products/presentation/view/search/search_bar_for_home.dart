@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:mate_order_app/Features/Home/Products/presentation/model_view/search_products_cubit/search_products_cubit.dart';
 
 class SearchBarForHome extends StatelessWidget {
   const SearchBarForHome({
@@ -19,7 +18,7 @@ class SearchBarForHome extends StatelessWidget {
         decoration: InputDecoration(
           filled: true,
           fillColor: Colors.white,
-          prefixIcon: Icon(Icons.search),
+          prefixIcon: const Icon(Icons.search),
           hintText: 'Search...',
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(25),

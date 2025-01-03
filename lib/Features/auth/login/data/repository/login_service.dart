@@ -9,7 +9,7 @@ class LoginService {
 
   Future<Either<Failure, LoginUserModel>> login(
       {required phone, required password}) async {
-    var result = await api.post(endPoint: 'auth/login', data: {
+    final result = await api.post(endPoint: 'auth/login', data: {
       'phone': phone,
       'password': password,
     });

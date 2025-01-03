@@ -19,7 +19,7 @@ class ProfileInfService {
 
   Future<Either<Failure, String>> updatePersonalInf(String firstName,
       String lastName, String email, String phoneNumber) async {
-    Map<String, dynamic> data = {
+    final Map<String, dynamic> data = {
       'firstName': firstName,
       'lastName': lastName,
       'email': email,

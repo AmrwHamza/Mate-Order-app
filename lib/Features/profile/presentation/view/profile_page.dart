@@ -30,8 +30,8 @@ class ProfilePage extends StatelessWidget {
       ],
       child: Scaffold(
         backgroundColor: KBackgroundColor,
-        appBar: MainAppBar('Your Profile'),
-        body: ProfilePageBody(),
+        appBar: mainAppBar('Your Profile'),
+        body: const ProfilePageBody(),
       ),
     );
   }

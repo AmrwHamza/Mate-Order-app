@@ -18,8 +18,8 @@ class ChangePasswordBotton extends StatelessWidget {
           duration: KTransitionDuration,
         );
       },
-      child: ListTile(
-        trailing: const Icon(Icons.chevron_right),
+      child: const ListTile(
+        trailing: Icon(Icons.chevron_right),
         leading: Icon(FontAwesomeIcons.lock, color: Colors.black),
         title: Text('Change Passsword'),
       ),
