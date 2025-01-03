@@ -1,6 +1,5 @@
 // ignore: depend_on_referenced_packages
 import 'package:bloc/bloc.dart';
-import 'package:either_dart/either.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 

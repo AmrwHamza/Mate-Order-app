@@ -20,6 +20,9 @@ class ProfileInfCubit extends Cubit<ProfileInfState> {
       isLoading = false;
       emit(ProfileInfFailure(failure.message));
     }, (data) {
+      // if (isClosed) {
+      //   return;
+      // }
       isLoading = false;
       emit(ProfileGetInfSuccess(data));
     });
@@ -37,7 +40,7 @@ class ProfileInfCubit extends Cubit<ProfileInfState> {
       emit(ProfileInfFailure(failure.message));
     }, (data) {
       isLoading = false;
-      emit(ProfileUpdateInfSuccess(message:  data));
+      emit(ProfileUpdateInfSuccess(message: data));
     });
   }
 }

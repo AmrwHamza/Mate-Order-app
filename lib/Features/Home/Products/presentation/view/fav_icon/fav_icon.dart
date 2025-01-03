@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:get/get.dart';
 
 import '../../../data/models/products_with_category_model/products_with_category/products_with_category.dart';
 import '../../model_view/fav_cubit/fav_cubit.dart';

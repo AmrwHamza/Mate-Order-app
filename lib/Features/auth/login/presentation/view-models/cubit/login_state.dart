@@ -27,5 +27,6 @@ class LoginObsecure extends LoginState  {
   final IconData eyeIcon;
 
   const LoginObsecure({required this.isObsecure, required this.eyeIcon});
+  @override
   List<Object> get props => [isObsecure, eyeIcon];
 }

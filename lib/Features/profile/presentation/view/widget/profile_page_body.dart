@@ -77,7 +77,7 @@ class ProfilePageBody extends StatelessWidget {
                               IconButton(
                                   onPressed: () {
                                     Get.to(
-                                      () => const EditPersonalInf(),
+                                      () => EditPersonalInf(),
                                       duration: KTransitionDuration,
                                     );
                                   },

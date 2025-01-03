@@ -4,11 +4,11 @@ import 'package:mate_order_app/Features/profile/presentation/view/widget/check_b
 import 'package:mate_order_app/Features/profile/presentation/view/widget/password_field_frame.dart';
 import 'package:mate_order_app/Features/profile/presentation/view_model/change_password_cubit/change_password_cubit.dart';
 import 'package:mate_order_app/constants.dart';
+import 'package:mate_order_app/core/widgets/widget/cancel_button.dart';
 import 'package:mate_order_app/floating_message.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 import 'package:quickalert/quickalert.dart';
 
-import '../../../../../core/widgets/widget/cancel_button.dart';
 import '../../../../main home/widget/app_bar_style.dart';
 
 class ChangePasswordBody extends StatelessWidget {

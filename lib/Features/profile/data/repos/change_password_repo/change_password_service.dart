@@ -1,5 +1,5 @@
 import 'package:dartz/dartz.dart';
-import 'package:mate_order_app/Features/profile/data/models/change-password/change_password_model.dart';
+import 'package:mate_order_app/Features/profile/data/models/change-password/Change_Password_model.dart';
 import 'package:mate_order_app/core/utils/api_services.dart';
 import 'package:mate_order_app/core/utils/error/failure.dart';
 
