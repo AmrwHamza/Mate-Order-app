@@ -18,7 +18,7 @@ class RegisterCubit extends Cubit<RegisterState> {
   RegisterUserModel? user;
   bool isLoading = false;
   bool isObsecure = true;
-  IconData eyeIcon = Icons.visibility_outlined;
+  IconData eyeIcon = Icons.visibility_off_outlined;
 
   Future<void> onTapRegisterButton() async {
     if (password != confirmPassword) {

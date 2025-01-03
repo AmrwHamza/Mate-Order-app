@@ -98,14 +98,14 @@ class LoginViewBody extends StatelessWidget {
                       return null;
                     },
                     suffixIcon: GestureDetector(
-                      // child: Icon(context.watch<RegisterCubit>().eyeIcon),
-                      child: const Icon(Icons.remove_red_eye_outlined),
+                      child: Icon(context.watch<LoginCubit>().eyeIcon),
+                      // child: const Icon(Icons.remove_red_eye_outlined),
 
                       onTap: () {
-                        // BlocProvider.of<RegisterCubit>(context).isobsecure();
+                        BlocProvider.of<LoginCubit>(context).isobsecure();
                       },
                     ),
-                    obscureText: isObscure,
+                    obscureText: context.watch<LoginCubit>().isObsecure,
                   ),
                   const SizedBox(
                     height: 8,

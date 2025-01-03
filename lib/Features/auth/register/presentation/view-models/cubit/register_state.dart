@@ -28,4 +28,5 @@ class RegisterObsecure extends RegisterState {
   final IconData eyeIcon;
 
   const RegisterObsecure({required this.isObsecure, required this.eyeIcon});
+  List<Object> get props => [isObsecure, eyeIcon];
 }

@@ -1,6 +1,7 @@
 // ignore: depend_on_referenced_packages
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
+import 'package:flutter/material.dart';
 import 'package:mate_order_app/Features/auth/login/data/models/login_user_model.dart';
 import 'package:mate_order_app/Features/auth/login/data/repository/login_service.dart';
 import 'package:mate_order_app/constants.dart';
@@ -15,6 +16,8 @@ class LoginCubit extends Cubit<LoginState> {
   bool isLoading = false;
   String? phone;
   String? password;
+ bool isObsecure = true;
+  IconData eyeIcon = Icons.visibility_off_outlined;
 
   Future<void> onTapLoginButton() async {
     isLoading = true;
@@ -38,4 +41,15 @@ class LoginCubit extends Cubit<LoginState> {
   Future<void> saveuserToken(String token) async {
     await SharedPrefHelper.setData(SharedPrefKeys.userToken, token);
   }
+
+  void isobsecure() {
+    isObsecure = !isObsecure;
+    if (eyeIcon == Icons.visibility_off_outlined) {
+      eyeIcon = Icons.visibility_outlined;
+    } else if (eyeIcon == Icons.visibility_outlined) {
+      eyeIcon = Icons.visibility_off_outlined;
+    }
+    emit(LoginObsecure(eyeIcon: eyeIcon, isObsecure: isObsecure));
+  }
+
 }

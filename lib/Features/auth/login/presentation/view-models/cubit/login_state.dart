@@ -21,3 +21,11 @@ class LoginFailure extends LoginState {
   final String error;
   const LoginFailure({required this.error});
 }
+
+class LoginObsecure extends LoginState  {
+  final bool isObsecure;
+  final IconData eyeIcon;
+
+  const LoginObsecure({required this.isObsecure, required this.eyeIcon});
+  List<Object> get props => [isObsecure, eyeIcon];
+}
