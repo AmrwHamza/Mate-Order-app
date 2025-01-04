@@ -26,9 +26,9 @@ class ProfileImageService {
         try {
           if (data is Uint8List) {
             if (data.length < 80) {
-              return const Left(UnknownFailure('Yor don\'t have profile image'));
+              return const Left(
+                  UnknownFailure('Yor don\'t have profile image'));
             } else {
-
               final tempDir = Directory.systemTemp;
               final tempFile = File(
                   '${tempDir.path}/image_${DateTime.now().millisecondsSinceEpoch}.jpg');

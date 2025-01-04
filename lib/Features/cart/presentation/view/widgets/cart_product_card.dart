@@ -16,7 +16,7 @@ class CartProductCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: MediaQuery.of(context).size.width * 0.8,
+      width: MediaQuery.of(context).size.width * 0.9,
 
       margin: const EdgeInsets.only(top: 10, left: 10, right: 10),
       height: 100,
@@ -50,9 +50,13 @@ class CartProductCard extends StatelessWidget {
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
-                  'Product name: ${product.name}',
-                  style: const TextStyle(fontWeight: FontWeight.bold),
+                Flexible(
+                  child: Text(
+                    'Product name: ${product.name}',
+                    overflow: TextOverflow.ellipsis,
+                    maxLines: 1,
+                    style: const TextStyle(fontWeight: FontWeight.bold),
+                  ),
                 ),
                 Text(
                   "Price: ${product.price} " r'$',

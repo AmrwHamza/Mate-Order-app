@@ -28,14 +28,15 @@ class User {
   String? password;
   String? email;
   int? id;
-
+  String? fcmToken;
   User(
       {this.firstName,
       this.lastName,
       this.phone,
       this.password,
       this.email,
-      this.id});
+      this.id,
+      this.fcmToken});
 
   User.fromJson(Map<String, dynamic> json) {
     firstName = json['firstName'];
@@ -44,6 +45,7 @@ class User {
     password = json['password'];
     email = json['email'];
     id = json['id'];
+    fcmToken = json['fcm_token'];
   }
 
   Map<String, dynamic> toJson() {
@@ -55,6 +57,7 @@ class User {
     data['password'] = password;
     data['email'] = email;
     data['id'] = id;
+    data['fcm_token'] = fcmToken;
     return data;
   }
 }

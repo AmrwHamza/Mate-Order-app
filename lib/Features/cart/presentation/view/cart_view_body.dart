@@ -12,9 +12,7 @@ class CartViewBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        BlocProvider(
-          create: (context) => CartCubit(),
-        ),
+       
         BlocProvider(
           create: (context) => OrderBloc(),
         )

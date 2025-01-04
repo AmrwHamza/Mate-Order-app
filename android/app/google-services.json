@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "329450180034",
+    "project_id": "mate-order-dbfd2",
+    "storage_bucket": "mate-order-dbfd2.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:329450180034:android:7f5bb4a47de1b4c3a09a5b",
+        "android_client_info": {
+          "package_name": "com.example.mate_order_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDoXlzu0K-KpYPGwusdUVtsN_rpsxPbgEw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
