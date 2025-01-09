@@ -15,10 +15,14 @@ class AddToCartCubit extends Cubit<AddToCartState> {
 
     result.fold(
       (l) {
-        emit(AddToCartError(message: l.message));
+          if (!isClosed) {
+          emit(AddToCartError(message: l.message));
+        }
       },
       (r) {
-        emit(AddToCartSuccess(message: r.message ?? "Added To Cart"));
+        if (!isClosed) {
+          emit(AddToCartSuccess(message: r.message ?? "Added To Cart"));
+        }
       },
     );
   }

@@ -1,8 +1,10 @@
 import 'package:equatable/equatable.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mate_order_app/Features/auth/register/data/models/register_user_model.dart';
 import 'package:mate_order_app/Features/auth/register/data/repository/register_repository.dart';
+import 'package:mate_order_app/constants.dart';
 import 'package:mate_order_app/core/utils/api_services.dart';
 
 part 'register_state.dart';
@@ -24,15 +26,20 @@ class RegisterCubit extends Cubit<RegisterState> {
     if (password != confirmPassword) {
       emit(const RegisterFailure("Passwoerds don't match"));
     }
+
     isLoading = true;
+
     emit(RegisterLoading());
+    String? fcmToken = await FirebaseMessaging.instance.getToken();
+    print(fcmToken);
     final Map<String, dynamic> data = {
       'firstName': firstName,
       'lastName': lastName,
       'phone': phoneNumber,
       'password': password,
       'password_confirmation': confirmPassword,
-      'email': email
+      'email': email,
+      'fcm_token': fcmToken
     };
 
     final RegisterRepository service = RegisterRepository(Api());
@@ -40,6 +47,7 @@ class RegisterCubit extends Cubit<RegisterState> {
 
     result.fold(
       (l) {
+        print('==================================================${l.message}');
         emit(RegisterFailure(l.message));
       },
       (r) {

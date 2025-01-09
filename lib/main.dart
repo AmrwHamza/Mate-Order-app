@@ -19,6 +19,7 @@ import 'package:mate_order_app/Features/orders/data/repository/delete_product_fr
 import 'package:mate_order_app/Features/orders/presentation/model_view/GetOrderProducts/get_order_products_cubit.dart';
 import 'package:mate_order_app/Features/orders/presentation/model_view/delete_product_from_order.dart/delete_product_from_order_cubit.dart';
 import 'package:mate_order_app/Features/orders/presentation/model_view/get_orders/get_orders_cubit.dart';
+import 'package:mate_order_app/Features/orders/presentation/model_view/update_order/update_order_cubit.dart';
 import 'package:mate_order_app/Features/profile/presentation/view_model/change_password_cubit/change_password_cubit.dart';
 import 'package:mate_order_app/Features/profile/presentation/view_model/profile_image_cubit/profile_image_cubit.dart';
 import 'package:mate_order_app/Features/splash/views/splash_view.dart';

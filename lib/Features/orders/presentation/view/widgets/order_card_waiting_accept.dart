@@ -47,7 +47,7 @@ class OrderCardWaitingAccept extends StatelessWidget {
                 Navigator.push(context, MaterialPageRoute(
                   builder: (context) {
                     return EditOrderView(
-                      id: order.id,
+                      order: order,
                     );
                   },
                 ));

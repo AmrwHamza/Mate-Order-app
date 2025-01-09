@@ -33,6 +33,8 @@ class NotificationService {
     await _setupMessageHandlers();
 
     // Get and print the FCM token
+   
+    // final kFcmToken=await FirebaseMessaging.instance.getToken();
     String? token = await FirebaseMessaging.instance.getToken();
     print('FCM Token: $token');
   }

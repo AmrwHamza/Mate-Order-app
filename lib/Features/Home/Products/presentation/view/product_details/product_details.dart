@@ -104,6 +104,8 @@ class ProductDetails extends StatelessWidget {
           ],
         ),
       ),
+    
+    
     );
   }
 
@@ -154,6 +156,7 @@ class ProductDetails extends StatelessWidget {
       ),
     );
   }
+
 }
 
 class AddToCartButton extends StatelessWidget {

@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:mate_order_app/Features/orders/data/models/products_in_order_model.dart';
 import 'package:mate_order_app/Features/orders/data/repository/get_products_in_order.dart';
 import 'package:mate_order_app/Features/orders/presentation/model_view/delete_product_from_order.dart/delete_product_from_order_cubit.dart';
+import 'package:mate_order_app/Features/orders/presentation/view/edit_product_amount/edit_product_amount_view.dart';
 
 import '../../../../../../constants.dart';
 import '../../../model_view/GetOrderProducts/get_order_products_cubit.dart';
@@ -40,9 +41,23 @@ class ProductInOrderCard extends StatelessWidget {
               children: [
                 name(context),
                 Text('amount:$totalAmount'),
-                DeleteProductFromOrderButton(
-                  orderId: orderId,
-                  productId: productInCart.id!,
+                Row(
+                  children: [
+                    DeleteProductFromOrderButton(
+                      orderId: orderId,
+                      productId: productInCart.id!,
+                    ),
+                    ElevatedButton(
+                        onPressed: () {
+                          Get.to(
+                            () => EditProductAmountView(
+                                productInCart: productInCart,
+                                totalAmount: totalAmount,
+                                orderId: orderId),
+                          );
+                        },
+                        child: const Text('Edit')),
+                  ],
                 )
               ],
             )
