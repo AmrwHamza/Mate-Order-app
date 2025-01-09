@@ -5,15 +5,20 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
+import 'package:mate_order_app/Features/cart/cart/presentation/model_view/add_order/add_order_cubit.dart';
 
-import 'package:mate_order_app/Features/Home/locations/presentaion/model_view/location_cubit/locations_cubit.dart';
+import 'package:mate_order_app/Features/cart/locations/presentaion/model_view/location_cubit/locations_cubit.dart';
 import 'package:mate_order_app/Features/Home/stores/presentation/model_view/stores_bloc/stores_bloc.dart';
 import 'package:mate_order_app/Features/auth/OTP/presentation/view-models/cubit/verify_cubit.dart';
 import 'package:mate_order_app/Features/auth/login/presentation/view-models/cubit/login_cubit.dart';
 import 'package:mate_order_app/Features/auth/logout/presentation/view_model/cubit/logout_cubit.dart';
 import 'package:mate_order_app/Features/auth/register/presentation/view-models/cubit/register_cubit.dart';
-import 'package:mate_order_app/Features/cart/presentation/model_view/cubit/cart_cubit.dart';
+import 'package:mate_order_app/Features/cart/cart/presentation/model_view/cart_cubit/cart_cubit.dart';
 import 'package:mate_order_app/Features/main%20home/home.dart';
+import 'package:mate_order_app/Features/orders/data/repository/delete_product_from_order_service.dart';
+import 'package:mate_order_app/Features/orders/presentation/model_view/GetOrderProducts/get_order_products_cubit.dart';
+import 'package:mate_order_app/Features/orders/presentation/model_view/delete_product_from_order.dart/delete_product_from_order_cubit.dart';
+import 'package:mate_order_app/Features/orders/presentation/model_view/get_orders/get_orders_cubit.dart';
 import 'package:mate_order_app/Features/profile/presentation/view_model/change_password_cubit/change_password_cubit.dart';
 import 'package:mate_order_app/Features/profile/presentation/view_model/profile_image_cubit/profile_image_cubit.dart';
 import 'package:mate_order_app/Features/splash/views/splash_view.dart';
@@ -61,7 +66,6 @@ class MateOrderApp extends StatelessWidget {
         BlocProvider(create: (context) => StoresBloc()),
         BlocProvider(create: (context) => LocationsCubit()),
         BlocProvider(create: (context) => MapCubit()),
-        BlocProvider(create: (context) => AddToCartCubit()),
         BlocProvider(create: (context) => ProfileImageCubit()),
         BlocProvider(create: (context) => ChangePasswordCubit()),
         BlocProvider(create: (context) => LogoutCubit()),
@@ -69,6 +73,10 @@ class MateOrderApp extends StatelessWidget {
         BlocProvider(create: (context) => VerifyCubit()),
         BlocProvider(create: (context) => LoginCubit()),
         BlocProvider(create: (context) => CartCubit()),
+        BlocProvider(create: (context) => AddOrderCubit()),
+        BlocProvider(create: (context) => GetOrdersCubit()),
+        BlocProvider(create: (context) => GetOrderProductsCubit()),
+        BlocProvider(create: (context) => DeleteProductFromOrderCubit()),
       ],
       child: GetMaterialApp(
         debugShowCheckedModeBanner: false,

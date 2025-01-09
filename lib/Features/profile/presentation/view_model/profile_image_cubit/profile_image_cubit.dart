@@ -19,7 +19,6 @@ class ProfileImageCubit extends Cubit<ProfileImageState> {
       emit(ProfileImageLoading());
       final result = await ProfileImageService(Api()).showImage();
       result.fold((failure) {
-
         isLoading = false;
         emit(ProfileImageShowFailure(failure.message));
       }, (data) {
@@ -27,7 +26,9 @@ class ProfileImageCubit extends Cubit<ProfileImageState> {
         emit(ProfileImageShowSuccess(data));
       });
     } catch (e) {
-      emit(ProfileImageShowFailure("$e"));
+      if (!isClosed) {
+        emit(ProfileImageShowFailure("$e"));
+      }
     }
   }
 
@@ -59,7 +60,6 @@ class ProfileImageCubit extends Cubit<ProfileImageState> {
         emit(ProfileImageDelFailure(failure.message));
         isLoading = false;
       }, (data) {
-
         emit(ProfileImageDelSuccess(message: data.message!));
         isLoading = false;
       });

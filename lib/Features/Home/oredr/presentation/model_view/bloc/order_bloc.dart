@@ -4,7 +4,7 @@ import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mate_order_app/Features/Home/Products/data/models/products_with_category_model/products_with_category/products_with_category.dart';
-import 'package:mate_order_app/Features/Home/locations/data/models/address_list_model.dart';
+import 'package:mate_order_app/Features/cart/locations/data/models/address_list_model.dart';
 import 'package:mate_order_app/Features/Home/oredr/data/repository/add_order_services.dart';
 
 

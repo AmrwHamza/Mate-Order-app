@@ -10,7 +10,6 @@ class CardOfStore extends StatelessWidget {
   final Store store;
   @override
   Widget build(BuildContext context) {
-    // طباعة اسم المتجر عند عرضه
 
     return Padding(
       padding: const EdgeInsets.all(1),

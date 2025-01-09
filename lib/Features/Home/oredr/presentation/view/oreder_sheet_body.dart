@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
 import 'package:mate_order_app/Features/Home/Products/data/models/products_with_category_model/products_with_category/products_with_category.dart';
-import 'package:mate_order_app/Features/Home/locations/presentaion/view/locations_view.dart';
+import 'package:mate_order_app/Features/cart/locations/presentaion/view/locations_view.dart';
 import 'package:mate_order_app/Features/Home/oredr/presentation/model_view/bloc/order_bloc.dart';
 import 'package:mate_order_app/constants.dart';
 
@@ -28,15 +28,6 @@ class OrederSheetBody extends StatelessWidget {
         }
       },
       builder: (context, state) {
-
-        // if (state is AddOrderLoading) {
-        //   return const Column(
-        //     children: [
-        //       Center(child: CircularProgressIndicator()),
-        //     ],
-        //   );
-        // }
-
         return SliverToBoxAdapter(
             child: Padding(
           padding: const EdgeInsets.all(10.0),
@@ -139,9 +130,7 @@ class OrederSheetBody extends StatelessWidget {
                             backgroundColor:
                                 WidgetStatePropertyAll(kPrimaryColor10)),
                         onPressed: () async {
-                          Get.to(() => LocationsView(
-                                orderBloc: context.read<OrderBloc>(),
-                              ));
+                          Get.to(() => LocationsView());
                         },
                         child: const Text(
                           'choose location',

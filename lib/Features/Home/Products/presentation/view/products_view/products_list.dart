@@ -94,7 +94,6 @@ class _ProductsListState extends State<ProductsList>
                 physics: const BouncingScrollPhysics(),
                 itemCount: 2,
                 itemBuilder: (context, index) {
-
                   return const Padding(
                     padding: EdgeInsets.symmetric(horizontal: .0),
                     child: ProductCardShimmer(),
@@ -138,7 +137,6 @@ class _ProductsListState extends State<ProductsList>
                         physics: const BouncingScrollPhysics(),
                         itemCount: 1,
                         itemBuilder: (context, index) {
-
                           return const Padding(
                             padding: EdgeInsets.symmetric(horizontal: .0),
                             child: ProductCardShimmer(),
@@ -166,7 +164,7 @@ class _ProductsListState extends State<ProductsList>
             ),
           );
         }
-        return const SizedBox.shrink(); // حالة افتراضية (لا شيء)
+        return const SizedBox.shrink(); 
       },
     );
   }

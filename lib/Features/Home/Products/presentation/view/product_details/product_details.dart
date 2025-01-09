@@ -1,7 +1,9 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
 import 'package:mate_order_app/Features/Home/Products/presentation/model_view/add_to_cart/add_to_cart_cubit.dart';
+import 'package:mate_order_app/Features/Home/Products/presentation/view/fav_icon/fav_icon.dart';
 import 'package:mate_order_app/Features/Home/oredr/presentation/view/order_sheet_view.dart';
 
 import '../../../../../../constants.dart';
@@ -28,16 +30,71 @@ class ProductDetails extends StatelessWidget {
                 photoInDetails(),
                 name(),
                 const SizedBox(height: 10),
-                thePrice(),
-                const SizedBox(height: 10),
-                theOwner(),
-                const SizedBox(height: 40),
+                const Divider(
+                  color: kPrimaryColor1,
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 5),
+                  child: Container(
+                    decoration: const BoxDecoration(
+                      boxShadow: [
+                        BoxShadow(
+                            blurRadius: 2,
+                            // offset: Offset(3, 2),
+                            color: kPrimaryColor7)
+                      ],
+                      color: kPrimaryColor8,
+                      borderRadius: BorderRadius.only(
+                          bottomRight: Radius.circular(20),
+                          topRight: Radius.circular(20),
+                          bottomLeft: Radius.circular(20)),
+                    ),
+                    padding: const EdgeInsets.all(7),
+                    child: const Text(
+                      'Details',
+                      style: TextStyle(
+                        color: kPrimaryColor1,
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                ),
+                Container(
+                  width: MediaQuery.of(context).size.width,
+                  padding: const EdgeInsets.all(10),
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(15),
+                      color: kPrimaryColor9),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      theOwner(),
+                      const SizedBox(height: 10),
+                      thePrice(),
+                      const SizedBox(height: 10),
+                      amount()
+                    ],
+                  ),
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                const Divider(
+                  color: kPrimaryColor1,
+                ),
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    OrderButton(
-                      product: product,
-                      buttonColor: kPrimaryColor8,
+                    Container(
+                        width: 40,
+                        height: 40,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(50),
+                            color: kPrimaryColor7),
+                        child: FavIcon(product: product)),
+                    const SizedBox(
+                      width: 10,
                     ),
                     AddToCartButton(product: product),
                   ],
@@ -50,11 +107,21 @@ class ProductDetails extends StatelessWidget {
     );
   }
 
-  Text theOwner() => Text('Owner :${product.owner} ');
+  Text amount() {
+    return Text(
+      'Amount: ${product.amount}',
+      style: const TextStyle(fontSize: 16),
+    );
+  }
+
+  Text theOwner() => Text(
+        'Owner: ${product.owner} ',
+        style: const TextStyle(fontSize: 16),
+      );
 
   Text thePrice() {
     return Text(
-      'The Price : ${product.price}\$',
+      'The Price: ${product.price} SYP',
       style: const TextStyle(fontSize: 16),
     );
   }
@@ -73,15 +140,16 @@ class ProductDetails extends StatelessWidget {
       aspectRatio: 1.3,
       child: Hero(
         tag: '${product.id}${product.imagePath}${product.createdAt}',
-        child: Container(
-          decoration: BoxDecoration(
-            image: DecorationImage(
-              image: NetworkImage("$baseurlImg"
-                  "${product.imagePath!}"),
-              // image: AssetImage(AssetsData.product),
-              fit: BoxFit.fill,
-            ),
+        child: CachedNetworkImage(
+          imageUrl: "$baseurlImg"
+              "${product.imagePath!}",
+          placeholder: (context, url) => const Align(
+            alignment: Alignment.center,
+            child: SizedBox(
+                height: 60, width: 60, child: CircularProgressIndicator()),
           ),
+          errorWidget: (context, url, error) => const Icon(Icons.error),
+          // fit: BoxFit.contain,
         ),
       ),
     );
@@ -96,34 +164,68 @@ class AddToCartButton extends StatelessWidget {
   final Product product;
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<AddToCartCubit, AddToCartState>(
-      listener: (context, state) {
-        if (state is AddToCartError) {
-          Get.snackbar('Error', state.message);
-        }
+    return BlocProvider(
+      create: (context) => AddToCartCubit(),
+      child: BlocConsumer<AddToCartCubit, AddToCartState>(
+        listener: (context, state) {
+          if (state is AddToCartError &&
+              state.message.contains('You Added It Before')) {
+            Get.snackbar('You Added It Before', '');
+          } else if (state is AddToCartError) {
+            Get.snackbar('Error', state.message);
+          }
 
-        if (state is AddToCartSuccess) {
-          Get.snackbar('Success', state.message);
-        }
-      },
-      builder: (context, state) {
-        if (state is AddToCartLoading) {
-          return const CircularProgressIndicator(
-            color: Colors.black,
-          );
-        } else {
-          return ElevatedButton(
+          if (state is AddToCartSuccess) {
+            Get.snackbar('Success', state.message);
+          }
+        },
+        builder: (context, state) {
+          if (state is AddToCartSuccess) {
+            return ElevatedButton(
               style: const ButtonStyle(
-                  backgroundColor: WidgetStatePropertyAll(kPrimaryColor10)),
+                  backgroundColor: WidgetStatePropertyAll(kPrimaryColor7)),
+              onPressed: () {
+                // context.read<AddToCartCubit>().addToCard(id: product.id!);
+              },
+              child: const Text(
+                'Done ✅',
+                style: TextStyle(color: Colors.black),
+              ),
+            );
+          }
+          if (state is AddToCartError &&
+              state.message.contains('You Added It Before')) {
+            return ElevatedButton(
+              style: const ButtonStyle(
+                  backgroundColor: WidgetStatePropertyAll(kPrimaryColor7)),
+              onPressed: () {
+                // context.read<AddToCartCubit>().addToCard(id: product.id!);
+              },
+              child: const Text(
+                'Done ✅',
+                style: TextStyle(color: Colors.black),
+              ),
+            );
+          }
+          if (state is AddToCartLoading) {
+            return const CircularProgressIndicator(
+              color: Colors.black,
+            );
+          } else {
+            return ElevatedButton(
+              style: const ButtonStyle(
+                  backgroundColor: WidgetStatePropertyAll(kPrimaryColor7)),
               onPressed: () {
                 context.read<AddToCartCubit>().addToCard(id: product.id!);
               },
               child: const Text(
                 'Add to cart',
                 style: TextStyle(color: Colors.black),
-              ));
-        }
-      },
+              ),
+            );
+          }
+        },
+      ),
     );
   }
 }

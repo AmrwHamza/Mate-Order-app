@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -29,9 +30,9 @@ class CardOfProduct extends StatelessWidget {
       },
       child: Container(
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(15),
-          color: Colors.white,
-        ),
+            borderRadius: BorderRadius.circular(15),
+            color: Colors.white,
+            boxShadow: const [BoxShadow(blurRadius: 3, color: kPrimaryColor4)]),
         height: 160,
         width: 155,
         child: Padding(
@@ -47,9 +48,6 @@ class CardOfProduct extends StatelessWidget {
                     height: 35,
                     width: 35,
                   ),
-
-                  //هون كان زر المفضلة
-
                   FavIcon(
                     product: product,
                   ),
@@ -59,53 +57,48 @@ class CardOfProduct extends StatelessWidget {
                 aspectRatio: 3.4 / 2,
                 child: Hero(
                   tag: '${product.id}${product.imagePath}${product.createdAt}',
-                  child: Container(
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10),
-                      image: DecorationImage(
-                        // image:AssetImage() ,
-                        // image: AssetImage(AssetsData.product),
-                        // image: NetworkImage(
-                        //     "https://c862-130-180-148-76.ngrok-free.app/storage/project/products/11/Screenshot (7).png"
-                        //     "https://a8bc-146-70-202-35.ngrok-free.app/storage/project/products/4/Tile_Border_Travertine.bmp"), //products/5/PSX_20200918_165328.jpg
-                        image: image(product),
-                        fit: BoxFit.fill,
-                      ),
+
+                  child: CachedNetworkImage(
+                    imageUrl: "$baseurlImg"
+                        "${product.imagePath!}",
+                    placeholder: (context, url) => const Align(
+                      alignment: Alignment.center,
+                      child: SizedBox(
+                          height: 60,
+                          width: 60,
+                          child: CircularProgressIndicator()),
                     ),
+                    errorWidget: (context, url, error) =>
+                        const Icon(Icons.error),
                   ),
+                  // child: Container(
+                  //   decoration: BoxDecoration(
+                  //     borderRadius: BorderRadius.circular(10),
+
+                  //     /// image: DecorationImage(
+                  //     //   // image:AssetImage() ,
+                  //     //   // image: AssetImage(AssetsData.product),
+                  //     //   // image: NetworkImage(
+                  //     //   //     "https://c862-130-180-148-76.ngrok-free.app/storage/project/products/11/Screenshot (7).png"
+                  //     //   //     "https://a8bc-146-70-202-35.ngrok-free.app/storage/project/products/4/Tile_Border_Travertine.bmp"), //products/5/PSX_20200918_165328.jpg
+                  //     //   image: image(product),
+                  //     //   fit: BoxFit.fill,
+                  //     // ),
+                  //   ),
+                  // ),
                 ),
               ),
               Text(
-                product.name ?? 'No NAMe',
+                product.name ?? 'No Name',
                 style: const TextStyle(fontWeight: FontWeight.bold),
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    "${product.price} " r'$',
-                    style: const TextStyle(fontWeight: FontWeight.bold),
+                    "${product.price} " r'SYP',
+                    style: const TextStyle(),
                   ),
-                  // IconButton(
-                  //   onPressed: () {
-                  //     showModalBottomSheet(
-                  //         context: context,
-                  //         builder: (BuildContext context) {
-                  //           return ProductOptionSheet(
-                  //               numberOfproducts: numberOfproducts);
-                  //         }).then((value) {
-                  //       if (value != null) {
-                  //         setState(() {
-                  //           numberOfproducts = value;
-                  //         });
-                  //       }
-                  //     });
-                  //   },
-                  //   icon: const Icon(
-                  //     Icons.shopping_bag_outlined,
-                  //     color: kPrimaryColor4,
-                  //   ),
-                  // ),
                 ],
               ),
             ],
@@ -118,8 +111,12 @@ class CardOfProduct extends StatelessWidget {
   ImageProvider image(Product product) {
     if (product.imagePath != null) {
       try {
-        return NetworkImage("$baseurlImg"
-            "${product.imagePath!}");
+        return CachedNetworkImageProvider(
+          "$baseurlImg"
+          "${product.imagePath!}",
+        );
+        // return NetworkImage("$baseurlImg"
+        //     "${product.imagePath!}");
       } catch (e) {
         return const AssetImage(AssetsData.product);
       }
