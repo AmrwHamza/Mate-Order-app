@@ -1,8 +1,10 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
 import 'package:mate_order_app/Features/Home/stores/presentation/model_view/store_products_bloc/store_products_bloc.dart';
 
+import '../../../../../../constants.dart';
 import '../../../../Products/presentation/view/product_card/card_of_product.dart';
 import '../../../../Products/presentation/view/product_card/product_card_shimmer.dart';
 
@@ -133,7 +135,11 @@ class _StoreProductsBodyState extends State<StoreProductsBody> {
                     onPressed: () {
                       _productBloc.add(FetchStoreProducts(id: id));
                     },
-                    child: const Text('try again'))
+                      style: const ButtonStyle(
+                          backgroundColor:
+                              WidgetStatePropertyAll(kPrimaryColor8)),
+                    
+                    child: const Text('try again').tr())
               ],
             ),
           );

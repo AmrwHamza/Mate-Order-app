@@ -1,4 +1,4 @@
-import 'package:blur/blur.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mate_order_app/Features/Home/Products/presentation/view/search/search_card.dart';
@@ -61,7 +61,7 @@ class ProductsWidget extends StatelessWidget {
                                   fontSize: 23,
                                   fontWeight: FontWeight.bold,
                                 ),
-                              ),
+                              ).tr(),
                             ),
                           ),
                           const Spacer(),
@@ -70,9 +70,9 @@ class ProductsWidget extends StatelessWidget {
                                 Get.to(SeeAllProductsView(
                                     categoryName: kCategory[index]));
                               },
-                              child: const Padding(
+                              child:  Padding(
                                 padding: EdgeInsets.symmetric(horizontal: 20),
-                                child: Text('See All'),
+                                child: Text('See All').tr(),
                               )),
                         ],
                       ),

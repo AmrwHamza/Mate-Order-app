@@ -1,4 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
@@ -19,7 +20,7 @@ class EditProductAmountViewBody extends StatelessWidget {
   final int orderId;
   @override
   Widget build(BuildContext context) {
-    int price = productInCart.price!;
+    final int price = productInCart.price!;
     return BlocProvider(
       create: (context) => UpdateOrderCubit(
           productInCart, orderId, totalAmount, price, price, totalAmount),
@@ -60,7 +61,7 @@ class EditProductAmountViewBody extends StatelessWidget {
                         fontSize: 20,
                         fontWeight: FontWeight.bold,
                       ),
-                    ),
+                    ).tr(),
                   ),
                 ),
                 Container(
@@ -74,15 +75,25 @@ class EditProductAmountViewBody extends StatelessWidget {
                     children: [
                       theCategory(),
                       const SizedBox(height: 10),
-                      Text('Max: ${productInCart.amount}'),
+                      Row(
+                        children: [
+                          const Text('Max').tr(),
+                          Text(': ${productInCart.amount}'),
+                        ],
+                      ),
                       BlocBuilder<UpdateOrderCubit, UpdateOrderState>(
                         builder: (context, state) {
                           context
                               .read<UpdateOrderCubit>()
                               .changeAmount(changeAmount: 0);
 
-                          return Text(
-                              'Total Price: ${context.read<UpdateOrderCubit>().newPrice} SYP');
+                          return Row(
+                            children: [
+                              Text(
+                                  'Total Price: ${context.read<UpdateOrderCubit>().newPrice} '),
+                              const Text('SYP').tr()
+                            ],
+                          );
                         },
                       ),
                       const Text('Amount:'),
@@ -178,7 +189,13 @@ class EditProductAmountViewBody extends StatelessWidget {
                                     .read<UpdateOrderCubit>()
                                     .confirmNewAmount();
                               },
-                              child: const Text('Confirm'),
+                              style: const ButtonStyle(
+                                  backgroundColor:
+                                      WidgetStatePropertyAll(kPrimaryColor8)),
+                              child: const Text(
+                                'Confirm',
+                                style: TextStyle(color: kPrimaryColor1),
+                              ).tr(),
                             );
                           },
                         ),

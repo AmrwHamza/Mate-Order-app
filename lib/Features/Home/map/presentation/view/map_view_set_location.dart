@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -132,14 +133,14 @@ class _MapViewSetLocationState extends State<MapViewSetLocation> {
       context: context,
       builder: (context) => StatefulBuilder(builder: (context, setState) {
         return AlertDialog(
-          title: const Text("Add Marker"),
+          title: const Text("Add Marker").tr(),
           content: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
               TextField(
                   controller: titleController,
                   decoration: InputDecoration(
-                    labelText: "Title",
+                    labelText: "Title".tr(),
                     errorText: titleNull,
                   ),
                   onChanged: (_) {
@@ -150,7 +151,7 @@ class _MapViewSetLocationState extends State<MapViewSetLocation> {
               TextField(
                 controller: descController,
                 decoration: InputDecoration(
-                  labelText: "Descriotion",
+                  labelText: "Description".tr(),
                   errorText: desNull,
                 ),
                 onChanged: (_) {
@@ -166,7 +167,7 @@ class _MapViewSetLocationState extends State<MapViewSetLocation> {
               onPressed: () {
                 Navigator.pop(context);
               },
-              child: const Text("Cancel"),
+              child: const Text("Cancel").tr(),
             ),
             TextButton(
               onPressed: () {
@@ -185,7 +186,7 @@ class _MapViewSetLocationState extends State<MapViewSetLocation> {
                   Navigator.pop(context);
                 }
               },
-              child: const Text("Save"),
+              child: const Text("Save").tr(),
             ),
           ],
         );
@@ -280,6 +281,7 @@ class _MapViewSetLocationState extends State<MapViewSetLocation> {
         }
       },
       child: Scaffold(
+        
         body: Stack(
           children: [
             FlutterMap(
@@ -344,7 +346,7 @@ class _MapViewSetLocationState extends State<MapViewSetLocation> {
                     child: TextField(
                       controller: _searchController,
                       decoration: InputDecoration(
-                          hintText: "Search Place...",
+                          hintText: "Search Place...".tr(),
                           filled: true,
                           fillColor: Colors.white,
                           border: OutlineInputBorder(

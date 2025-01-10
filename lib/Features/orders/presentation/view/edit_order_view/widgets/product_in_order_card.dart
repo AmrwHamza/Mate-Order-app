@@ -1,9 +1,9 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
 import 'package:mate_order_app/Features/orders/data/models/products_in_order_model.dart';
-import 'package:mate_order_app/Features/orders/data/repository/get_products_in_order.dart';
 import 'package:mate_order_app/Features/orders/presentation/model_view/delete_product_from_order.dart/delete_product_from_order_cubit.dart';
 import 'package:mate_order_app/Features/orders/presentation/view/edit_product_amount/edit_product_amount_view.dart';
 
@@ -40,7 +40,12 @@ class ProductInOrderCard extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 name(context),
-                Text('amount:$totalAmount'),
+                Row(
+                  children: [
+                    Text('amount').tr(),
+                    Text(':$totalAmount'),
+                  ],
+                ),
                 Row(
                   children: [
                     DeleteProductFromOrderButton(
@@ -70,11 +75,19 @@ class ProductInOrderCard extends StatelessWidget {
   SizedBox name(BuildContext context) {
     return SizedBox(
       width: MediaQuery.of(context).size.width * 0.55,
-      child: Text(
-        'Name: ${productInCart.name}',
-        overflow: TextOverflow.ellipsis,
-        maxLines: 1,
-        style: const TextStyle(fontWeight: FontWeight.bold),
+      child: Row(
+        children: [
+          const Text(
+            'Name',
+            style: TextStyle(fontWeight: FontWeight.bold),
+          ).tr(),
+          Text(
+            ': ${productInCart.name}',
+            overflow: TextOverflow.ellipsis,
+            maxLines: 1,
+            style: const TextStyle(fontWeight: FontWeight.bold),
+          ),
+        ],
       ),
     );
   }
@@ -141,7 +154,9 @@ class DeleteProductFromOrderButton extends StatelessWidget {
                   .read<DeleteProductFromOrderCubit>()
                   .delete(orderId: orderId, productId: productId);
             },
-            child: const Text('Delete'));
+            style: const ButtonStyle(
+                backgroundColor: WidgetStatePropertyAll(Colors.redAccent)),
+            child: const Text('Delete').tr());
       },
     );
   }

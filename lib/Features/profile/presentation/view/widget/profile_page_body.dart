@@ -60,85 +60,88 @@ class ProfilePageBody extends StatelessWidget {
                   color: kPrimaryColor2,
                 ),
                 child: ListView(
-                  physics: const AlwaysScrollableScrollPhysics(),
-                  children: [
-                   Form(
-                    child: Padding(
-                      padding: const EdgeInsets.all(16.0),
-                      child: Column(
-                        children: [
-                          const SizedBox(height: 15),
-                          Row(
+                    physics: const AlwaysScrollableScrollPhysics(),
+                    children: [
+                      Form(
+                        child: Padding(
+                          padding: const EdgeInsets.all(16.0),
+                          child: Column(
                             children: [
-                              ImageCircle(),
-                              const SizedBox(width: 30),
-                              PersonalInfo(),
-                              // const SizedBox(width: 10),
-                              IconButton(
-                                  onPressed: () {
-                                    Get.to(
-                                      () => EditPersonalInf(),
-                                      duration: KTransitionDuration,
-                                    );
-                                  },
-                                  icon: const Icon(Icons.edit)),
-                            ],
-                          ),
-                          const SizedBox(height: 30),
-                          Stack(
-                            children: [
-                              Column(
+                              const SizedBox(height: 15),
+                              Row(
                                 children: [
-                                  const MyFavoriteButton(),
-                                  const SizedBox(height: 10),
-                                  const MyLocationButton(),
-                                  const SizedBox(height: 10),
-                                  const HistoryButton(),
-                                  const SizedBox(height: 10),
-                                  const ChangePasswordBotton(),
-                                  const SizedBox(height: 10),
-                                  const SettingBotton(),
-                                  const SizedBox(height: 10),
-                                  InkWell(
-                                    onTap: () {
-                                      QuickAlert.show(
-                                        context: context,
-                                        type: QuickAlertType.confirm,
-                                        title: 'Log Out',
-                                        text:
-                                            'Are you sure you want to log out?',
-                                        cancelBtnText: 'No',
-                                        confirmBtnText: ' Yes',
-                                        confirmBtnColor: kPrimaryColor2,
-                                        onCancelBtnTap: () =>
-                                            Navigator.pop(context),
-                                        onConfirmBtnTap: () {
-                                          Navigator.of(context).pop();
-                                          BlocProvider.of<LogoutCubit>(context)
-                                              .logout('auth/logout');
+                                  ImageCircle(),
+                                  const SizedBox(width: 30),
+                                  PersonalInfo(),
+                                  // const SizedBox(width: 10),
+                                  IconButton(
+                                      onPressed: () {
+                                        Get.to(
+                                          () => EditPersonalInf(),
+                                          duration: KTransitionDuration,
+                                        );
+                                      },
+                                      icon: const Icon(Icons.edit)),
+                                ],
+                              ),
+                              const SizedBox(height: 30),
+                              Stack(
+                                children: [
+                                  Opacity(
+                                    opacity: 0.2,
+                                    child: Image.asset(
+                                        AssetsData.logoWithoutTitle),
+                                  ),
+                                  Column(
+                                    children: [
+                                      const SizedBox(height: 10),
+                                      const MyFavoriteButton(),
+                                      const SizedBox(height: 10),
+                                      const MyLocationButton(),
+                                      const SizedBox(height: 10),
+                                      const HistoryButton(),
+                                      const SizedBox(height: 10),
+                                      const ChangePasswordBotton(),
+                                      const SizedBox(height: 10),
+                                      const SettingBotton(),
+                                      const SizedBox(height: 10),
+                                      InkWell(
+                                        onTap: () {
+                                          QuickAlert.show(
+                                            context: context,
+                                            type: QuickAlertType.confirm,
+                                            title: 'Log Out',
+                                            text:
+                                                'Are you sure you want to log out?',
+                                            cancelBtnText: 'No',
+                                            confirmBtnText: ' Yes',
+                                            confirmBtnColor: kPrimaryColor2,
+                                            onCancelBtnTap: () =>
+                                                Navigator.pop(context),
+                                            onConfirmBtnTap: () {
+                                              Navigator.of(context).pop();
+                                              BlocProvider.of<LogoutCubit>(
+                                                      context)
+                                                  .logout('auth/logout');
+                                            },
+                                          );
                                         },
-                                      );
-                                    },
-                                    child: const ListTile(
-                                      title: Text('Log Out'),
-                                      trailing: Icon(Icons.chevron_right),
-                                      leading: Icon(Icons.exit_to_app,
-                                          color: Colors.black),
-                                    ),
+                                        child: const ListTile(
+                                          title: Text('Log Out'),
+                                          trailing: Icon(Icons.chevron_right),
+                                          leading: Icon(Icons.exit_to_app,
+                                              color: Colors.black),
+                                        ),
+                                      ),
+                                    ],
                                   ),
                                 ],
                               ),
-                              Opacity(
-                                opacity: 0.2,
-                                child: Image.asset(AssetsData.logoWithoutTitle),
-                              ),
                             ],
                           ),
-                        ],
+                        ),
                       ),
-                    ),
-                  ),
-                ]),
+                    ]),
               ),
             );
           },

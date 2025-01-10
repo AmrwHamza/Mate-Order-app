@@ -14,7 +14,6 @@ class LocationsServices {
       },
       (r) {
         try {
-          print(r);
           return Right(AddressListModel.fromJson(r as List));
         } catch (e) {
           return const Left(UnknownFailure('Error parsing response'));

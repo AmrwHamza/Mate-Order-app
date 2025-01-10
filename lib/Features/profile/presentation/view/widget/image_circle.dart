@@ -9,6 +9,7 @@ import 'package:mate_order_app/constants.dart';
 import 'package:mate_order_app/floating_message.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 
+// ignore: must_be_immutable
 class ImageCircle extends StatelessWidget {
   File? serverImage;
 
@@ -196,6 +197,7 @@ class ImageCircle extends StatelessWidget {
         }
       }
     } catch (e) {
+      // ignore: use_build_context_synchronously
       FloatingMessage('$e', 3, context);
     }
   }

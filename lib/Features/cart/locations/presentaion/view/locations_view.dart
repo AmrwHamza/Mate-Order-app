@@ -4,7 +4,8 @@ import 'package:mate_order_app/Features/cart/locations/presentaion/view/location
 import 'package:mate_order_app/Features/Home/map/presentation/view/map_view_set_location.dart';
 import 'package:mate_order_app/Features/main%20home/widget/app_bar_style.dart';
 
-import '../../../../Home/oredr/presentation/model_view/bloc/order_bloc.dart';
+import '../../../../../constants.dart';
+
 
 class LocationsView extends StatelessWidget {
   const LocationsView({super.key});
@@ -12,6 +13,8 @@ class LocationsView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+            backgroundColor: KBackgroundColor,
+
       appBar: mainAppBar('Your Locations'),
       body: const LocationsBody(),
       floatingActionButton: const AddLocationButton(),
@@ -28,7 +31,7 @@ class AddLocationButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return FloatingActionButton(
         heroTag: "addLocationHero",
-        child: Icon(Icons.add),
+        child: const Icon(Icons.add),
         onPressed: () {
           try {
             Get.to(() => const MapViewSetLocation());

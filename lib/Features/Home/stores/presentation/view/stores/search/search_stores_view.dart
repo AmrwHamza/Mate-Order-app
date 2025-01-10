@@ -10,7 +10,7 @@ class SearchStoresView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: mainAppBar('Search for products'),
+      appBar: mainAppBar('Search for stores'),
       body: SearchStoresBody(),
       backgroundColor: KBackgroundColor,
     );

@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mate_order_app/Features/cart/locations/presentaion/view/locations_view.dart';
@@ -11,6 +12,7 @@ class CartView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // ignore: deprecated_member_use
     return WillPopScope(
       onWillPop: () async {
         context.read<CartCubit>().getCartProducts();
@@ -19,6 +21,8 @@ class CartView extends StatelessWidget {
       child: BlocBuilder<CartCubit, CartState>(
         builder: (context, state) {
           return Scaffold(
+                  backgroundColor: KBackgroundColor,
+
             appBar: mainAppBar('Cart'),
             body: const CartViewBody(),
             floatingActionButton: SizedBox(
@@ -27,14 +31,14 @@ class CartView extends StatelessWidget {
                 onPressed: () {
                   Navigator.push(context, MaterialPageRoute(
                     builder: (context) {
-                      return LocationsView();
+                      return const LocationsView();
                     },
                   ));
                 },
                 backgroundColor: kPrimaryColor9,
                 isExtended: true,
                 mini: false,
-                child: const Text('Choose Location'),
+                child: const Text('Choose Location').tr(),
               ),
             ),
           );

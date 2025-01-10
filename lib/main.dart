@@ -1,10 +1,12 @@
 import 'dart:io';
 
+import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
+import 'package:mate_order_app/Features/Nonification/presentation/model_view/cubit/notifications_cubit_cubit.dart';
 import 'package:mate_order_app/Features/cart/cart/presentation/model_view/add_order/add_order_cubit.dart';
 
 import 'package:mate_order_app/Features/cart/locations/presentaion/model_view/location_cubit/locations_cubit.dart';
@@ -14,12 +16,11 @@ import 'package:mate_order_app/Features/auth/login/presentation/view-models/cubi
 import 'package:mate_order_app/Features/auth/logout/presentation/view_model/cubit/logout_cubit.dart';
 import 'package:mate_order_app/Features/auth/register/presentation/view-models/cubit/register_cubit.dart';
 import 'package:mate_order_app/Features/cart/cart/presentation/model_view/cart_cubit/cart_cubit.dart';
+import 'package:mate_order_app/Features/favorits/presentation/model_view/cubit/get_fav_cubit.dart';
 import 'package:mate_order_app/Features/main%20home/home.dart';
-import 'package:mate_order_app/Features/orders/data/repository/delete_product_from_order_service.dart';
 import 'package:mate_order_app/Features/orders/presentation/model_view/GetOrderProducts/get_order_products_cubit.dart';
 import 'package:mate_order_app/Features/orders/presentation/model_view/delete_product_from_order.dart/delete_product_from_order_cubit.dart';
 import 'package:mate_order_app/Features/orders/presentation/model_view/get_orders/get_orders_cubit.dart';
-import 'package:mate_order_app/Features/orders/presentation/model_view/update_order/update_order_cubit.dart';
 import 'package:mate_order_app/Features/profile/presentation/view_model/change_password_cubit/change_password_cubit.dart';
 import 'package:mate_order_app/Features/profile/presentation/view_model/profile_image_cubit/profile_image_cubit.dart';
 import 'package:mate_order_app/Features/splash/views/splash_view.dart';
@@ -29,12 +30,12 @@ import 'package:mate_order_app/core/helpers/shared_pref.dart';
 import 'package:mate_order_app/core/notification/notification_service.dart';
 import 'package:mate_order_app/firebase_options.dart';
 import 'package:permission_handler/permission_handler.dart';
-import 'Features/Home/Products/presentation/model_view/add_to_cart/add_to_cart_cubit.dart';
 import 'Features/Home/Products/presentation/model_view/home_bloc/bloc/products_home_bloc.dart';
 import 'Features/Home/map/presentation/model_view/cubit/map_cubit.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await EasyLocalization.ensureInitialized();
 
   if (Platform.isAndroid && await Permission.notification.isDenied) {
     await Permission.notification.request();
@@ -51,8 +52,15 @@ void main() async {
   Bloc.observer = const CounterObserver();
   // BlocProvider.of<Prof>(context).showImage;
 
-  runApp(MateOrderApp(
-    isLoggedIn: isLoggedIn,
+  runApp(EasyLocalization(
+    supportedLocales: [Locale('en'), Locale('ar')],
+    path: translations, // <-- change the path of the translation files
+    fallbackLocale: Locale('ar'),
+    startLocale: Locale('ar'),
+    saveLocale: true,
+    child: MateOrderApp(
+      isLoggedIn: isLoggedIn,
+    ),
   ));
 }
 
@@ -61,6 +69,9 @@ class MateOrderApp extends StatelessWidget {
   final bool isLoggedIn;
   @override
   Widget build(BuildContext context) {
+    print(
+        '11111111111111111111111111111111111111111111111111111111111111111111111${context.locale.languageCode}'); // يجب أن تطبع 'ar' إذا كانت اللغة العربية
+
     return MultiBlocProvider(
       providers: [
         BlocProvider(create: (context) => ProductsHomeBloc()),
@@ -78,8 +89,13 @@ class MateOrderApp extends StatelessWidget {
         BlocProvider(create: (context) => GetOrdersCubit()),
         BlocProvider(create: (context) => GetOrderProductsCubit()),
         BlocProvider(create: (context) => DeleteProductFromOrderCubit()),
+        BlocProvider(create: (context) => NotificationsCubit()),
+        BlocProvider(create: (context) => GetFavCubit()),
       ],
       child: GetMaterialApp(
+        localizationsDelegates: context.localizationDelegates,
+        supportedLocales: context.supportedLocales,
+        locale: context.locale,
         debugShowCheckedModeBanner: false,
         color: Colors.white,
         home: isLoggedIn ? const Home() : const SplashView(),

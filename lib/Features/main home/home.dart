@@ -1,7 +1,9 @@
 import 'package:convex_bottom_bar/convex_bottom_bar.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:mate_order_app/Features/Nonification/presentation/view/notification_page.dart';
+import 'package:mate_order_app/Features/Nonification/presentation/model_view/cubit/notifications_cubit_cubit.dart';
+import 'package:mate_order_app/Features/Nonification/presentation/view/notifications_view.dart';
 import 'package:mate_order_app/Features/cart/cart/presentation/model_view/cart_cubit/cart_cubit.dart';
 import 'package:mate_order_app/Features/profile/presentation/view/profile_page.dart';
 import 'package:mate_order_app/constants.dart';
@@ -27,7 +29,7 @@ class _HomeState extends State<Home> {
     const HomePage(),
     const CartView(),
     const OrdersView(),
-    const NotificationPage(),
+    const NotificationsView(),
     const ProfilePage(),
   ];
 
@@ -54,14 +56,17 @@ class _HomeState extends State<Home> {
             if (index == 2) {
               context.read<GetOrdersCubit>().getOrders();
             }
+            if (index == 3) {
+              context.read<NotificationsCubit>().getNotifications();
+            }
           });
         },
-        items: const [
-          TabItem(icon: Icons.home, title: 'Home'),
-          TabItem(icon: Icons.shopping_cart, title: 'Cart'),
-          TabItem(icon: Icons.checklist_rtl, title: 'Orders'),
-          TabItem(icon: Icons.notifications, title: 'Notification'),
-          TabItem(icon: Icons.person, title: 'Profile'),
+        items: [
+          TabItem(icon: Icons.home, title: 'Home'.tr()),
+          TabItem(icon: Icons.shopping_cart, title: 'Cart'.tr()),
+          TabItem(icon: Icons.checklist_rtl, title: 'Orders'.tr()),
+          TabItem(icon: Icons.notifications, title: 'Notification'.tr()),
+          TabItem(icon: Icons.person, title: 'Profile'.tr()),
         ],
       ),
     );

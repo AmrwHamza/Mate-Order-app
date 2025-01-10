@@ -1,6 +1,8 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
+import 'package:get/get_connect/http/src/utils/utils.dart';
 import 'package:mate_order_app/Features/Home/Products/data/models/products_with_category_model/products_with_category/products_with_category.dart';
 import 'package:mate_order_app/Features/cart/locations/presentaion/view/locations_view.dart';
 import 'package:mate_order_app/Features/Home/oredr/presentation/model_view/bloc/order_bloc.dart';
@@ -112,7 +114,7 @@ class OrederSheetBody extends StatelessWidget {
                           height: 1,
                         ),
                         Text(
-                          "Price: \$ ${context.watch<OrderBloc>().price}",
+                          "Price: \SYP ${context.watch<OrderBloc>().price}",
                         ),
                       ],
                     ),
@@ -130,7 +132,7 @@ class OrederSheetBody extends StatelessWidget {
                             backgroundColor:
                                 WidgetStatePropertyAll(kPrimaryColor10)),
                         onPressed: () async {
-                          Get.to(() => LocationsView());
+                          Get.to(() => const LocationsView());
                         },
                         child: const Text(
                           'choose location',
@@ -158,17 +160,29 @@ class OrederSheetBody extends StatelessWidget {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text(
-                                'Title : ${context.read<OrderBloc>().address?.title}')
+                            Row(
+                              children: [
+                                const Text('Title').tr(),
+                                Text(
+                                    ': ${context.read<OrderBloc>().address?.title}'),
+                              ],
+                            )
                           ],
                         ),
                       ),
                     ),
                     ElevatedButton(
-                        onPressed: () {
-                          context.read<OrderBloc>().add(AddOrderEvent());
-                        },
-                        child: const Text('Confirm')),
+                      onPressed: () {
+                        context.read<OrderBloc>().add(AddOrderEvent());
+                      },
+                      style: const ButtonStyle(
+                          backgroundColor:
+                              WidgetStatePropertyAll(kPrimaryColor8)),
+                      child: const Text(
+                        'Confirm',
+                        style: TextStyle(color: kPrimaryColor1),
+                      ).tr(),
+                    ),
                   ],
                 )
             ],

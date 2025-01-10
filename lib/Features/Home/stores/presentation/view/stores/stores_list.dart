@@ -1,9 +1,11 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
 import 'package:mate_order_app/Features/Home/stores/presentation/model_view/stores_bloc/stores_bloc.dart';
 import 'package:mate_order_app/Features/Home/stores/presentation/view/stores/store_card_shimmer.dart';
 
+import '../../../../../../constants.dart';
 import 'card_of_store.dart';
 
 class StoreList extends StatefulWidget {
@@ -67,7 +69,6 @@ class _StoreListState extends State<StoreList> {
               controller: _scrollController,
               itemCount: 5,
               itemBuilder: (context, index) {
-
                 return const StoreCardShimmer();
               },
             ),
@@ -117,7 +118,10 @@ class _StoreListState extends State<StoreList> {
                     onPressed: () {
                       _storesBloc.add(FetchStores());
                     },
-                    child: const Text('try again'))
+                    style: const ButtonStyle(
+                        backgroundColor:
+                            WidgetStatePropertyAll(kPrimaryColor8)),
+                    child: const Text('try again').tr())
               ],
             ),
           );

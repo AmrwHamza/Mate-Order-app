@@ -2,7 +2,6 @@ import 'dart:io';
 import 'dart:typed_data';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:mate_order_app/Features/profile/data/models/profile_image/profile_image_model.dart';
 import 'package:mate_order_app/Features/profile/data/repos/profile_image_repo/profile_image_service.dart';
 import 'package:mate_order_app/core/utils/api_services.dart';
 part 'profile_image_state.dart';

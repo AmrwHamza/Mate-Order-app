@@ -1,7 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:mate_order_app/Features/cart/cart/presentation/model_view/cart_cubit/cart_cubit.dart';
 import 'package:mate_order_app/Features/cart/cart/presentation/model_view/edit_amount/edit_amount_cubit.dart';
 import 'package:mate_order_app/Features/cart/cart/presentation/view/edit_sheet/edit_sheet_view.dart';
 import 'package:mate_order_app/Features/cart/cart/presentation/view/widgets/delete_button_from_cart.dart';
@@ -40,10 +40,22 @@ class CartProductCard extends StatelessWidget {
                     name(context),
                     BlocBuilder<EditAmountCubit, EditAmountState>(
                       builder: (context, state) {
-                        return Text(
-                          "Price: ${context.read<EditAmountCubit>().totalPrice} "
-                          r'SYP',
-                          style: const TextStyle(fontWeight: FontWeight.bold),
+                        return Row(
+                          children: [
+                            const Text(
+                              'Price',
+                              style: TextStyle(fontWeight: FontWeight.bold),
+                            ).tr(),
+                            Text(
+                              ": ${context.read<EditAmountCubit>().totalPrice} ",
+                              style:
+                                  const TextStyle(fontWeight: FontWeight.bold),
+                            ),
+                            const Text(
+                              'SYP',
+                              style: TextStyle(fontWeight: FontWeight.bold),
+                            ).tr()
+                          ],
                         );
                       },
                     ),
@@ -82,8 +94,6 @@ class CartProductCard extends StatelessWidget {
               ],
             ),
           ),
-      
-      
         );
       }),
     );
@@ -100,11 +110,19 @@ class CartProductCard extends StatelessWidget {
   SizedBox name(BuildContext context) {
     return SizedBox(
       width: MediaQuery.of(context).size.width * 0.55,
-      child: Text(
-        'Name: ${product.name}',
-        overflow: TextOverflow.ellipsis,
-        maxLines: 1,
-        style: const TextStyle(fontWeight: FontWeight.bold),
+      child: Row(
+        children: [
+          const Text(
+            'Name',
+            style: TextStyle(fontWeight: FontWeight.bold),
+          ).tr(),
+          Text(
+            ': ${product.name}',
+            overflow: TextOverflow.ellipsis,
+            maxLines: 1,
+            style: const TextStyle(fontWeight: FontWeight.bold),
+          ),
+        ],
       ),
     );
   }
@@ -149,11 +167,14 @@ class AmountText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    
-
     return BlocBuilder<EditAmountCubit, EditAmountState>(
       builder: (context, state) {
-        return Text('amount:${context.read<EditAmountCubit>().currentAmount}');
+        return Row(
+          children: [
+            const Text('amount').tr(),
+            Text(':${context.read<EditAmountCubit>().currentAmount}'),
+          ],
+        );
       },
     );
   }

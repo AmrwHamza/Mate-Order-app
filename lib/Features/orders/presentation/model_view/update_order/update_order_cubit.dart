@@ -1,7 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:mate_order_app/Features/orders/data/models/products_in_order_model.dart';
-import 'package:mate_order_app/Features/orders/data/models/update_order_modul.dart';
 import 'package:mate_order_app/Features/orders/data/repository/update_order_service.dart';
 
 part 'update_order_state.dart';
@@ -45,8 +44,7 @@ class UpdateOrderCubit extends Cubit<UpdateOrderState> {
   Future<void> confirmNewAmount() async {
     emit(UpdateOrderLoading());
 
-    int a = oldAmount - newAmount;
-    print('===============  A= $a  ==================');
+    final int a = oldAmount - newAmount;
     final result = await UpdateOrderService().updateOrder(
         orderId: orderId,
         productId: productInCart.id!,

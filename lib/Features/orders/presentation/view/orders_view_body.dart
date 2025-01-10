@@ -1,15 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:get/get.dart';
 import 'package:liquid_pull_to_refresh/liquid_pull_to_refresh.dart';
-import 'package:mate_order_app/Features/orders/data/models/orders_model.dart';
 import 'package:mate_order_app/Features/orders/presentation/model_view/get_orders/get_orders_cubit.dart';
 import 'package:mate_order_app/Features/orders/presentation/view/widgets/order_card_receiving.dart';
 import 'package:mate_order_app/Features/orders/presentation/view/widgets/order_card_sending.dart';
 import 'package:mate_order_app/Features/orders/presentation/view/widgets/order_card_waiting_accept.dart';
 import 'package:mate_order_app/constants.dart';
 
-import '../../../cart/cart/presentation/model_view/cart_cubit/cart_cubit.dart';
 
 class OrdersViewBody extends StatelessWidget {
   const OrdersViewBody({super.key});
@@ -20,7 +17,7 @@ class OrdersViewBody extends StatelessWidget {
     return LiquidPullToRefresh(
       height: 60,
       showChildOpacityTransition: false,
-      backgroundColor: kPrimaryColor10,
+      backgroundColor: Colors.white,
       color: kPrimaryColor4,
       springAnimationDurationInMilliseconds: 500,
       onRefresh: () async {
@@ -29,7 +26,7 @@ class OrdersViewBody extends StatelessWidget {
       child: BlocConsumer<GetOrdersCubit, GetOrdersState>(
         listener: (context, state) {
           if (state is GetOrdersError) {
-            Get.snackbar('Error', state.message);
+            // Get.snackbar('Error', state.message);
           }
         },
         builder: (context, state) {
@@ -61,16 +58,19 @@ class OrdersViewBody extends StatelessWidget {
               },
             );
           }
-          return LiquidPullToRefresh(
-              height: 60,
-              showChildOpacityTransition: true,
-              backgroundColor: kPrimaryColor10,
-              color: kPrimaryColor4,
-              springAnimationDurationInMilliseconds: 500,
-              onRefresh: () async {
-                context.read<CartCubit>().getCartProducts();
-              },
-              child: const Column());
+          return ListView(
+            children: [
+              SizedBox(
+                height: MediaQuery.of(context).size.height,
+                child: const Center(
+                  child: Text(
+                    'No orders available',
+                    style: TextStyle(fontSize: 18, color: Colors.grey),
+                  ),
+                ),
+              ),
+            ],
+          );
         },
       ),
     );

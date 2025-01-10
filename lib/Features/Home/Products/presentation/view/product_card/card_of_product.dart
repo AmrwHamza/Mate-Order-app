@@ -1,4 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -93,12 +94,12 @@ class CardOfProduct extends StatelessWidget {
                 style: const TextStyle(fontWeight: FontWeight.bold),
               ),
               Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                // mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    "${product.price} " r'SYP',
-                    style: const TextStyle(),
+                    "${product.price} ",
                   ),
+                  const Text('SYP').tr()
                 ],
               ),
             ],

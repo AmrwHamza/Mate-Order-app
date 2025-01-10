@@ -1,7 +1,9 @@
 // ignore_for_file: no_logic_in_create_state
 
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../../../../../constants.dart';
 import '../../model_view/home_bloc/bloc/products_home_bloc.dart';
 import '../product_card/card_of_product.dart';
 import '../product_card/product_card_shimmer.dart';
@@ -159,7 +161,11 @@ class _ProductsListState extends State<ProductsList>
                       _productBloc
                           .add(FetchProductsHome(category: categoryName));
                     },
-                    child: const Text('try again'))
+                      style: const ButtonStyle(
+                          backgroundColor:
+                              WidgetStatePropertyAll(kPrimaryColor8)),
+                    
+                    child: const Text('try again').tr())
               ],
             ),
           );

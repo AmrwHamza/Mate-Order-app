@@ -1,8 +1,6 @@
 import 'package:bloc/bloc.dart';
-import 'package:dartz/dartz.dart';
 import 'package:equatable/equatable.dart';
 import 'package:mate_order_app/Features/orders/data/repository/get_products_in_order.dart';
-import 'package:mate_order_app/core/utils/error/failure.dart';
 
 import '../../../data/models/products_in_order_model.dart';
 

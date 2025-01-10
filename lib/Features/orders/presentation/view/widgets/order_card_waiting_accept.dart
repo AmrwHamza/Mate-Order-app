@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mate_order_app/Features/orders/data/models/orders_model.dart';
@@ -29,7 +30,12 @@ class OrderCardWaitingAccept extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text('Order Id: ${order.id}'),
-              Text('Total Price: ${order.totalPrice} SYP'),
+              Row(
+                children: [
+                  Text('Total Price: ${order.totalPrice} '),
+                  const Text('SYP').tr(),
+                ],
+              ),
               const SizedBox(
                 height: 5,
               ),
@@ -38,8 +44,9 @@ class OrderCardWaitingAccept extends StatelessWidget {
                   width: MediaQuery.of(context).size.width * 0.45,
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(20),
-                      color: kPrimaryColor7),
-                  child: const Center(child: Text('Status: Waiting accept')))
+                      color: kPrimaryColor10),
+                  child:
+                      Center(child: const Text('Status: Waiting accept').tr()))
             ],
           ),
           ElevatedButton(
@@ -89,7 +96,9 @@ class DeleteOrderButton extends StatelessWidget {
               onPressed: () {
                 context.read<DeleteOrderCubit>().deleteOrder(orderId: id);
               },
-              child: const Text('Delete'));
+              style: const ButtonStyle(
+                  backgroundColor: WidgetStatePropertyAll(Colors.redAccent)),
+              child: const Text('Delete').tr());
         },
       ),
     );

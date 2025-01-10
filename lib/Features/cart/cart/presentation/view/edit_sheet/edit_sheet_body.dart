@@ -1,9 +1,7 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
-import 'package:mate_order_app/Features/Home/Products/data/models/products_with_category_model/products_with_category/products_with_category.dart';
-import 'package:mate_order_app/Features/cart/locations/presentaion/view/locations_view.dart';
-import 'package:mate_order_app/Features/Home/oredr/presentation/model_view/bloc/order_bloc.dart';
 import 'package:mate_order_app/Features/cart/cart/data/models/cart_products_model.dart';
 import 'package:mate_order_app/Features/cart/cart/presentation/model_view/cart_cubit/cart_cubit.dart';
 import 'package:mate_order_app/Features/cart/cart/presentation/model_view/edit_amount/edit_amount_cubit.dart';
@@ -56,7 +54,7 @@ class EditSheetBody extends StatelessWidget {
                           ),
                           color: Colors.red,
                         ),
-                        SizedBox(
+                        const SizedBox(
                           width: 10,
                         ),
                         const ButtonInSheet(
@@ -108,12 +106,22 @@ class EditSheetBody extends StatelessWidget {
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text('Max : ${product.amount}'),
+                        Row(
+                          children: [
+                            const Text('Max').tr(),
+                            Text(': ${product.amount}'),
+                          ],
+                        ),
                         const SizedBox(
                           height: 1,
                         ),
-                        Text(
-                          "Price:${context.read<EditAmountCubit>().totalPrice} ",
+                        Row(
+                          children: [
+                            const Text('Price').tr(),
+                            Text(
+                              ":${context.read<EditAmountCubit>().totalPrice} ",
+                            ),
+                          ],
                         ),
                       ],
                     ),
@@ -129,7 +137,13 @@ class EditSheetBody extends StatelessWidget {
                             .read<EditAmountCubit>()
                             .confirmEditAmount();
                       },
-                      child: const Text('Confirm'),
+                      style: const ButtonStyle(
+                          backgroundColor:
+                              WidgetStatePropertyAll(kPrimaryColor8)),
+                      child: const Text(
+                        'Confirm',
+                        style: TextStyle(color: kPrimaryColor1),
+                      ).tr(),
                     ),
             ],
           ),

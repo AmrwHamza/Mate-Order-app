@@ -1,7 +1,9 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
 
+import '../../../../../../constants.dart';
 import '../../model_view/home_bloc/bloc/products_home_bloc.dart';
 import '../product_card/card_of_product.dart';
 import '../product_card/product_card_shimmer.dart';
@@ -67,7 +69,6 @@ class _SeeAllProductsBodyState extends State<SeeAllProductsBody> {
       listener: (context, state) {
         if (state is ProductsHomeError) {
           Get.snackbar('Error', state.message);
-
         }
       },
       builder: (context, state) {
@@ -76,10 +77,8 @@ class _SeeAllProductsBodyState extends State<SeeAllProductsBody> {
               height: MediaQuery.of(context).size.height * 0.9,
               child: GridView.builder(
                 controller: _scrollController,
-              
                 itemCount: 2,
                 itemBuilder: (context, index) {
-
                   return const ProductCardShimmer();
                 },
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
@@ -117,7 +116,7 @@ class _SeeAllProductsBodyState extends State<SeeAllProductsBody> {
                   return const Padding(
                     padding: EdgeInsets.all(5.0),
                     child: SizedBox(width: 140, child: ProductCardShimmer()),
-                  ); 
+                  );
                 }
               },
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
@@ -140,12 +139,15 @@ class _SeeAllProductsBodyState extends State<SeeAllProductsBody> {
                       _productBloc
                           .add(FetchProductsHome(category: categoryName));
                     },
-                    child: const Text('try again'))
+                    style: const ButtonStyle(
+                        backgroundColor:
+                            WidgetStatePropertyAll(kPrimaryColor8)),
+                    child: const Text('try again').tr())
               ],
             ),
           );
         }
-        return const SizedBox.shrink(); 
+        return const SizedBox.shrink();
       },
     );
   }

@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -9,7 +10,7 @@ class SearchStoresCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-     return GestureDetector(
+    return GestureDetector(
       onTap: () {
         Get.to(const SearchStoresView(),
             curve: Curves.easeOut, //easeOut
@@ -24,13 +25,13 @@ class SearchStoresCard extends StatelessWidget {
           child: SizedBox(
             width: MediaQuery.of(context).size.width * 0.5,
             height: 50,
-            child: const Row(
+            child: Row(
               children: [
-                Padding(
+                const Padding(
                   padding: EdgeInsets.symmetric(horizontal: 10),
                   child: Icon(Icons.search_outlined),
                 ),
-                Text('Search for Stores'),
+                const Text('Search for stores').tr(),
               ],
             ),
           ),

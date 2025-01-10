@@ -1,4 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
@@ -19,7 +20,7 @@ class ProductDetails extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: KBackgroundColor,
-      appBar: appBarStyle('Product Details'),
+      appBar: mainAppBar('Product Details'),
       body: Padding(
         padding: const EdgeInsets.all(15),
         child: Stack(
@@ -57,7 +58,7 @@ class ProductDetails extends StatelessWidget {
                         fontSize: 20,
                         fontWeight: FontWeight.bold,
                       ),
-                    ),
+                    ).tr(),
                   ),
                 ),
                 Container(
@@ -69,11 +70,39 @@ class ProductDetails extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      theOwner(),
+                      Row(
+                        children: [
+                          Text(
+                            'Owner',
+                            style: const TextStyle(fontSize: 16),
+                          ).tr(),
+                          theOwner(),
+                        ],
+                      ),
                       const SizedBox(height: 10),
-                      thePrice(),
+                      Row(
+                        children: [
+                          const Text(
+                            'The Price',
+                            style: TextStyle(fontSize: 16),
+                          ).tr(),
+                          thePrice(),
+                          const Text(
+                            'SYP',
+                            style: TextStyle(fontSize: 16),
+                          ).tr()
+                        ],
+                      ),
                       const SizedBox(height: 10),
-                      amount()
+                      Row(
+                        children: [
+                          Text(
+                            'amount',
+                            style: const TextStyle(fontSize: 16),
+                          ).tr(),
+                          amount(),
+                        ],
+                      )
                     ],
                   ),
                 ),
@@ -104,26 +133,24 @@ class ProductDetails extends StatelessWidget {
           ],
         ),
       ),
-    
-    
     );
   }
 
   Text amount() {
     return Text(
-      'Amount: ${product.amount}',
+      ': ${product.amount}',
       style: const TextStyle(fontSize: 16),
     );
   }
 
   Text theOwner() => Text(
-        'Owner: ${product.owner} ',
+        ':${product.owner} ',
         style: const TextStyle(fontSize: 16),
-      );
+      ).tr();
 
   Text thePrice() {
     return Text(
-      'The Price: ${product.price} SYP',
+      ': ${product.price} ',
       style: const TextStyle(fontSize: 16),
     );
   }
@@ -156,7 +183,6 @@ class ProductDetails extends StatelessWidget {
       ),
     );
   }
-
 }
 
 class AddToCartButton extends StatelessWidget {
@@ -193,7 +219,7 @@ class AddToCartButton extends StatelessWidget {
               child: const Text(
                 'Done ✅',
                 style: TextStyle(color: Colors.black),
-              ),
+              ).tr(),
             );
           }
           if (state is AddToCartError &&
@@ -224,7 +250,7 @@ class AddToCartButton extends StatelessWidget {
               child: const Text(
                 'Add to cart',
                 style: TextStyle(color: Colors.black),
-              ),
+              ).tr(),
             );
           }
         },

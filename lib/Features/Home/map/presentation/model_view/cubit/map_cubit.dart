@@ -28,7 +28,6 @@ class MapCubit extends Cubit<MapState> {
 
     return result.fold((l) {
       emit(MapError(message: l.message));
-      print("==================${l.message}================");
       return false;
     }, (r) {
       emit(MapSuccess());

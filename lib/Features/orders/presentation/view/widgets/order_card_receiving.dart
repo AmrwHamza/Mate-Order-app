@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:mate_order_app/Features/orders/data/models/orders_model.dart';
 import 'package:mate_order_app/constants.dart';
@@ -24,7 +25,12 @@ class OrderCardReceiving extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text('Order Id: ${order.id}'),
-              Text('Total Price: ${order.totalPrice} SYP'),
+              Row(
+                children: [
+                  Text('Total Price: ${order.totalPrice} '),
+                  const Text('SYP').tr()
+                ],
+              ),
               const SizedBox(
                 height: 5,
               ),
@@ -34,7 +40,7 @@ class OrderCardReceiving extends StatelessWidget {
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(20),
                       color: Colors.blueAccent),
-                  child: const Center(child: Text('Status: Received')))
+                  child:  Center(child: const Text('Status: Received').tr()))
             ],
           )
         ],

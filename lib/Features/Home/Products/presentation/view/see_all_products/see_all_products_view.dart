@@ -12,7 +12,7 @@ class SeeAllProductsView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: KBackgroundColor,
-      appBar: mainAppBar('Home'),
+      appBar: mainAppBar('Products'),
       body: SafeArea(
           child: SeeAllProductsBody.SeeAllProductsBody(
               categoryName: categoryName)),

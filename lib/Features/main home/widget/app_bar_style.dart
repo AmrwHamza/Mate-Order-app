@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:mate_order_app/constants.dart';
 
@@ -16,7 +17,7 @@ AppBar mainAppBar(String title) {
     backgroundColor: kPrimaryColor4,
     centerTitle: true,
     title: Text(
-      title,
+      title.tr(), 
       style: const TextStyle(color: Colors.white),
     ),
   );

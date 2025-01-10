@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 import '../../../constants.dart';
@@ -50,9 +51,9 @@ class _ProductOptionSheetState extends State<ProductOptionSheet> {
               const Text(
                 'Product Name',
                 style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
-              ),
+              ).tr(),
               Text(
-                'The Price :   ${numberOfproducts * 100}',
+                'Price :   ${numberOfproducts * 100}',
                 style: const TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
               ),
               Row(

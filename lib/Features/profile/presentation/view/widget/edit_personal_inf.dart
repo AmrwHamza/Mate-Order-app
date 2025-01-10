@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mate_order_app/Features/profile/presentation/view_model/profile_inf_cubit/profile_inf_cubit.dart';
@@ -57,14 +58,14 @@ class EditPersonalInf extends StatelessWidget {
                       AlignOfComments(comment: 'Press to edit your name'),
                       const SizedBox(height: 10),
                       EditableTextField(
-                        label: 'First Name',
+                        label: 'First Name'.tr(),
                         icon: Icons.account_circle_outlined,
                         controller: firstNameController,
                         keyboardType: TextInputType.text,
                       ),
                       const SizedBox(height: 15),
                       EditableTextField(
-                        label: 'Last Name',
+                        label: 'Last Name'.tr(),
                         icon: Icons.account_circle_outlined,
                         controller: lastNameController,
                         keyboardType: TextInputType.text,

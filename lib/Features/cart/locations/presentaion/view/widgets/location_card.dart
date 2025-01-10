@@ -1,9 +1,9 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:mate_order_app/Features/cart/locations/presentaion/view/widgets/choose_location_button.dart';
 import 'package:mate_order_app/Features/cart/locations/presentaion/view/widgets/delete_location_button.dart';
 import 'package:mate_order_app/constants.dart';
 
-import '../../../../../Home/oredr/presentation/model_view/bloc/order_bloc.dart';
 import '../../../data/models/address_list_model.dart';
 
 class LocationCard extends StatelessWidget {
@@ -30,8 +30,18 @@ class LocationCard extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text('Title:${address.title}'),
-                  Text('Description:${address.description}')
+                  Row(
+                    children: [
+                      const Text('Title').tr(),
+                      Text(':${address.title}'),
+                    ],
+                  ),
+                  Row(
+                    children: [
+                      const Text('Description').tr(),
+                      Text(':${address.description}'),
+                    ],
+                  )
                 ],
               ),
             ),

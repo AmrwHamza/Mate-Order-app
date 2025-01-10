@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mate_order_app/Features/Home/Products/presentation/view/search/search_products_view.dart';
@@ -25,13 +26,13 @@ class SearchCard extends StatelessWidget {
           child: SizedBox(
             width: MediaQuery.of(context).size.width * 0.5,
             height: 50,
-            child: const Row(
+            child: Row(
               children: [
-                Padding(
+                const Padding(
                   padding: EdgeInsets.symmetric(horizontal: 10),
                   child: Icon(Icons.search_outlined),
                 ),
-                Text('Search for Products'),
+                Center(child: const Text('Search for Products').tr()),
               ],
             ),
           ),

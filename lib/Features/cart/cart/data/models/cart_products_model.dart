@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_collection_literals
+
 class CartProductsModel {
   List<Data>? data;
 
@@ -7,13 +9,14 @@ class CartProductsModel {
     if (json['data'] != null) {
       data = <Data>[];
       json['data'].forEach((v) {
-        data!.add(new Data.fromJson(v));
+        data!.add(Data.fromJson(v));
       });
     }
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
+    // ignore: prefer_collection_literals
+    final Map<String, dynamic> data = Map<String, dynamic>();
     if (this.data != null) {
       data['data'] = this.data!.map((v) => v.toJson()).toList();
     }
@@ -28,14 +31,14 @@ class Data {
 
   Data.fromJson(Map<String, dynamic> json) {
     productInCart = json['productInCart'] != null
-        ? new ProductInCart.fromJson(json['productInCart'])
+        ? ProductInCart.fromJson(json['productInCart'])
         : null;
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    if (this.productInCart != null) {
-      data['productInCart'] = this.productInCart!.toJson();
+    final Map<String, dynamic> data = Map<String, dynamic>();
+    if (productInCart != null) {
+      data['productInCart'] = productInCart!.toJson();
     }
     return data;
   }
@@ -82,18 +85,18 @@ class ProductInCart {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
-    data['store_id'] = this.storeId;
-    data['name'] = this.name;
-    data['amount'] = this.amount;
-    data['price'] = this.price;
-    data['category'] = this.category;
-    data['active'] = this.active;
-    data['image_path'] = this.imagePath;
-    data['created_at'] = this.createdAt;
-    data['updated_at'] = this.updatedAt;
-    data['total_amount'] = this.totalAmount;
+    final Map<String, dynamic> data = Map<String, dynamic>();
+    data['id'] = id;
+    data['store_id'] = storeId;
+    data['name'] = name;
+    data['amount'] = amount;
+    data['price'] = price;
+    data['category'] = category;
+    data['active'] = active;
+    data['image_path'] = imagePath;
+    data['created_at'] = createdAt;
+    data['updated_at'] = updatedAt;
+    data['total_amount'] = totalAmount;
     return data;
   }
 }

@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get_core/src/get_main.dart';
@@ -64,7 +65,7 @@ class RegisterViewBody extends StatelessWidget {
                       BlocProvider.of<RegisterCubit>(context).firstName = p0;
                     },
                     label: const Text('First Name',
-                        style: TextStyle(color: Colors.blueGrey)),
+                        style: TextStyle(color: Colors.blueGrey)).tr(),
                     validator: (value) {
                       if (value!.isEmpty) {
                         return "Required field";
@@ -78,7 +79,7 @@ class RegisterViewBody extends StatelessWidget {
                       BlocProvider.of<RegisterCubit>(context).lastName = p0;
                     },
                     label: const Text('Last Name',
-                        style: TextStyle(color: Colors.blueGrey)),
+                        style: TextStyle(color: Colors.blueGrey)).tr(),
                     validator: (value) {
                       if (value!.isEmpty) {
                         return "Required field";
