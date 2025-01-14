@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mate_order_app/Features/auth/logout/presentation/view_model/cubit/logout_cubit.dart';
@@ -15,8 +16,8 @@ class LogoutButton extends StatelessWidget {
         QuickAlert.show(
           context: context,
           type: QuickAlertType.confirm,
-          title: 'Log Out',
-          text: 'Are you sure you want to log out?',
+          title: 'Log Out'.tr(),
+          text: 'Are you sure you want to log out?'.tr(),
           cancelBtnText: 'No',
           confirmBtnText: ' Yes',
           confirmBtnColor: kPrimaryColor2,
@@ -27,10 +28,10 @@ class LogoutButton extends StatelessWidget {
           },
         );
       },
-      child: const ListTile(
-        title: Text('Log Out'),
-        trailing: Icon(Icons.chevron_right),
-        leading: Icon(Icons.exit_to_app, color: Colors.black),
+      child:  ListTile(
+        title: const Text('Log Out').tr(),
+        trailing: const Icon(Icons.chevron_right),
+        leading: const Icon(Icons.exit_to_app, color: Colors.black),
       ),
     );
   }

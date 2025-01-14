@@ -65,10 +65,11 @@ class RegisterViewBody extends StatelessWidget {
                       BlocProvider.of<RegisterCubit>(context).firstName = p0;
                     },
                     label: const Text('First Name',
-                        style: TextStyle(color: Colors.blueGrey)).tr(),
+                            style: TextStyle(color: Colors.blueGrey))
+                        .tr(),
                     validator: (value) {
                       if (value!.isEmpty) {
-                        return "Required field";
+                        return "Required field".tr();
                       }
                       return null;
                     },
@@ -79,10 +80,11 @@ class RegisterViewBody extends StatelessWidget {
                       BlocProvider.of<RegisterCubit>(context).lastName = p0;
                     },
                     label: const Text('Last Name',
-                        style: TextStyle(color: Colors.blueGrey)).tr(),
+                            style: TextStyle(color: Colors.blueGrey))
+                        .tr(),
                     validator: (value) {
                       if (value!.isEmpty) {
-                        return "Required field";
+                        return "Required field".tr();
                       }
                       return null;
                     },
@@ -92,17 +94,16 @@ class RegisterViewBody extends StatelessWidget {
                     onChanged: (p0) {
                       BlocProvider.of<RegisterCubit>(context).phoneNumber =
                           '+963$p0';
-
                     },
-                    label: const Text(
-                      'Phone Number',
-                      style: TextStyle(color: Colors.blueGrey),
+                    label: Text(
+                      'Phone Number'.tr(),
+                      style: const TextStyle(color: Colors.blueGrey),
                     ),
                     validator: (value) {
                       if (value!.isEmpty) {
-                        return "Required field";
+                        return "Required field".tr();
                       } else if (!value.startsWith('9') || value.length != 9) {
-                        return "wrong number it must be like 9xxxxxxxx";
+                        return "wrong number it must be like 9xxxxxxxx".tr();
                       }
                       return null;
                     },
@@ -117,27 +118,27 @@ class RegisterViewBody extends StatelessWidget {
                     },
                     validator: (value) {
                       if (value!.isEmpty) {
-                        return "Required field";
+                        return "Required field".tr();
                       } else if (!value.endsWith('@gmail.com')) {
                         return "It must end with @gmail.com";
                       }
                       return null;
                     },
                     suffixIcon: const Icon(Icons.email_outlined),
-                    label: const Text('Email',
-                        style: TextStyle(color: Colors.blueGrey)),
+                    label: Text('Email'.tr(),
+                        style: const TextStyle(color: Colors.blueGrey)),
                   ),
                   CustomTextFormField(
                     onChanged: (p0) {
                       BlocProvider.of<RegisterCubit>(context).password = p0;
                     },
-                    label: const Text('Password',
-                        style: TextStyle(color: Colors.blueGrey)),
+                    label: Text('Password'.tr(),
+                        style: const TextStyle(color: Colors.blueGrey)),
                     validator: (value) {
                       if (value!.isEmpty) {
-                        return "Required field";
+                        return "Required field".tr();
                       } else if (value.length < 8) {
-                        return "at least 8 characters";
+                        return "at least 8 characters".tr();
                       }
                       return null;
                     },
@@ -154,13 +155,13 @@ class RegisterViewBody extends StatelessWidget {
                       BlocProvider.of<RegisterCubit>(context).confirmPassword =
                           p0;
                     },
-                    label: const Text('Confirm Password',
-                        style: TextStyle(color: Colors.blueGrey)),
+                    label: Text('Confirm Password'.tr(),
+                        style: const TextStyle(color: Colors.blueGrey)),
                     validator: (value) {
                       if (value!.isEmpty) {
-                        return "Required field";
+                        return "Required field".tr();
                       } else if (value.length < 8) {
-                        return "at least 8 characters";
+                        return "at least 8 characters".tr();
                       } else if (value !=
                           BlocProvider.of<RegisterCubit>(context).password) {
                         return "not the same passowrd";
@@ -197,9 +198,9 @@ class RegisterViewBody extends StatelessWidget {
                       const Text('Already have an account? '),
                       GestureDetector(
                         onTap: () => Get.off(const LoginView()),
-                        child: const Text(
-                          'Login',
-                          style: TextStyle(color: kPrimaryColor5),
+                        child: Text(
+                          'Login'.tr(),
+                          style: const TextStyle(color: kPrimaryColor5),
                         ),
                       ),
                     ],

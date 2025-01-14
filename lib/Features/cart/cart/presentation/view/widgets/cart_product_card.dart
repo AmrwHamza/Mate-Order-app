@@ -116,11 +116,15 @@ class CartProductCard extends StatelessWidget {
             'Name',
             style: TextStyle(fontWeight: FontWeight.bold),
           ).tr(),
-          Text(
-            ': ${product.name}',
-            overflow: TextOverflow.ellipsis,
-            maxLines: 1,
-            style: const TextStyle(fontWeight: FontWeight.bold),
+          Expanded(
+            child: Container(
+              child: Text(
+                ': ${product.name}',
+                overflow: TextOverflow.ellipsis,
+                maxLines: 1,
+                style: const TextStyle(fontWeight: FontWeight.bold),
+              ),
+            ),
           ),
         ],
       ),

@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mate_order_app/Features/profile/presentation/view/widget/check_botton.dart';
@@ -48,19 +49,19 @@ class ChangePasswordBody extends StatelessWidget {
                   children: [
                     const SizedBox(height: 5),
                     PasswordFieldFrame(
-                      label: 'Current Password',
+                      label: 'Current Password'.tr(),
                       controller: cureentController,
                     ),
                     const SizedBox(height: 30),
                     const SizedBox(height: 5),
                     PasswordFieldFrame(
-                      label: 'New Password',
+                      label: 'New Password'.tr(),
                       controller: newController,
                     ),
                     const SizedBox(height: 30),
                     const SizedBox(height: 5),
                     PasswordFieldFrame(
-                      label: 'Confirm Your Password',
+                      label: 'Confirm Your Password'.tr(),
                       controller: confirmController,
                     ),
                     const SizedBox(height: 40),

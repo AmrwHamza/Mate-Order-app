@@ -49,7 +49,87 @@
 "Save": "Save",
 "Status: Received": "Status: Received",
 "Status: Sending": "Status: Sending",
-"Status: Waiting accept": "Status: Waiting accept"
+"Status: Waiting accept": "Status: Waiting accept",
+"Order Id": "Order Id",
+"Total Price": "Total Price",
+"Edit Order": "Edit Order",
+"Edit Amount": "Edit Amount",
+"Category": "Category",
+"My Favorite": "My Favorite",
+"My Locations": "My Locations",
+"Change Password": "Change Password",
+"Settings": "Settings",
+"Log Out": "Log Out",
+"Press to edit your name": "Press to edit your name"
+,"Press to edit your email": "Press to edit your email"
+,"Email": "Email"
+,"Press to edit your phone number": "Press to edit your phone number",
+"Phone Number": "Phone Number",
+"Some fields are empty. All fields will be updated": "Some fields are empty. All fields will be updated"
+,"Edit Your Profile": "Edit Your Profile"
+,"Current Password": "Current Password"
+,"New Password": "New Password"
+,"Confirm Your Password": "Confirm Your Password"
+,"Your Settings": "Your Settings"
+,"Change Language": "Change Language"
+,"Change Theme": "Change Theme",
+"English": "English",
+"Arabic": "Arabic"
+,"Are you sure you want to log out?": "Are you sure you want to log out?"
+,"No": "No",
+"Yes": "Yes",
+"Login": "Login",
+"Register": "Register",
+"Required field": "Required field",
+"Password": "Password",
+"at least 8 characters": "at least 8 characters"
+,"Confirm Password": "Confirm Password"
+,"wrong number it must be like 9xxxxxxxx": "wrong number it must be like 9xxxxxxxx"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

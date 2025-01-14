@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_navigation/get_navigation.dart';
@@ -16,10 +17,10 @@ class SettingBotton extends StatelessWidget {
           duration: KTransitionDuration,
         );
       },
-      child: const ListTile(
-        trailing: Icon(Icons.chevron_right),
-        leading: Icon(Icons.settings, color: Colors.black),
-        title: Text('Setting'),
+      child:  ListTile(
+        trailing: const Icon(Icons.chevron_right),
+        leading: const Icon(Icons.settings, color: Colors.black),
+        title: const Text('Settings').tr(),
       ),
     );
   }

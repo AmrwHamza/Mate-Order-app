@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get_core/src/get_main.dart';
@@ -99,8 +100,6 @@ class ProfilePageBody extends StatelessWidget {
                                       const SizedBox(height: 10),
                                       const MyLocationButton(),
                                       const SizedBox(height: 10),
-                                      const HistoryButton(),
-                                      const SizedBox(height: 10),
                                       const ChangePasswordBotton(),
                                       const SizedBox(height: 10),
                                       const SettingBotton(),
@@ -110,11 +109,12 @@ class ProfilePageBody extends StatelessWidget {
                                           QuickAlert.show(
                                             context: context,
                                             type: QuickAlertType.confirm,
-                                            title: 'Log Out',
+                                            title: 'Log Out'.tr(),
                                             text:
-                                                'Are you sure you want to log out?',
-                                            cancelBtnText: 'No',
-                                            confirmBtnText: ' Yes',
+                                                'Are you sure you want to log out?'
+                                                    .tr(),
+                                            cancelBtnText: 'No'.tr(),
+                                            confirmBtnText: 'Yes'.tr(),
                                             confirmBtnColor: kPrimaryColor2,
                                             onCancelBtnTap: () =>
                                                 Navigator.pop(context),
@@ -126,10 +126,11 @@ class ProfilePageBody extends StatelessWidget {
                                             },
                                           );
                                         },
-                                        child: const ListTile(
-                                          title: Text('Log Out'),
-                                          trailing: Icon(Icons.chevron_right),
-                                          leading: Icon(Icons.exit_to_app,
+                                        child: ListTile(
+                                          title: const Text('Log Out').tr(),
+                                          trailing:
+                                              const Icon(Icons.chevron_right),
+                                          leading: const Icon(Icons.exit_to_app,
                                               color: Colors.black),
                                         ),
                                       ),

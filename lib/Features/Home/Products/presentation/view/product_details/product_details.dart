@@ -5,7 +5,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
 import 'package:mate_order_app/Features/Home/Products/presentation/model_view/add_to_cart/add_to_cart_cubit.dart';
 import 'package:mate_order_app/Features/Home/Products/presentation/view/fav_icon/fav_icon.dart';
-import 'package:mate_order_app/Features/Home/oredr/presentation/view/order_sheet_view.dart';
 
 import '../../../../../../constants.dart';
 import '../../../../../main home/widget/app_bar_style.dart';
@@ -72,9 +71,9 @@ class ProductDetails extends StatelessWidget {
                     children: [
                       Row(
                         children: [
-                          Text(
+                          const Text(
                             'Owner',
-                            style: const TextStyle(fontSize: 16),
+                            style: TextStyle(fontSize: 16),
                           ).tr(),
                           theOwner(),
                         ],
@@ -96,9 +95,9 @@ class ProductDetails extends StatelessWidget {
                       const SizedBox(height: 10),
                       Row(
                         children: [
-                          Text(
+                          const Text(
                             'amount',
-                            style: const TextStyle(fontSize: 16),
+                            style: TextStyle(fontSize: 16),
                           ).tr(),
                           amount(),
                         ],
@@ -259,33 +258,4 @@ class AddToCartButton extends StatelessWidget {
   }
 }
 
-class OrderButton extends StatelessWidget {
-  const OrderButton({
-    super.key,
-    required this.product,
-    required this.buttonColor,
-  });
 
-  final Product product;
-  final Color buttonColor;
-  @override
-  Widget build(BuildContext context) {
-    return ElevatedButton(
-      style: ButtonStyle(backgroundColor: WidgetStatePropertyAll(buttonColor)),
-      onPressed: () {
-        showModalBottomSheet(
-          context: context,
-          isScrollControlled: true,
-          backgroundColor: Colors.transparent,
-          barrierColor: Colors.black.withOpacity(0.5),
-          builder: (context) {
-            return OrderSheet(
-              product: product,
-            );
-          },
-        );
-      },
-      child: const Text('Order Now', style: TextStyle(color: Colors.black)),
-    );
-  }
-}

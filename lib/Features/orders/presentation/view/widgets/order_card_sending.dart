@@ -18,16 +18,25 @@ class OrderCardSending extends StatelessWidget {
       width: MediaQuery.of(context).size.width * 0.9,
       height: 100,
       decoration: BoxDecoration(
-          color: kPrimaryColor5, borderRadius: BorderRadius.circular(12)),
+        color: kPrimaryColor5,
+        borderRadius: BorderRadius.circular(12),
+        boxShadow: const [BoxShadow(blurRadius: 2)],
+      ),
       child: Row(
         children: [
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text('Order Id: ${order.id}'),
               Row(
                 children: [
-                  Text('Total Price: ${order.totalPrice} '),
+                  const Text('Order Id').tr(),
+                  Text(': ${order.id}'),
+                ],
+              ),
+              Row(
+                children: [
+                  const Text('Total Price').tr(),
+                  Text(': ${order.totalPrice} '),
                   const Text('SYP').tr()
                 ],
               ),

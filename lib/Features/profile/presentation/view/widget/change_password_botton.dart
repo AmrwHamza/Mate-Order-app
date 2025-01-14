@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get_core/src/get_main.dart';
@@ -18,10 +19,10 @@ class ChangePasswordBotton extends StatelessWidget {
           duration: KTransitionDuration,
         );
       },
-      child: const ListTile(
-        trailing: Icon(Icons.chevron_right),
-        leading: Icon(FontAwesomeIcons.lock, color: Colors.black),
-        title: Text('Change Passsword'),
+      child:  ListTile(
+        trailing: const Icon(Icons.chevron_right),
+        leading: const Icon(FontAwesomeIcons.lock, color: Colors.black),
+        title: const Text('Change Password').tr(),
       ),
     );
   }

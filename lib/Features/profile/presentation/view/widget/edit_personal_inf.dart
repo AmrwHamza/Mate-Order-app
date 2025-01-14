@@ -55,7 +55,7 @@ class EditPersonalInf extends StatelessWidget {
                   padding: const EdgeInsets.all(20.0),
                   child: ListView(
                     children: [
-                      AlignOfComments(comment: 'Press to edit your name'),
+                      AlignOfComments(comment: 'Press to edit your name'.tr()),
                       const SizedBox(height: 10),
                       EditableTextField(
                         label: 'First Name'.tr(),
@@ -71,20 +71,20 @@ class EditPersonalInf extends StatelessWidget {
                         keyboardType: TextInputType.text,
                       ),
                       const SizedBox(height: 30),
-                      AlignOfComments(comment: 'Press to edit you email.  '),
+                      AlignOfComments(comment: 'Press to edit your email'.tr()),
                       const SizedBox(height: 10),
                       EditableTextField(
-                        label: 'Email',
+                        label: 'Email'.tr(),
                         icon: Icons.email,
                         controller: emailController,
                         keyboardType: TextInputType.emailAddress,
                       ),
                       const SizedBox(height: 30),
                       AlignOfComments(
-                          comment: 'Press to edit your phone number.'),
+                          comment: 'Press to edit your phone number'.tr()),
                       const SizedBox(height: 10),
                       EditableTextField(
-                        label: 'Phone Number',
+                        label: 'Phone Number'.tr(),
                         icon: Icons.phone,
                         controller: phoneController,
                         keyboardType: TextInputType.phone,
@@ -101,7 +101,8 @@ class EditPersonalInf extends StatelessWidget {
                                   emailController.text.trim().isEmpty ||
                                   phoneController.text.trim().isEmpty) {
                                 FloatingMessage(
-                                    'Some fields are empty. All fields will be updated.',
+                                    'Some fields are empty. All fields will be updated.'
+                                        .tr(),
                                     3,
                                     context);
                               }

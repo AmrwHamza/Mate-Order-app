@@ -89,14 +89,20 @@ class EditProductAmountViewBody extends StatelessWidget {
 
                           return Row(
                             children: [
+                              const Text('Total Price').tr(),
                               Text(
-                                  'Total Price: ${context.read<UpdateOrderCubit>().newPrice} '),
+                                  ': ${context.read<UpdateOrderCubit>().newPrice} '),
                               const Text('SYP').tr()
                             ],
                           );
                         },
                       ),
-                      const Text('Amount:'),
+                      Row(
+                        children: [
+                          const Text('Amount').tr(),
+                          const Text(':'),
+                        ],
+                      ),
                       const SizedBox(height: 10),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -247,9 +253,14 @@ class EditProductAmountViewBody extends StatelessWidget {
     );
   }
 
-  Text theCategory() => Text(
-        'Category: ${productInCart.category} ',
-        style: const TextStyle(fontSize: 16),
+  Row theCategory() => Row(
+        children: [
+          const Text('Category').tr(),
+          Text(
+            ': ${productInCart.category} ',
+            style: const TextStyle(fontSize: 16),
+          ),
+        ],
       );
 }
 

@@ -31,7 +31,7 @@ class NotificationService {
     await _setupMessageHandlers();
 
     // Get and print the FCM token
-   
+
     // final kFcmToken=await FirebaseMessaging.instance.getToken();
     String? token = await FirebaseMessaging.instance.getToken();
     print('FCM Token: $token');
@@ -74,7 +74,7 @@ class NotificationService {
         AndroidInitializationSettings('@mipmap/ic_launcher');
 
     final initializationSettings =
-        InitializationSettings(android: initializationSettingsAndroid);
+        const InitializationSettings(android: initializationSettingsAndroid);
 
     // Initialize the local notifications plugin
     await _localNotifications.initialize(

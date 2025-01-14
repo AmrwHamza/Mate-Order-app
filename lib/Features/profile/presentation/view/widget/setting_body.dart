@@ -1,4 +1,6 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:restart_app/restart_app.dart';
 import '../../../../main home/widget/app_bar_style.dart';
 import 'package:mate_order_app/Features/profile/presentation/view/widget/text_frame.dart';
 import 'package:mate_order_app/constants.dart';
@@ -11,7 +13,7 @@ class SettingBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: KBackgroundColor,
-      appBar: appBarStyle('Your Setting'),
+      appBar: appBarStyle('Your Settings'),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
@@ -20,13 +22,52 @@ class SettingBody extends StatelessWidget {
             child: Column(
               children: [
                 TextFrame(
-                  title: 'change Language',
+                  title: tr('Change Language'),
                   icon: Icons.language,
-                  onTap: () {},
+                  onTap: () {
+                    showDialog(
+                      context: context,
+                      builder: (context) {
+                        return Center(
+                          child: Container(
+                            width: 150,
+                            height: 150,
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(20),
+                                color: kPrimaryColor9),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                ElevatedButton(
+                                  onPressed: () {
+                                    context.setLocale(const Locale('en'));
+                                    Restart.restartApp();
+                                  },
+                                  child: const Text(
+                                    'English',
+                                    style: TextStyle(color: Colors.black),
+                                  ).tr(),
+                                ),
+                                ElevatedButton(
+                                  onPressed: () {
+                                    context.setLocale(const Locale('ar'));
+                                    Restart.restartApp();
+                                  },
+                                  child: const Text('Arabic',
+                                          style: TextStyle(color: Colors.black))
+                                      .tr(),
+                                )
+                              ],
+                            ),
+                          ),
+                        );
+                      },
+                    );
+                  },
                 ),
                 const SizedBox(height: 10),
                 TextFrame(
-                  title: 'Change Theme',
+                  title: tr('Change Theme'),
                   icon: Icons.color_lens_sharp,
                   onTap: () {},
                 ),

@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get_core/src/get_main.dart';
@@ -51,8 +52,8 @@ class LoginViewBody extends StatelessWidget {
                     height: 18,
                   ),
                   const Logo(),
-                  const RegisterOrLogInText(
-                    data: 'Login',
+                  RegisterOrLogInText(
+                    data: 'Login'.tr(),
                   ),
                   const Divider(
                     color: kPrimaryColor1,
@@ -66,13 +67,13 @@ class LoginViewBody extends StatelessWidget {
                     onChanged: (p0) {
                       BlocProvider.of<LoginCubit>(context).phone = '+963$p0';
                     },
-                    label: const Text(
-                      'Phone Number',
-                      style: TextStyle(color: Colors.blueGrey),
+                    label: Text(
+                      'Phone Number'.tr(),
+                      style: const TextStyle(color: Colors.blueGrey),
                     ),
                     validator: (value) {
                       if (value!.isEmpty) {
-                        return "Required field";
+                        return "Required field".tr();
                       } else if (!value.startsWith('9') || value.length != 9) {
                         return "wrong number it must be like 9xxxxxxxx";
                       }
@@ -87,13 +88,13 @@ class LoginViewBody extends StatelessWidget {
                     onChanged: (p0) {
                       BlocProvider.of<LoginCubit>(context).password = p0;
                     },
-                    label: const Text('Password',
-                        style: TextStyle(color: Colors.blueGrey)),
+                    label:  Text('Password'.tr(),
+                        style: const TextStyle(color: Colors.blueGrey)),
                     validator: (value) {
                       if (value!.isEmpty) {
-                        return "Required field";
+                        return "Required field".tr();
                       } else if (value.length < 8) {
-                        return "at least 8 characters";
+                        return "at least 8 characters".tr();
                       }
                       return null;
                     },
@@ -117,7 +118,7 @@ class LoginViewBody extends StatelessWidget {
                         BlocProvider.of<LoginCubit>(context).onTapLoginButton();
                       }
                     },
-                    data: 'Login',
+                    data: 'Login'.tr(),
                   ),
                   const SizedBox(
                     height: 15,
@@ -128,9 +129,9 @@ class LoginViewBody extends StatelessWidget {
                       const Text("Don't have an account? "),
                       GestureDetector(
                         onTap: () => Get.off(const RegisterView()),
-                        child: const Text(
-                          'Register',
-                          style: TextStyle(color: kPrimaryColor5),
+                        child: Text(
+                          'Register'.tr(),
+                          style: const TextStyle(color: kPrimaryColor5),
                         ),
                       ),
                     ],

@@ -13,6 +13,7 @@ class NotificationsModul {
   }
 
   Map<String, dynamic> toJson() {
+    // ignore: prefer_collection_literals
     final Map<String, dynamic> data = Map<String, dynamic>();
     if (notifications != null) {
       data['data'] = notifications!.map((v) => v.toJson()).toList();
@@ -53,6 +54,7 @@ class NOtification {
   }
 
   Map<String, dynamic> toJson() {
+    // ignore: prefer_collection_literals
     final Map<String, dynamic> data = Map<String, dynamic>();
     data['id'] = id;
     data['type'] = type;
@@ -78,6 +80,7 @@ class NotficationMessage {
   }
 
   Map<String, dynamic> toJson() {
+    // ignore: prefer_collection_literals
     final Map<String, dynamic> data = Map<String, dynamic>();
     data['message'] = message;
     return data;

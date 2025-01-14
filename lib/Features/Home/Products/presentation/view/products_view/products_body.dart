@@ -38,18 +38,15 @@ class ProductsWidget extends StatelessWidget {
                             padding: const EdgeInsets.symmetric(
                                 horizontal: 10, vertical: 5),
                             child: Container(
-                              decoration: const BoxDecoration(
-                                boxShadow: [
+                              decoration: BoxDecoration(
+                                boxShadow: const [
                                   BoxShadow(
                                       blurRadius: 2,
                                       // offset: Offset(3, 2),
                                       color: kPrimaryColor7)
                                 ],
                                 color: kPrimaryColor8,
-                                borderRadius: BorderRadius.only(
-                                    bottomRight: Radius.circular(20),
-                                    topRight: Radius.circular(20),
-                                    bottomLeft: Radius.circular(20)),
+                                borderRadius: BorderRadius.circular(20),
                               ),
                               padding: const EdgeInsets.all(7),
                               child: Text(
@@ -70,9 +67,10 @@ class ProductsWidget extends StatelessWidget {
                                 Get.to(SeeAllProductsView(
                                     categoryName: kCategory[index]));
                               },
-                              child:  Padding(
-                                padding: EdgeInsets.symmetric(horizontal: 20),
-                                child: Text('See All').tr(),
+                              child: Padding(
+                                padding:
+                                    const EdgeInsets.symmetric(horizontal: 20),
+                                child: const Text('See All').tr(),
                               )),
                         ],
                       ),

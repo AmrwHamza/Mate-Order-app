@@ -17,7 +17,7 @@ const Color KBackgroundColor = Color(0xffEFFEFB);
 
 // ignore: constant_identifier_names
 const KTransitionDuration = Duration(milliseconds: 250);
-const String base = "https://ee48-185-107-56-42.ngrok-free.app";
+const String base = "http://192.168.0.89:8000";
 const String baseurl = "$base" "/api/";
 const String baseurlImg = '$base/storage/project/';
 
@@ -31,23 +31,23 @@ class SharedPrefKeys {
 //   'clothes',
 // ];
 
-const kCategory = <String>[
-  //Ebaa
-  'electronic',
-  'food',
-  'cloths',
-];
-
 // const kCategory = <String>[
-//   'Food',
-//   'Drinks',
-//   'Clothes',
-//   'Toys',
-//   'Books',
-//   'Tools',
-//   'Electronics',
-//   'Furniture',
-//   'Kitchen',
+//   //Ebaa
+//   'electronic',
+//   'food',
+//   'cloths',
 // ];
+
+const kCategory = <String>[
+  'Food',
+  'Drinks',
+  'Clothes',
+  'Toys',
+  'Books',
+  'Tools',
+  'Electronics',
+  'Furniture',
+  'Kitchen',
+];
 
 const String translations = "assets/translations";

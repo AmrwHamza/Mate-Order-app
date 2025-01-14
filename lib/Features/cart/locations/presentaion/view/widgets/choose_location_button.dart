@@ -4,7 +4,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
 // import 'package:mate_order_app/Features/Home/oredr/presentation/model_view/bloc/order_bloc.dart';
 import 'package:mate_order_app/Features/cart/cart/presentation/model_view/add_order/add_order_cubit.dart';
-import 'package:mate_order_app/Features/cart/cart/presentation/model_view/cart_cubit/cart_cubit.dart';
 import 'package:mate_order_app/Features/cart/cart/presentation/view/cart_view.dart';
 import 'package:mate_order_app/constants.dart';
 
@@ -54,7 +53,7 @@ class ChooseLocationButton extends StatelessWidget {
                                 },
                                 style: const ButtonStyle(
                                     backgroundColor:
-                                        const WidgetStatePropertyAll(
+                                        WidgetStatePropertyAll(
                                             kPrimaryColor8)),
                                 child: const Text(
                                   'Confirm',

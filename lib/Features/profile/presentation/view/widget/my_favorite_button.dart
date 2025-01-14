@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
@@ -14,10 +15,10 @@ class MyFavoriteButton extends StatelessWidget {
         context.read<GetFavCubit>().getFav();
         Get.to(const FavoritsView());
       },
-      child: const ListTile(
-        trailing: Icon(Icons.chevron_right),
-        leading: Icon(Icons.favorite, color: Colors.black),
-        title: Text('My Favorite'),
+      child:  ListTile(
+        trailing: const Icon(Icons.chevron_right),
+        leading: const Icon(Icons.favorite, color: Colors.black),
+        title: const Text('My Favorite').tr(),
       ),
     );
   }

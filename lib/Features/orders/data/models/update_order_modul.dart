@@ -8,6 +8,7 @@ class UpdateOrderModul {
   }
 
   Map<String, dynamic> toJson() {
+    // ignore: prefer_collection_literals
     final Map<String, dynamic> data = Map<String, dynamic>();
     data['message'] = message;
     return data;

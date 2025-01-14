@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:mate_order_app/constants.dart';
 
@@ -15,7 +16,7 @@ class RegisterOrLogInText extends StatelessWidget {
       child: Row(
         children: [
           Text(
-            data,
+            data.tr(),
             style: const TextStyle(
                 fontSize: 32,
                 fontWeight: FontWeight.bold,

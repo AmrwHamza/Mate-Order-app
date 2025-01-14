@@ -42,16 +42,13 @@ class ProductInOrderCard extends StatelessWidget {
                 name(context),
                 Row(
                   children: [
-                    Text('amount').tr(),
+                    const Text('amount').tr(),
                     Text(':$totalAmount'),
                   ],
                 ),
                 Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    DeleteProductFromOrderButton(
-                      orderId: orderId,
-                      productId: productInCart.id!,
-                    ),
                     ElevatedButton(
                         onPressed: () {
                           Get.to(
@@ -61,7 +58,14 @@ class ProductInOrderCard extends StatelessWidget {
                                 orderId: orderId),
                           );
                         },
-                        child: const Text('Edit')),
+                        child: const Icon(Icons.edit)),
+                    const SizedBox(
+                      width: 20,
+                    ),
+                    DeleteProductFromOrderButton(
+                      orderId: orderId,
+                      productId: productInCart.id!,
+                    ), //                                child: const Icon(Icons.edit));
                   ],
                 )
               ],

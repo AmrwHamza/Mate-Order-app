@@ -49,7 +49,158 @@
 "Save": "حفظ",
 "Status: Received": "الحالة: تم الاستلام",
 "Status: Sending": "الحالة: قيد الإرسال",
-"Status: Waiting accept": "الحالة: في انتظار القبول"
+"Status: Waiting accept": "الحالة: في انتظار القبول",
+"Order Id": "معرّف الطلب",
+"Total Price": "إجمالي السعر",
+"Edit Order": "تعديل الطلب",
+"Edit Amount": "تعديل الكمية",
+"Category": "الفئة",
+"My Favorite": "مفضلتي",
+"My Locations": "مواقعي",
+"Change Password": "تغيير كلمة المرور",
+"Settings": "الإعدادات",
+"Log Out": "تسجيل الخروج",
+"Press to edit your name": "اضغط لتعديل اسمك"
+,"Press to edit your email": "اضغط لتعديل بريدك الإلكتروني"
+,"Email": "البريد الإلكتروني"
+,"Press to edit your phone number": "اضغط لتعديل رقم هاتفك",
+"Phone Number": "رقم الهاتف"
+,"Some fields are empty. All fields will be updated": "بعض الحقول فارغة. سيتم تحديث جميع الحقول"
+,"Edit Your Profile": "تعديل ملفك الشخصي"
+,"Current Password": "كلمة المرور الحالية"
+,"New Password": "كلمة المرور الجديدة"
+,"Confirm Your Password": "تأكيد كلمة المرور"
+,"Your Settings": "إعداداتك"
+,"Change Language": "تغيير اللغة"
+,"Change Theme": "تغيير المظهر",
+"English": "الإنجليزية",
+"Arabic": "العربية",
+"Are you sure you want to log out?": "هل أنت متأكد أنك تريد تسجيل الخروج؟"
+,"No": "لا",
+"Yes": "نعم",
+"Login": "تسجيل الدخول",
+"Register": "إنشاء حساب",
+"Required field": "حقل مطلوب",
+"Password": "كلمة المرور",
+"at least 8 characters": "على الأقل 8 أحرف"
+,"Confirm Password": "تأكيد كلمة المرور"
+,"wrong number it must be like 9xxxxxxxx": "رقم غير صحيح يجب أن يكون مثل 9xxxxxxxx"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -70,5 +221,5 @@
 
 
  
-  }
+}
   

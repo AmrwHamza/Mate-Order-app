@@ -6,7 +6,7 @@ AppBar appBarStyle(String title) {
   return AppBar(
     backgroundColor: kPrimaryColor4,
     title: Text(
-      title,
+      title.tr(),
       style: const TextStyle(color: Colors.white),
     ),
   );

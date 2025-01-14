@@ -53,10 +53,10 @@ void main() async {
   // BlocProvider.of<Prof>(context).showImage;
 
   runApp(EasyLocalization(
-    supportedLocales: [Locale('en'), Locale('ar')],
+    supportedLocales: const [Locale('en'), Locale('ar')],
     path: translations, // <-- change the path of the translation files
-    fallbackLocale: Locale('ar'),
-    startLocale: Locale('ar'),
+    fallbackLocale: const Locale('ar'),
+    // startLocale: Locale('ar'),
     saveLocale: true,
     child: MateOrderApp(
       isLoggedIn: isLoggedIn,
@@ -69,8 +69,6 @@ class MateOrderApp extends StatelessWidget {
   final bool isLoggedIn;
   @override
   Widget build(BuildContext context) {
-    print(
-        '11111111111111111111111111111111111111111111111111111111111111111111111${context.locale.languageCode}'); // يجب أن تطبع 'ar' إذا كانت اللغة العربية
 
     return MultiBlocProvider(
       providers: [
