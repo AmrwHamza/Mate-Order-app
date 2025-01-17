@@ -36,7 +36,7 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: KBackgroundColor,
+      // backgroundColor: KBackgroundColor,
       body: IndexedStack(
         index: selectedIndex,
         children: pages,

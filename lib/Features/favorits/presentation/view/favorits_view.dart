@@ -10,7 +10,7 @@ class FavoritsView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-            backgroundColor: KBackgroundColor,
+      // backgroundColor: KBackgroundColor,
 
       appBar: mainAppBar('My Favorite'),
       body: const FavoritesViewBody(),

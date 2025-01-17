@@ -48,7 +48,7 @@ class OrderCardSending extends StatelessWidget {
                   width: MediaQuery.of(context).size.width * 0.45,
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(20),
-                      color: kPrimaryColor7),
+                      color: kPrimaryColor6),
                   child: Center(child: const Text('Status: Sending').tr()))
             ],
           )

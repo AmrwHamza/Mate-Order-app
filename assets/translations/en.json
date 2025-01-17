@@ -85,7 +85,12 @@
 "at least 8 characters": "at least 8 characters"
 ,"Confirm Password": "Confirm Password"
 ,"wrong number it must be like 9xxxxxxxx": "wrong number it must be like 9xxxxxxxx"
-
+,"Send verification code":"Send verification code"
+, "Already have an account? ": "Already have an account? "
+,  "Don't have an account? ": "Don't have an account? "
+,  "Verification code": "Verification code"
+,  "Resend the Code": "Resend the Code"
+,"Your best order application": "Your best order application"
 
 
 

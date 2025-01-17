@@ -13,7 +13,7 @@ class EditSheetView extends StatefulWidget {
 class _EditSheetViewState extends State<EditSheetView> {
   final sheet = GlobalKey();
   final controller = DraggableScrollableController();
-  
+
   @override
   void initState() {
     super.initState();
@@ -39,7 +39,7 @@ class _EditSheetViewState extends State<EditSheetView> {
       (sheet.currentWidget as DraggableScrollableSheet);
 
   @override
-  Widget build( context) {
+  Widget build(context) {
     return LayoutBuilder(
       builder: (context, constraints) {
         return DraggableScrollableSheet(
@@ -53,7 +53,7 @@ class _EditSheetViewState extends State<EditSheetView> {
           builder: (context, scrollController) {
             return DecoratedBox(
               decoration: const BoxDecoration(
-                color: Colors.white,
+                // color: Colors.white,
                 boxShadow: [
                   BoxShadow(
                       color: kPrimaryColor6,
@@ -73,8 +73,6 @@ class _EditSheetViewState extends State<EditSheetView> {
                   EditSheetBody(
                     product: widget.product,
                   )
-
-                  
                 ],
               ),
             );

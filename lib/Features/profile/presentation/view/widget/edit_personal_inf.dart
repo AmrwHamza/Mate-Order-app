@@ -49,7 +49,7 @@ class EditPersonalInf extends StatelessWidget {
                 FocusScope.of(context).unfocus();
               },
               child: Scaffold(
-                backgroundColor: KBackgroundColor,
+                // backgroundColor: KBackgroundColor,
                 appBar: appBarStyle('Edit Your Profile'),
                 body: Padding(
                   padding: const EdgeInsets.all(20.0),

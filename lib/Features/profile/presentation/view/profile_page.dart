@@ -29,7 +29,7 @@ class ProfilePage extends StatelessWidget {
         ),
       ],
       child: Scaffold(
-        backgroundColor: KBackgroundColor,
+        // backgroundColor: KBackgroundColor,
         appBar: mainAppBar('Your Profile'),
         body: const ProfilePageBody(),
       ),

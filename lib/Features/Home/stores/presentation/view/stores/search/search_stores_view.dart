@@ -12,7 +12,7 @@ class SearchStoresView extends StatelessWidget {
     return Scaffold(
       appBar: mainAppBar('Search for stores'),
       body: SearchStoresBody(),
-      backgroundColor: KBackgroundColor,
+      // backgroundColor: KBackgroundColor,
     );
   }
 }

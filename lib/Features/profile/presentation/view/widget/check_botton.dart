@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:mate_order_app/constants.dart';
 
 class CheckBotton extends StatelessWidget {
-  const   CheckBotton({
+  const CheckBotton({
     super.key,
   });
 

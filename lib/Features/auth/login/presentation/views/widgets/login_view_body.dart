@@ -126,7 +126,7 @@ class LoginViewBody extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      const Text("Don't have an account? "),
+                      const Text("Don't have an account? ").tr(),
                       GestureDetector(
                         onTap: () => Get.off(const RegisterView()),
                         child: Text(

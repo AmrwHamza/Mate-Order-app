@@ -32,7 +32,8 @@ class CardOfProduct extends StatelessWidget {
       child: Container(
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(15),
-            color: Colors.white,
+            // color: Colors.white,
+            color: kPrimaryColor6,
             boxShadow: const [BoxShadow(blurRadius: 3, color: kPrimaryColor4)]),
         height: 160,
         width: 155,

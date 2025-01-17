@@ -14,13 +14,15 @@ class TextFrame extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+
     return GestureDetector(
       onTap: onTap,
       child: Container(
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(15),
             border: Border.all(color: const Color(0xFFD9D0E3), width: 1),
-            color: Colors.white,
+            color: theme.cardColor,
             boxShadow: [
               BoxShadow(
                 color: Colors.black.withOpacity(0.5),

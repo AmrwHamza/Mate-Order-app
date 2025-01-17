@@ -40,7 +40,7 @@ class ChangePasswordBody extends StatelessWidget {
               color: kPrimaryColor2,
             ),
             child: Scaffold(
-              backgroundColor: KBackgroundColor,
+              // backgroundColor: KBackgroundColor,
               appBar: appBarStyle('Edit Your Profile'),
               body: Padding(
                 padding: const EdgeInsets.only(

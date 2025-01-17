@@ -187,7 +187,7 @@ class RegisterViewBody extends StatelessWidget {
                             .onTapRegisterButton();
                       }
                     },
-                    data: 'Send verification code',
+                    data: 'Send verification code'.tr(),
                   ),
                   const SizedBox(
                     height: 15,
@@ -195,7 +195,7 @@ class RegisterViewBody extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      const Text('Already have an account? '),
+                      const Text('Already have an account? ').tr(),
                       GestureDetector(
                         onTap: () => Get.off(const LoginView()),
                         child: Text(

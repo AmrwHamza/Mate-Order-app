@@ -7,7 +7,6 @@ import 'package:mate_order_app/Features/orders/presentation/view/widgets/order_c
 import 'package:mate_order_app/Features/orders/presentation/view/widgets/order_card_waiting_accept.dart';
 import 'package:mate_order_app/constants.dart';
 
-
 class OrdersViewBody extends StatelessWidget {
   const OrdersViewBody({super.key});
 
@@ -17,7 +16,7 @@ class OrdersViewBody extends StatelessWidget {
     return LiquidPullToRefresh(
       height: 60,
       showChildOpacityTransition: false,
-      backgroundColor: Colors.white,
+      // backgroundColor: Colors.white,
       color: kPrimaryColor4,
       springAnimationDurationInMilliseconds: 500,
       onRefresh: () async {

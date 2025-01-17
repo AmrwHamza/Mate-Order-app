@@ -14,7 +14,7 @@ class EditOrderView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-            backgroundColor: KBackgroundColor,
+      // backgroundColor: KBackgroundColor,
 
       appBar: mainAppBar('Edit Order'),
       body: EditOrderViewBody(

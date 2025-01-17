@@ -14,28 +14,31 @@ class CountDownTimerOTP extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: 200,
-      height: 100,
-      alignment: Alignment.center,
-      decoration: BoxDecoration(
-          color: kPrimaryColor7,
-          boxShadow: const [
-            BoxShadow(spreadRadius: 5, color: Colors.white, blurRadius: 20)
-          ],
-          borderRadius: BorderRadius.circular(32),
-          border: Border.all(
-            color: kPrimaryColor10,
-          )),
-      child: TimerCountdown(
-        format: CountDownTimerFormat.minutesSeconds,
-        endTime: DateTime.now().add(
-          const Duration(minutes: 5),
+    return Directionality(
+      textDirection: TextDirection.ltr,
+      child: Container(
+        width: 200,
+        height: 100,
+        alignment: Alignment.center,
+        decoration: BoxDecoration(
+            color: kPrimaryColor7,
+            boxShadow: const [
+              BoxShadow(spreadRadius: 5, color: Colors.white, blurRadius: 20)
+            ],
+            borderRadius: BorderRadius.circular(32),
+            border: Border.all(
+              color: kPrimaryColor10,
+            )),
+        child: TimerCountdown(
+          format: CountDownTimerFormat.minutesSeconds,
+          endTime: DateTime.now().add(
+            const Duration(minutes: 5),
+          ),
+          onEnd: () {
+            Get.off(const RegisterView(),
+                transition: tansition.Transition.leftToRight);
+          },
         ),
-        onEnd: () {
-          Get.off(const RegisterView(),
-              transition: tansition.Transition.leftToRight);
-        },
       ),
     );
   }

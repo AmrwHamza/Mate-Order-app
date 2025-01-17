@@ -29,20 +29,23 @@ class SearchStoresBody extends StatelessWidget {
                   ),
                 ),
               ),
+              const SizedBox(
+                height: 2,
+              ),
               BlocBuilder<SearchStoresCubit, SearchStoresState>(
                 bloc: searchStoresCubit,
                 builder: (context, state) {
                   if (state is SearchStoresInitial) {
-                    return const Column();
+                    return const SizedBox.shrink();
                   } else if (state is SearchStoresLoading) {
                     return const Center(
                       child: CircularProgressIndicator(
-                        color: kPrimaryColor1,
-                      ),
+                          // color: kPrimaryColor1,
+                          ),
                     );
                   } else if (state is SearchStoresSuccess) {
                     return SizedBox(
-                      height: MediaQuery.of(context).size.height * 0.8,
+                      height: MediaQuery.of(context).size.height * 0.9,
                       child: ListView.builder(
                         itemCount: state.stores.length,
                         itemBuilder: (context, index) {

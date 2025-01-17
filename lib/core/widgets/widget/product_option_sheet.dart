@@ -54,7 +54,8 @@ class _ProductOptionSheetState extends State<ProductOptionSheet> {
               ).tr(),
               Text(
                 'Price :   ${numberOfproducts * 100}',
-                style: const TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
+                style:
+                    const TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
               ),
               Row(
                 children: [
@@ -74,7 +75,8 @@ class _ProductOptionSheetState extends State<ProductOptionSheet> {
                   const SizedBox(width: 10),
                   Text(
                     '$numberOfproducts',
-                    style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                    style: const TextStyle(
+                        fontSize: 20, fontWeight: FontWeight.bold),
                   ),
                   const SizedBox(width: 10),
                   IconButton(

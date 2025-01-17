@@ -18,7 +18,7 @@ class ProductDetails extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: KBackgroundColor,
+      // backgroundColor: KBackgroundColor,
       appBar: mainAppBar('Product Details'),
       body: Padding(
         padding: const EdgeInsets.all(15),
@@ -65,7 +65,7 @@ class ProductDetails extends StatelessWidget {
                   padding: const EdgeInsets.all(10),
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(15),
-                      color: kPrimaryColor9),
+                      color: kPrimaryColor7),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -257,5 +257,3 @@ class AddToCartButton extends StatelessWidget {
     );
   }
 }
-
-

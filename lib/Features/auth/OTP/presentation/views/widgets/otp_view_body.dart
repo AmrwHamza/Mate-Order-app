@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get_core/src/get_main.dart';
@@ -55,8 +56,8 @@ class OTPViewBody extends StatelessWidget {
                       height: 18,
                     ),
                     const Logo(),
-                    const RegisterOrLogInText(
-                      data: 'Verification code',
+                     RegisterOrLogInText(
+                      data: 'Verification code'.tr(),
                     ),
                     const Divider(
                       color: kPrimaryColor1,
@@ -75,7 +76,7 @@ class OTPViewBody extends StatelessWidget {
                       height: 70,
                     ),
                     CustomRegisterButton(
-                      data: 'Confirm',
+                      data: 'Confirm'.tr(),
                       onPressed: () {
                         FocusScope.of(context).unfocus();
 
@@ -87,7 +88,7 @@ class OTPViewBody extends StatelessWidget {
                       height: 25,
                     ),
                     CustomRegisterButton(
-                      data: 'Resend the Code',
+                      data: 'Resend the Code'.tr(),
                       onPressed: () {
                         FocusScope.of(context).unfocus();
 

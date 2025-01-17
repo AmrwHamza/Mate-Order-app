@@ -2,9 +2,11 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
+import 'package:mate_order_app/Features/Home/Products/presentation/view/home_page.dart';
 // import 'package:mate_order_app/Features/Home/oredr/presentation/model_view/bloc/order_bloc.dart';
 import 'package:mate_order_app/Features/cart/cart/presentation/model_view/add_order/add_order_cubit.dart';
 import 'package:mate_order_app/Features/cart/cart/presentation/view/cart_view.dart';
+import 'package:mate_order_app/Features/main%20home/home.dart';
 import 'package:mate_order_app/constants.dart';
 
 import '../../../data/models/address_list_model.dart';
@@ -23,7 +25,11 @@ class ChooseLocationButton extends StatelessWidget {
         if (state is AddOrderSuccess) {
           Get.snackbar('Done', state.message);
           // context.read<CartCubit>().getCartProducts();
-          Get.offAll(const CartView());
+          Navigator.pushAndRemoveUntil(
+            context,
+            MaterialPageRoute(builder: (context) => const Home()),
+            (Route<dynamic> route) => false,
+          );
         }
         if (state is AddOrderError) {
           Get.snackbar('Error', state.message);
@@ -53,8 +59,7 @@ class ChooseLocationButton extends StatelessWidget {
                                 },
                                 style: const ButtonStyle(
                                     backgroundColor:
-                                        WidgetStatePropertyAll(
-                                            kPrimaryColor8)),
+                                        WidgetStatePropertyAll(kPrimaryColor8)),
                                 child: const Text(
                                   'Confirm',
                                   style: TextStyle(color: kPrimaryColor1),

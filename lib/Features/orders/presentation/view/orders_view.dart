@@ -9,10 +9,10 @@ class OrdersView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-            backgroundColor: KBackgroundColor,
+      // backgroundColor: KBackgroundColor,
 
       appBar: mainAppBar('Orders'),
-      body:const OrdersViewBody() ,
+      body: const OrdersViewBody(),
     );
   }
 }

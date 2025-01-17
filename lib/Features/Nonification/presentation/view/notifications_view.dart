@@ -10,7 +10,7 @@ class NotificationsView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: KBackgroundColor,
+      // backgroundColor: KBackgroundColor,
       appBar: mainAppBar('Notification'),
       body: const NotificationsViewBody(),
     );

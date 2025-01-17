@@ -18,7 +18,7 @@ class CustomTextFieldOTP extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
           boxShadow: const [
-            BoxShadow(spreadRadius: 5, color: Colors.white, blurRadius: 20)
+            // BoxShadow(spreadRadius: 5, color: Colors.white, blurRadius: 20)
           ],
           border: Border.all(width: 1.5, color: kPrimaryColor6),
           borderRadius: BorderRadius.circular(10),

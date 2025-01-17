@@ -1,8 +1,10 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:mate_order_app/Features/splash/views/widget/custom_botton.dart';
 import 'package:mate_order_app/constants.dart';
 import 'package:mate_order_app/core/utils/assets.dart';
+import 'package:mate_order_app/core/widgets/widget/product_option_sheet.dart';
 
 class FirstPage extends StatelessWidget {
   const FirstPage({super.key});
@@ -61,16 +63,16 @@ class FirstPage extends StatelessWidget {
                               fontSize: 24,
                               fontWeight: FontWeight.bold,
                             ),
-                          ),
-                          const SizedBox(height: 20),
-                          const Text(
-                            'When placing an order, select the option "order now" and your order will be ready on its way.',
-                            style: TextStyle(
-                              fontSize: 14,
-                              color: kPrimaryColor2,
-                            ),
-                            textAlign: TextAlign.center,
-                          ),
+                          ).tr(),
+                          // const SizedBox(height: 20),
+                          // const Text(
+                          //   'When placing an order, select the option "order now" and your order will be ready on its way.',
+                          //   style: TextStyle(
+                          //     fontSize: 14,
+                          //     color: kPrimaryColor2,
+                          //   ),
+                          //   textAlign: TextAlign.center,
+                          // ),
                           const SizedBox(height: 20),
                           const AddButton(),
                         ],

@@ -13,7 +13,7 @@ class MyLocationsView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-            backgroundColor: KBackgroundColor,
+            // backgroundColor: KBackgroundColor,
 
       appBar: mainAppBar('Your Locations'),
       body: const MyLocationsBody(),

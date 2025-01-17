@@ -15,7 +15,7 @@ class NotificationsViewBody extends StatelessWidget {
     return LiquidPullToRefresh(
       height: 60,
       showChildOpacityTransition: false,
-      backgroundColor: Colors.white,
+      // backgroundColor: Colors.white,
       color: kPrimaryColor4,
       springAnimationDurationInMilliseconds: 500,
       onRefresh: () async {

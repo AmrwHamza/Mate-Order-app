@@ -11,19 +11,20 @@ class SearchBarForHome extends StatelessWidget {
   final void Function(String) onFieldSubmitted;
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(bottom: 20),
-      child: TextFormField(
-        onFieldSubmitted: onFieldSubmitted,
-        controller: searchController,
-        decoration: InputDecoration(
-          filled: true,
-          fillColor: Colors.white,
-          prefixIcon: const Icon(Icons.search),
-          hintText: 'Search...'.tr(),
-          border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(25),
-          ),
+    final theme = Theme.of(context);
+
+    return TextFormField(
+      onFieldSubmitted: onFieldSubmitted,
+      controller: searchController,
+      decoration: InputDecoration(
+        filled: true,
+        fillColor: theme.inputDecorationTheme.fillColor ?? theme.cardColor,
+
+        // fillColor: Colors.white,
+        prefixIcon: const Icon(Icons.search),
+        hintText: 'Search...'.tr(),
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(25),
         ),
       ),
     );

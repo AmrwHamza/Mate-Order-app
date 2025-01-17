@@ -70,9 +70,10 @@ class ProfilePageBody extends StatelessWidget {
                             children: [
                               const SizedBox(height: 15),
                               Row(
+                                // mainAxisSize: MainAxisSize.max,
                                 children: [
                                   ImageCircle(),
-                                  const SizedBox(width: 30),
+                                  const SizedBox(width: 10),
                                   PersonalInfo(),
                                   // const SizedBox(width: 10),
                                   IconButton(

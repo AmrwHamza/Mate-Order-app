@@ -30,15 +30,28 @@ class PersonalInfo extends StatelessWidget {
           children: [
             Text(
               '$firstName $lastName',
-              textAlign: TextAlign.center,
-              style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
-            ),
-            Text(
-              '$email',
-              textAlign: TextAlign.start,
+              textAlign: TextAlign.left,
               style: const TextStyle(
-                color: Color(0xFF8D8D8D),
-                overflow: TextOverflow.ellipsis,
+                fontWeight: FontWeight.bold,
+                fontSize: 20,
+                overflow: TextOverflow.fade,
+              ),
+              textDirection: TextDirection.ltr,
+              maxLines: 1,
+            ),
+            SizedBox(
+              width: MediaQuery.of(context).size.width *
+                  0.4, // Adjust width as needed
+
+              child: Text(
+                '$email',
+                textAlign: TextAlign.start,
+                style: const TextStyle(
+                  color: Color(0xFF8D8D8D),
+                  overflow: TextOverflow.ellipsis,
+                ),
+                maxLines: 1,
+                textDirection: TextDirection.ltr,
               ),
             ),
           ],

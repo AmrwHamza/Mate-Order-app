@@ -19,23 +19,30 @@ class SearchProductsBody extends StatelessWidget {
           child: Column(
             children: [
               Hero(
-                  tag: 'SearchBarForHomeProducts',
-                  child: Material(
-                      child: SearchBarForHome(
+                tag: 'SearchBarForHomeProducts',
+                child: Material(
+                  child: SearchBarForHome(
                     // searchProductsCubit: searchProductsCubit,
                     searchController: SearchController(),
                     onFieldSubmitted: (value) {
                       searchProductsCubit.search(value);
                     },
-                  ))),
+                  ),
+                ),
+              ),
+              const SizedBox(
+                height: 2,
+              ),
               BlocBuilder<SearchProductsCubit, SearchProductsState>(
                 bloc: searchProductsCubit,
                 builder: (context, state) {
                   if (state is SearchProductsInitial) {
-                    return const Column();
+                    return const SizedBox.shrink();
                   } else if (state is SearchProductsLoading) {
                     return const Center(
-                      child: CircularProgressIndicator(color: kPrimaryColor1,),
+                      child: CircularProgressIndicator(
+                        color: kPrimaryColor1,
+                      ),
                     );
                   } else if (state is SearchProductsSuccess) {
                     return SizedBox(

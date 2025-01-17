@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:mate_order_app/Features/Nonification/presentation/model_view/cubit/notifications_cubit_cubit.dart';
 import 'package:mate_order_app/Features/cart/cart/presentation/model_view/add_order/add_order_cubit.dart';
 
@@ -29,6 +30,7 @@ import 'package:mate_order_app/core/bloc_helper/observer.dart';
 import 'package:mate_order_app/core/helpers/shared_pref.dart';
 import 'package:mate_order_app/core/notification/notification_service.dart';
 import 'package:mate_order_app/firebase_options.dart';
+import 'package:mate_order_app/theme_service.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'Features/Home/Products/presentation/model_view/home_bloc/bloc/products_home_bloc.dart';
 import 'Features/Home/map/presentation/model_view/cubit/map_cubit.dart';
@@ -36,7 +38,7 @@ import 'Features/Home/map/presentation/model_view/cubit/map_cubit.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await EasyLocalization.ensureInitialized();
-
+  await GetStorage.init();
   if (Platform.isAndroid && await Permission.notification.isDenied) {
     await Permission.notification.request();
   }
@@ -69,7 +71,6 @@ class MateOrderApp extends StatelessWidget {
   final bool isLoggedIn;
   @override
   Widget build(BuildContext context) {
-
     return MultiBlocProvider(
       providers: [
         BlocProvider(create: (context) => ProductsHomeBloc()),
@@ -91,11 +92,14 @@ class MateOrderApp extends StatelessWidget {
         BlocProvider(create: (context) => GetFavCubit()),
       ],
       child: GetMaterialApp(
+        theme: ThemeService().lightTheme,
+        darkTheme: ThemeService().darkTheme,
+        themeMode: ThemeService().getThemeMode(),
         localizationsDelegates: context.localizationDelegates,
         supportedLocales: context.supportedLocales,
         locale: context.locale,
         debugShowCheckedModeBanner: false,
-        color: Colors.white,
+        // color: Colors.white,
         home: isLoggedIn ? const Home() : const SplashView(),
       ),
     );

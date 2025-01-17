@@ -21,6 +21,7 @@ class CustomTextFormField extends StatelessWidget {
   final String? Function(String?)? validator;
   final String? prefixText;
   final TextInputType? keyboardType;
+
   final void Function(String?) onChanged;
   @override
   Widget build(BuildContext context) {

@@ -22,7 +22,7 @@ class SearchCard extends StatelessWidget {
         tag: 'SearchBarForHomeProducts',
         child: Card(
           elevation: 5,
-          color: kPrimaryColor8,
+          color: kPrimaryColor6,
           child: SizedBox(
             width: MediaQuery.of(context).size.width * 0.5,
             height: 50,

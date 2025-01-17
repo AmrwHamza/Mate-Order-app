@@ -6,14 +6,13 @@ import 'package:mate_order_app/Features/main%20home/widget/app_bar_style.dart';
 
 import '../../../../../constants.dart';
 
-
 class LocationsView extends StatelessWidget {
   const LocationsView({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-            backgroundColor: KBackgroundColor,
+      // backgroundColor: KBackgroundColor,
 
       appBar: mainAppBar('Your Locations'),
       body: const LocationsBody(),

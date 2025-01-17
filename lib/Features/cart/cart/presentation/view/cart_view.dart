@@ -21,7 +21,7 @@ class CartView extends StatelessWidget {
       child: BlocBuilder<CartCubit, CartState>(
         builder: (context, state) {
           return Scaffold(
-                  backgroundColor: KBackgroundColor,
+            // backgroundColor: KBackgroundColor,
 
             appBar: mainAppBar('Cart'),
             body: const CartViewBody(),
@@ -35,7 +35,7 @@ class CartView extends StatelessWidget {
                     },
                   ));
                 },
-                backgroundColor: kPrimaryColor9,
+                backgroundColor: kPrimaryColor4,
                 isExtended: true,
                 mini: false,
                 child: const Text('Choose Location').tr(),

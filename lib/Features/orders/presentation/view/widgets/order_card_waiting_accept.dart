@@ -22,8 +22,10 @@ class OrderCardWaitingAccept extends StatelessWidget {
       width: MediaQuery.of(context).size.width * 0.9,
       height: 100,
       decoration: BoxDecoration(
-          color: kPrimaryColor5, borderRadius: BorderRadius.circular(12),        boxShadow: const [BoxShadow(blurRadius: 2)],
-),
+        color: kPrimaryColor5,
+        borderRadius: BorderRadius.circular(12),
+        boxShadow: const [BoxShadow(blurRadius: 2)],
+      ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
@@ -51,7 +53,7 @@ class OrderCardWaitingAccept extends StatelessWidget {
                   width: MediaQuery.of(context).size.width * 0.45,
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(20),
-                      color: kPrimaryColor10),
+                      color: kPrimaryColor8),
                   child:
                       Center(child: const Text('Status: Waiting accept').tr()))
             ],
