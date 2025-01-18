@@ -20,19 +20,14 @@ class NotificationService {
   bool _isFlutterLocalNotificationsInitialized = false;
 
   Future<void> initialize() async {
-    // Register the background message handler
     FirebaseMessaging.onBackgroundMessage(
         _firebaseMessagingInBackgroundHandler);
 
-    // Request notification permission
     await _requestPermission();
 
-    // Setup message handlers for foreground and background
     await _setupMessageHandlers();
 
-    // Get and print the FCM token
 
-    // final kFcmToken=await FirebaseMessaging.instance.getToken();
     String? token = await FirebaseMessaging.instance.getToken();
     print('FCM Token: $token');
   }
@@ -55,7 +50,6 @@ class NotificationService {
       return;
     }
 
-    // Define the notification channel for Android
     const channel = AndroidNotificationChannel(
       'high_importance_channel',
       'High Importance Notifications',
@@ -63,28 +57,23 @@ class NotificationService {
       importance: Importance.high,
     );
 
-    // Create the notification channel
     await _localNotifications
         .resolvePlatformSpecificImplementation<
             AndroidFlutterLocalNotificationsPlugin>()
         ?.createNotificationChannel(channel);
 
-    // Set up the Android initialization settings
     const initializationSettingsAndroid =
         AndroidInitializationSettings('@mipmap/ic_launcher');
 
     final initializationSettings =
         const InitializationSettings(android: initializationSettingsAndroid);
 
-    // Initialize the local notifications plugin
     await _localNotifications.initialize(
       initializationSettings,
       onDidReceiveNotificationResponse: (details) {
-        // Handle notification response (e.g., when user taps on the notification)
       },
     );
 
-    // Mark as initialized
     _isFlutterLocalNotificationsInitialized = true;
   }
 
@@ -93,7 +82,6 @@ class NotificationService {
     AndroidNotification? android = message.notification?.android;
 
     if (notification != null && android != null) {
-      // Display the notification
       await _localNotifications.show(
         notification.hashCode,
         notification.title,
@@ -115,21 +103,18 @@ class NotificationService {
           ),
         ),
         payload: message.data
-            .toString(), // Send additional data with the notification
+            .toString(), 
       );
     }
   }
 
   Future<void> _setupMessageHandlers() async {
-    // Handle foreground notifications
     FirebaseMessaging.onMessage.listen((message) {
       showNotification(message);
     });
 
-    // Handle background notifications when the app is opened via notification
     FirebaseMessaging.onMessageOpenedApp.listen(_handleBackgroundMessage);
 
-    // Handle notification when the app is opened from a terminated state
     final initialMessage = await _messaging.getInitialMessage();
     if (initialMessage != null) {
       _handleBackgroundMessage(initialMessage);
@@ -138,11 +123,9 @@ class NotificationService {
 
   void _handleBackgroundMessage(RemoteMessage message) {
     if (message.data['type'] == 'chat') {
-      // Open the chat screen if the message type is 'chat'
-      // You can navigate to the chat screen here
+
       print("Navigate to chat screen");
     } else {
-      // Handle other types of messages
       print("Handle other types of notifications");
     }
   }

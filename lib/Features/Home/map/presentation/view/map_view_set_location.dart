@@ -22,8 +22,8 @@ class MapViewSetLocation extends StatefulWidget {
 
 class _MapViewSetLocationState extends State<MapViewSetLocation> {
   final MapController _mapController = MapController();
-  final List<MarkerData> _markerData = []; //
-  final List<Marker> _markers = []; //
+  final List<MarkerData> _markerData = []; 
+  final List<Marker> _markers = []; 
   LatLng? _selectedPosition;
   LatLng? _mylocation;
   LatLng? _draggedPosition;

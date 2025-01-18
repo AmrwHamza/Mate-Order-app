@@ -11,7 +11,7 @@ class ThemeService {
 
   final lightTheme = ThemeData.light().copyWith(
     // primaryColor: Colors.blueGrey.shade300,
-    scaffoldBackgroundColor: kBackgroundLight, // تعديل خلفية الشاشة
+    scaffoldBackgroundColor: kBackgroundLight, 
 
     primaryColor: kPrimaryLight,
     appBarTheme: const AppBarTheme(
@@ -19,8 +19,8 @@ class ThemeService {
       iconTheme: const IconThemeData(color: Colors.black),
     ),
     textTheme: const TextTheme(
-      bodyLarge: TextStyle(color: Colors.black), // نصوص اللون الأسود
-      bodyMedium: TextStyle(color: Colors.black), // نصوص اللون الأسود
+      bodyLarge: TextStyle(color: Colors.black),
+      bodyMedium: TextStyle(color: Colors.black), 
       titleLarge: TextStyle(color: Colors.black),
     ),
     dividerColor: Colors.black12,
@@ -28,16 +28,16 @@ class ThemeService {
 
   final darkTheme = ThemeData.dark().copyWith(
     primaryColor: kPrimaryDark,
-    scaffoldBackgroundColor: kBackgroundDark, // تعديل خلفية الشاشة
+    scaffoldBackgroundColor: kBackgroundDark, 
 
     appBarTheme: AppBarTheme(
       color: kPrimaryDark,
       iconTheme: const IconThemeData(color: Colors.white),
     ),
     textTheme: const TextTheme(
-      bodyLarge: TextStyle(color: Colors.white), // نصوص اللون الأبيض
-      bodyMedium: TextStyle(color: Colors.white), // نصوص اللون الأبيض
-      titleLarge: TextStyle(color: Colors.white), // العناوين باللون الأبيض
+      bodyLarge: TextStyle(color: Colors.white), 
+      bodyMedium: TextStyle(color: Colors.white), 
+      titleLarge: TextStyle(color: Colors.white), 
     ),
     dividerColor: Colors.white54,
   );

@@ -85,11 +85,16 @@ class ProductInOrderCard extends StatelessWidget {
             'Name',
             style: TextStyle(fontWeight: FontWeight.bold),
           ).tr(),
-          Text(
-            ': ${productInCart.name}',
-            overflow: TextOverflow.ellipsis,
-            maxLines: 1,
-            style: const TextStyle(fontWeight: FontWeight.bold),
+          Expanded(
+            child: Container(
+              // width: MediaQuery.of(context).size.width * 0.6,
+              child: Text(
+                ': ${productInCart.name}',
+                overflow: TextOverflow.ellipsis,
+                maxLines: 1,
+                style: const TextStyle(fontWeight: FontWeight.bold),
+              ),
+            ),
           ),
         ],
       ),

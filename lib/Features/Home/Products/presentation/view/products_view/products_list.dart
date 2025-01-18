@@ -26,25 +26,25 @@ class _ProductsListState extends State<ProductsList>
   @override
   bool get wantKeepAlive => true;
   final ScrollController _scrollController =
-      ScrollController(); // تعريف الـ ScrollController
+      ScrollController(); 
   late ProductsHomeBloc _productBloc;
 
-  _ProductsListState({required this.categoryName}); // بلوك البيانات
+  _ProductsListState({required this.categoryName}); 
 
   @override
   void initState() {
     super.initState();
     _productBloc = ProductsHomeBloc()
-      ..add(FetchProductsHome(category: categoryName)); // تحميل الصفحة الأولى
+      ..add(FetchProductsHome(category: categoryName)); 
     _scrollController
-        .addListener(_onScroll); // إضافة مستمع للـ ScrollController
+        .addListener(_onScroll);
   }
 
   @override
   void dispose() {
     _scrollController
-        .dispose(); // التخلص من الـ ScrollController لتجنب تسريب الذاكرة
-    _productBloc.close(); // إغلاق الـ BLoC
+        .dispose(); 
+    _productBloc.close(); 
     super.dispose();
   }
 
@@ -56,7 +56,7 @@ class _ProductsListState extends State<ProductsList>
         _productBloc.hasMore &&
         _productBloc.state is! ProductsHomeLoading) {
       currentScrollPosition =
-          _scrollController.position.pixels; // حفظ الموضع الحالي
+          _scrollController.position.pixels; 
       _productBloc.add(FetchProductsHome(category: categoryName));
     }
   }

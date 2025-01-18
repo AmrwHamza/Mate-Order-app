@@ -37,7 +37,7 @@ class EditSheetBody extends StatelessWidget {
                 width: MediaQuery.of(context).size.width * 0.85,
                 height: 120,
                 decoration: BoxDecoration(
-                    color: kPrimaryColor10,
+                    color: kPrimaryColor7,
                     borderRadius: BorderRadius.circular(10)),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,

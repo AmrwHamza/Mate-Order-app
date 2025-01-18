@@ -19,9 +19,7 @@ class StoresBloc extends Bloc<StoresEvent, StoresState> {
 
   Future<void> onFetchStores(
       FetchStores event, Emitter<StoresState> emit) async {
-    // emit(
-    //   StoresInitial());
-      // hasMore = true;
+   
 
     if (state is StoresLoading || state is StoresLoadingMore) {
       return;
@@ -30,7 +28,7 @@ class StoresBloc extends Bloc<StoresEvent, StoresState> {
       List<Store> currentStores = [];
       if (state is StoresLoaded || state is StoresLoadingMore) {
         currentStores =
-            (state as dynamic).allStores; // أعد الكتابة لتكون أكثر أمانًا
+            (state as dynamic).allStores; 
 
       }
 
@@ -44,8 +42,7 @@ class StoresBloc extends Bloc<StoresEvent, StoresState> {
           emit(StoresError(l.message));
         },
         (r) {
-          // hasMore = r.pagination?.nextPageUrl != null;
-          // currentPage = hasMore ? currentPage + 1 : currentPage;
+        
          
           if (r.pagination?.nextPageUrl != null) {
             hasMore = true;
@@ -57,7 +54,6 @@ class StoresBloc extends Bloc<StoresEvent, StoresState> {
           final allStores = List<Store>.from(currentStores)
             ..addAll(r.data?.data ?? []);
 
-//  final allStores=[...currentStores,...?r.data?.data];
           emit(StoresLoaded(allStores: allStores, hasReachedMax: !hasMore));
         },
       );

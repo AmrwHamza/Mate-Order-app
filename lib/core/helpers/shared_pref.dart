@@ -6,16 +6,14 @@ import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class SharedPrefHelper {
-  // private constructor as I don't want to allow creating an instance of this class itself.
   SharedPrefHelper._();
 
-  // **تعديل 1:** تحسين استخدام FlutterSecureStorage من خلال إضافة الخيارات المخصصة للأمان.
   static const flutterSecureStorage = FlutterSecureStorage(
     aOptions: AndroidOptions(
-      encryptedSharedPreferences: true, // تفعيل التشفير على أندرويد
+      encryptedSharedPreferences: true, 
     ),
     iOptions: IOSOptions(
-      accessibility: KeychainAccessibility.first_unlock, // تخصيص الوصول على iOS
+      accessibility: KeychainAccessibility.first_unlock, 
     ),
   );
 
@@ -31,7 +29,6 @@ class SharedPrefHelper {
     }
   }
 
-  /// Removes all keys and values in the SharedPreferences
   static clearAllData() async {
     try {
       debugPrint('SharedPrefHelper : all data has been cleared');

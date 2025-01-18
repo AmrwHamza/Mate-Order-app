@@ -20,11 +20,7 @@ class StoreProductsBloc extends Bloc<StoreProductsEvent, StoreProductsState> {
 
   Future<void> onFetchStoreProducts(
       FetchStoreProducts event, Emitter<StoreProductsState> emit) async {
-////initial missed
-    ///
-    ///
-    ///
-    ///
+
     if (state is StoreProductslLoading || state is StoreProductsLoadingMore) {
       return;
     }

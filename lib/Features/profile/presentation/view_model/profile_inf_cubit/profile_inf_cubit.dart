@@ -24,7 +24,9 @@ class ProfileInfCubit extends Cubit<ProfileInfState> {
       //   return;
       // }
       isLoading = false;
-      emit(ProfileGetInfSuccess(data));
+      if (!isClosed) {
+        emit(ProfileGetInfSuccess(data));
+      }
     });
   }
 

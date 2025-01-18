@@ -107,7 +107,7 @@ class DeleteOrderButton extends StatelessWidget {
               },
               style: const ButtonStyle(
                   backgroundColor: WidgetStatePropertyAll(Colors.redAccent)),
-              child: const Text('Delete').tr());
+              child: const Icon(Icons.delete));
         },
       ),
     );
