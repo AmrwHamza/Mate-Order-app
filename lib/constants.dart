@@ -17,7 +17,7 @@ const Color KBackgroundColor = Color(0xffEFFEFB);
 
 // ignore: constant_identifier_names
 const KTransitionDuration = Duration(milliseconds: 250);
-const String base = "https://b051-149-40-62-119.ngrok-free.app";
+const String base = "http://127.0.0.1:8000";
 const String baseurl = "$base" "/api/";
 const String baseurlImg = '$base/storage/project/';
 
